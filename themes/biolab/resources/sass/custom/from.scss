@@ -1,0 +1,88 @@
+.comment-form {
+  @extend .py-4, .row;
+
+  .comment-notes, .comment-form-comment {
+    @extend .col-12
+  }
+
+  .comment-form-author, .comment-form-email, .comment-form-url {
+    @extend .col-12, .col-lg-4;
+
+    input, textarea {
+      @extend .input__style ;
+    }
+  }
+
+}
+
+#comment {
+  @extend .input__style ;
+  height: 70px;
+  padding: 20px;
+}
+
+#submit {
+  @extend .text-white, .fw-bold, .rounded, .btn, .bg-primary, .px-5, .py-3;
+  transition: 0.5s;
+}
+
+.form-submit {
+  @extend .text-end
+}
+// gravity form
+.gform_wrapper {
+  gform_fields {
+    gap: 10px !important;
+  }
+
+  input, textarea {
+    transition: all 0.3s ease-out;
+    border: 1px solid #80808040;
+    border-radius: 5px;
+    padding: 15px;
+
+    &:hover, &:focus-visible, &:active {
+      @extend .bg-primary, .text-white;
+      outline-color: $primary !important;
+
+      &::placeholder {
+        color: white;
+      }
+    }
+  }
+
+  .gform_footer {
+    justify-content: end;
+    padding: 0!important;
+
+    input[type=submit] {
+      @extend .btn-success
+    }
+  }
+}
+// comment section
+.comment-body {
+  @extend .col-md-8;
+  margin: 15px 0;
+  justify-content: start;
+  align-items: center;
+  border: 1px solid rgb(182, 182, 182);
+  padding: 30px;
+  border-radius: 12px;
+
+  p {
+    margin: 10px 0;
+  }
+
+  .comment-meta, .comment-author {
+    .avatar {
+      @extend .me-3, .mb-2, .rounded, .img-thumbnail;;
+    }
+
+    text-align: left;
+  }
+
+  .reply {
+    text-align: right;
+  }
+}

@@ -1,0 +1,51 @@
+#hero-section {
+  background-size: cover;
+  transition: all 0.5s ease-out 0s;
+  background-position: top center;
+}
+.swiper-pagination-bullet {
+  transition: all 0.5s ease-in-out;
+  background-color: $primary;
+  opacity: 1;
+
+  &.active {
+    background-color: $secondary;
+    opacity: 1;
+    padding: 0 15px;
+    border-radius: 5px;
+}
+}
+.swiper-pagination  , .portfolio-pagination{
+  .swiper-pagination-bullet {
+    transition: all 0.5s ease-in-out;
+    background-color: $primary;
+    opacity: 1;
+
+    &.active {
+      background-color: $secondary;
+      opacity: 1;
+      padding: 0 15px;
+      border-radius: 5px;
+  }
+}
+}
+
+.swiper-button-next , .portfolio-button-next {
+  &::after {
+    content: ' ' !important;
+}
+
+  &.post__nav {
+    transform: translate(50%, 50%);
+}
+}
+
+.swiper-button-prev , .portfolio-botton-prev {
+  &::after {
+    content: ' ' !important;
+}
+
+  &.post__nav {
+    transform: translate(-50%, 50%);
+}
+}
