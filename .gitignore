@@ -1,2 +1,9 @@
 # Project exclude paths
 /themes/biolab/node_modules/
+/languages/
+/plugins/
+/themes/twentytwentythree/
+/upgrade/
+/uploads/
+/index.php
+/themes/index.php
