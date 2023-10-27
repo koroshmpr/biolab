@@ -2,12 +2,12 @@
 /** Template Name: about us page */
 
 get_header(); ?>
-<section class="hero">
-    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-lg-80 -min-vh-lg-50">
-        <div class="col-6 px-lg-5 text-center">
+<section class="hero pb-5 pb-lg-0">
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-lg-80 -min-vh-lg-60">
+        <div class="col-lg-6 px-lg-5 text-center">
             <h1 class="fw-bold display-5 text-center text-white mb-0" data-aos="fade-left"><?= get_the_title(); ?></h1>
             <?php get_template_part('template-parts/loop/breadcrumb'); ?>
-            <div class="mb-0 small text-white text-opacity-75 text-center"><?= get_field('aboutus-content'); ?></div>
+            <div class="mb-0 small text-white text-opacity-75 text-center pb-5 pb-lg-0"><?= get_field('aboutus-content'); ?></div>
         </div>
     </div>
 </section>
@@ -45,7 +45,7 @@ get_header(); ?>
     </div>
 </section>
 <section>
-    <div class="container bg-secondary rounded-5 p-5">
+    <div class="container bg-secondary rounded-5 p-lg-5 p-4">
         <div class="row justify-content-lg-between justify-content-center align-content-center py-5">
             <div class="col-lg-5 my-auto">
                 <span class="text-success"><?= get_field('aboutus-badge'); ?></span>

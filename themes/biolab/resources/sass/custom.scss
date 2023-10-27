@@ -120,12 +120,3 @@ img {
     }
   }
 
-  body.page-template-faq .accordion-button:not(.collapsed):after {
-    filter: invert(1);
-  }
-  .about-us__image {
-    &:hover {
-      transform: scale(1.5);
-    }
-  }
-

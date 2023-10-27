@@ -19,18 +19,25 @@
   }
 }
 @include media-breakpoint-down(lg) {
+  .search-form {
+    border-radius: 15px!important;
+  }
+  .tagged_as {
+    color:white!important;
+    a {
+      color: white!important;
+    }
+  }
   .w--lg-auto {
     min-width: 100px;
     width: fit-content!important;
   }
-  .hero {
-    background-size: cover!important;
-  }
-  .-min-vh-lg-50 {
+  .-min-vh-lg-60 {
     min-height: 50vh !important;
   }
   .hero {
-    padding-top: 100px;
+    padding-top: 160px;
+    background-size: cover!important;
   }
   #hero-section {
       height: 350px;

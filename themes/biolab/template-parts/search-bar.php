@@ -1,4 +1,4 @@
-<form class="search-form p-5 p-lg-2 bg-white rounded-pill shadow-sm" method="get"
+<form class="search-form p-2 py-4 py-lg-2 bg-white rounded-pill shadow-sm" method="get"
       action="<?php echo esc_url(home_url('/')); ?>">
     <div class="input-group d-flex gap-3 align-items-center">
         <input id="search-form" type="search" name="s" class="form-control col-12 col-lg-8 w-50 text-primary border-0 shadow-0 text-center text-lg-start"
@@ -8,7 +8,7 @@
         </button>
         <ul class="dropdown-menu">
             <?php
-            $post_types = array('post');
+            $post_types = array('post','product');
             foreach ($post_types as $post_type) {
                 $post_type_info = get_post_type_object($post_type);
                 $post_type_label = $post_type_info->labels->name;

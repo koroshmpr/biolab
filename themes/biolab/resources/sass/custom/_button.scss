@@ -68,12 +68,19 @@
     background-position: right;
     -webkit-transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    path , svg {
+        -webkit-transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
     &:hover {
         background-color: unset!important;
         background-position: left;
         color: $secondary;
+        svg {
+            color:$secondary!important;
+        }
         path {
-            stroke: white;
+            stroke: $secondary;
         }
     }
 }
@@ -88,10 +95,14 @@
     background-position: right;
     -webkit-transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    path {
+        -webkit-transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
     &:hover {
         background-position: left;
         color: $primary;
-        path {
+        path  {
             stroke: $primary;
         }
     }
@@ -107,10 +118,17 @@
     background-position: right;
     -webkit-transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    path , svg {
+        -webkit-transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
     &:hover {
         background-position: left;
         background-color: unset!important;
         color: $success !important;
+        svg {
+            color:$success!important;
+        }
         path {
             stroke: $success;
         }

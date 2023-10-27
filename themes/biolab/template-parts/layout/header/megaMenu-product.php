@@ -7,7 +7,7 @@
         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
     </svg>
 </button>
-<div class="category-dropdown dropdown-menu container mt-n2 py-0 overflow-hidden" aria-labelledby="dropdownMenuButton">
+<div class="col-11 col-lg-12 category-dropdown dropdown-menu container mt-n2 py-0 overflow-hidden" aria-labelledby="dropdownMenuButton">
     <?php
     $children = get_categories(array(
         'taxonomy' => 'product_cat',

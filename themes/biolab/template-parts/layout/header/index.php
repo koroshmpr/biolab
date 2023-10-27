@@ -62,7 +62,7 @@
     </div>
     <div class="d-flex mt-3 align-items-center gap-3">
             <?php get_template_part('template-parts/layout/header/megaMenu-product'); ?>
-        <nav class="d-none d-lg-block">
+        <nav class="">
             <?php
             $locations = get_nav_menu_locations();
             $menu = wp_get_nav_menu_object($locations['headerSecondMenuLocation']);

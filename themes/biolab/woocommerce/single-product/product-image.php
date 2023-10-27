@@ -38,13 +38,14 @@ $wrapper_classes = apply_filters(
 //		'images',
         'overflow-hiddem',
         'col-lg-5',
+        'col-11'
     )
 );
 ?>
 
 <div class="<?php echo esc_attr(implode(' ', array_map('sanitize_html_class', $wrapper_classes))); ?>"
      data-columns="<?php echo esc_attr($columns); ?>">
-    <div data-aos="fade-left" data-aos-duration="500" class="col-5 rounded-4 position-absolute bg-white shadow-sm top-0 bottom-0 mb-3 start-0 p-3 d-flex flex-column align-items-start">
+    <div data-aos="fade-left" data-aos-duration="500" class="col-5 rounded-4 position-absolute bg-white shadow-sm top-0 bottom-0 mb-3 start-0 p-2 p-lg-3 d-flex flex-column align-items-start">
         <?php
 
         if ($product->is_on_sale()) {
@@ -57,7 +58,7 @@ $wrapper_classes = apply_filters(
         $gallery_image_ids = $product->get_gallery_image_ids();
         // If there are multiple images, initialize Swiper
         ?>
-        <div class="swiper product_image_swiper p-3">
+        <div class="swiper product_image_swiper ps-4 ps-lg-3 pe-0 pe-lg-3 p-3">
             <div class="swiper-wrapper my-0">
                 <?php
                 // Add your image URL here
@@ -66,7 +67,7 @@ $wrapper_classes = apply_filters(
                 // Output the first slide with the image
                 ?>
                 <div class="swiper-slide">
-                    <img class="img-fluid rounded-4 m-0 shadow" src="<?= $image_url; ?>"
+                    <img class="img-fluid rounded-4 m-0 shadow" height="450" src="<?= $image_url; ?>"
                          alt="<?php echo esc_attr__('Product Image', 'woocommerce'); ?>"/>
                     <button class="product__image btn position-absolute bottom-0 end-0 me-3 mb-2"
                             type="button" data-bs-toggle="modal" data-bs-target="#myModal"
@@ -87,7 +88,7 @@ $wrapper_classes = apply_filters(
                     $image_url = wp_get_attachment_url($image_id);
                     ?>
                     <div class="swiper-slide" data-image-id="<?php echo esc_attr($image_id); ?>">
-                        <img class="img-fluid rounded-4 m-0 shadow" src="<?php echo esc_url($image_url); ?>"
+                        <img class="img-fluid rounded-4 m-0 shadow" height="450" src="<?php echo esc_url($image_url); ?>"
                              alt="<?php echo esc_attr__('Product Image', 'woocommerce'); ?>"/>
                         <button class="product__image btn position-absolute bottom-0 end-0 me-3 mb-2"
                                 type="button" data-bs-toggle="modal" data-bs-target="#myModal"
@@ -108,4 +109,19 @@ $wrapper_classes = apply_filters(
             <div class="swiper-pagination position-static"></div>
         </div>
     </figure>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.product__image').each(function () {
+                jQuery(this).on('click', function (e) {
+                    e.preventDefault();
+                    var imageId = jQuery(this).attr('data-link');
+                    // Open the Bootstrap modal with the full-size image
+                    jQuery('#myModal').modal('show');
+
+                    // Set the modal image source
+                    jQuery('#myModal .modal-body img').attr('src', imageId);
+                });
+            });
+        })
+    </script>
 </div>

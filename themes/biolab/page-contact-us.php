@@ -3,7 +3,7 @@
 
 get_header(); ?>
     <section class="hero">
-        <div class="container d-flex justify-content-center align-items-start align-items-lg-center min-vh-lg-80 -min-vh-lg-50">
+        <div class="container d-flex justify-content-center align-items-start align-items-lg-center min-vh-lg-80 -min-vh-lg-60">
             <div class="col-6 px-lg-5 pt-5 pt-lg-0 text-center">
                 <h1 class="fw-bold display-5 text-center text-white mb-0"
                     data-aos="fade-left"><?= get_the_title(); ?></h1>

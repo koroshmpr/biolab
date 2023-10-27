@@ -12,6 +12,13 @@ html, body {
 ::-webkit-scrollbar-track {
   background: white;
 }
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  transition: border-top-color 0.3s linear , border-bottom-color 0.3s linear;
+}
+body.modal-open {
+  padding-left: 0!important;
+}
 .rounded-25 {
   border-radius: 25px;
 }
@@ -21,12 +28,6 @@ html, body {
 .rounded-top-end-circle {
   border-top-right-radius: 100px;
 }
-
-::-webkit-scrollbar-thumb {
-  background: $primary;
-  transition: border-top-color 0.3s linear , border-bottom-color 0.3s linear;
-}
-
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   border-top: 8px solid $secondary;

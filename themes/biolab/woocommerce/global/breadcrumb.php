@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! empty( $breadcrumb ) ) {
 
     // Add a custom class to the breadcrumb wrapper
-    $custom_class = 'woocommerce-breadcrumb text-white d-flex gap-2 fs-6'; // Change this to your desired class name
+    $custom_class = 'woocommerce-breadcrumb text-white d-flex gap-2 fs-6 mb-0'; // Change this to your desired class name
 
     echo '<div class="' . esc_attr( $custom_class ) . '">'; // Open the custom wrapper
 

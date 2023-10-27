@@ -31,7 +31,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'd-flex align-items-start flex-wrap', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'd-flex align-items-start flex-wrap justify-content-center', $product ); ?>>
 
 	<?php
 	/**
@@ -43,8 +43,8 @@ if ( post_password_required() ) {
 	do_action( 'woocommerce_before_single_product_summary' );
 	?>
 
-	<div class="entry-summary col-7 d-flex">
-        <div class="col-7 d-flex flex-column">
+	<div class="entry-summary col-lg-7 d-flex flex-wrap justify-content-center">
+        <div class="col-11 col-lg-7 d-flex flex-column py-5 py-lg-0">
         <?php woocommerce_breadcrumb(); ?>
 		<?php
 		/**
@@ -65,7 +65,7 @@ if ( post_password_required() ) {
                 <?php echo wc_get_product_tag_list($product->get_id(), ', ', '<span class="tagged_as text-dark text-opacity-50 mt-4">' . _n('Tag:', 'Tags:', count($product->get_tag_ids()), 'woocommerce') . ' ', '</span>');?>
             </div>
         </div>
-        <div class="row col-5 bg-white rounded-4 shadow-sm p-4" data-aos="fade-right">
+        <div class="row col-11 col-lg-5 bg-white rounded-4 shadow-sm p-4" data-aos="fade-right">
             <div class="d-flex justify-content-between py-2 px-0">
                 <span>فروشنده</span>
                 <span class="text-success fw-bold">2 فرشنده دیگر</span>
