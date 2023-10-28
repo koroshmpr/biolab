@@ -26,7 +26,7 @@
                             $thumbnail_id = get_term_meta($subcat->term_id, 'thumbnail_id', true); ?>
                             <a data-bs-toggle="pill"
                                href="#category_tab<?= $key; ?>"
-                               class="<?= $key == 0 ? 'active ' : ' '; ?> w--lg-auto col-2 col-lg gap-2 p-lg-3  py-3 px-2 text-lg-start text-center list-group-item-action text-primary fw-bold category-link">
+                               class="<?= $key == 1 ? 'active ' : ' '; ?> w--lg-auto col-2 col-lg gap-2 p-lg-3  py-3 px-2 text-lg-start text-center list-group-item-action text-primary fw-bold category-link">
                                 <?= $subcat->name; ?>
                             </a>
                             <?php
@@ -39,7 +39,7 @@
             <div class="col-lg-9 tab-content p-3 overflow-scroll">
                 <?php
                 foreach ($children as $key => $subcat) { ?>
-                    <article class="tab-pane fade <?= $key == 0 ? 'show active' : ''; ?>"
+                    <article class="tab-pane fade <?= $key == 1 ? 'show active' : ''; ?>"
                              id="category_tab<?= $key; ?>">
                         <?php
                         $args = array(
@@ -58,10 +58,10 @@
                         );
                         $loop = new WP_Query($args); ?>
                         <span class="border-start border-3 border-success ps-2 bg-info bg-opacity-10 text-dark text-opacity-50"><?= $subcat->name;?></span>
-                        <div class="row row-cols-2 row-cols-lg-5 flex-column">
+                        <div class="row row-cols-2 row-cols-lg-5">
                             <?php if ($loop->have_posts()) {
                                 while ($loop->have_posts()) : $loop->the_post(); ?>
-                                    <a class="p-2" href="<?php the_permalink(); ?>">
+                                    <a class="p-2 hover_text-primary" href="<?php the_permalink(); ?>">
                                         <?php the_title(); ?>
                                     </a>
                                 <?php endwhile;

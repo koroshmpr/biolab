@@ -15,40 +15,38 @@
  * @version     3.9.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (!defined('ABSPATH')) {
+    exit;
 }
 
-if ( $related_products ) : ?>
+if ($related_products) : ?>
 
-	<section class="related products">
+    <section class="related products">
 
-		<?php
-		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
+        <?php
+        $heading = apply_filters('woocommerce_product_related_products_heading', __('Related products', 'woocommerce'));
 
-		if ( $heading ) :
-			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
-		<?php endif; ?>
-		
-		<?php woocommerce_product_loop_start(); ?>
+        if ($heading) :
+            ?>
+            <h2 class="col-lg-2 border-bottom-2 pb-2 border-bottom border-success mb-3 text-lg-start text-center"><?php echo esc_html($heading); ?></h2>
+        <?php endif; ?>
+            <?php woocommerce_product_loop_start(); ?>
 
-			<?php foreach ( $related_products as $related_product ) : ?>
+        <div class="d-flex row-cols-xl-6 row-cols-1 row-cols-md-3 flex-wrap gap-3 flex-nowrap overflow-x-lg-scroll">
+            <?php foreach ($related_products as $related_product) : ?>
 
-					<?php
-					$post_object = get_post( $related_product->get_id() );
+                <?php
+                $post_object = get_post($related_product->get_id());
 
-					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+                setup_postdata($GLOBALS['post'] =& $post_object); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 
-					wc_get_template_part( 'content', 'product' );
-					?>
+                get_template_part('template-parts/products/product-card');
+            endforeach; ?>
+        </div>
+        <?php woocommerce_product_loop_end(); ?>
 
-			<?php endforeach; ?>
-
-		<?php woocommerce_product_loop_end(); ?>
-
-	</section>
-	<?php
+    </section>
+<?php
 endif;
 
 wp_reset_postdata();

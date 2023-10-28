@@ -3362,8 +3362,9 @@ document.addEventListener('DOMContentLoaded', function () {
     effect: 'slide',
     speed: 500,
     slidesPerView: 1,
-    spaceBetween: 0,
-    centeredSlides: false,
+    spaceBetween: 20,
+    grabCursor: true,
+    centeredSlides: true,
     direction: 'horizontal',
     pagination: {
       el: '.swiper-pagination',

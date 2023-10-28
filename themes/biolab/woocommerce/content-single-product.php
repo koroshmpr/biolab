@@ -44,7 +44,7 @@ if ( post_password_required() ) {
 	?>
 
 	<div class="entry-summary col-lg-7 d-flex flex-wrap justify-content-center">
-        <div class="col-11 col-lg-7 d-flex flex-column py-5 py-lg-0">
+        <div class="col-11 col-lg-7 d-flex flex-column py-5 py-lg-0 pe-lg-4">
         <?php woocommerce_breadcrumb(); ?>
 		<?php
 		/**

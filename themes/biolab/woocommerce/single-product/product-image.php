@@ -69,7 +69,7 @@ $wrapper_classes = apply_filters(
                 <div class="swiper-slide">
                     <img class="img-fluid rounded-4 m-0 shadow" height="450" src="<?= $image_url; ?>"
                          alt="<?php echo esc_attr__('Product Image', 'woocommerce'); ?>"/>
-                    <button class="product__image btn position-absolute bottom-0 end-0 me-3 mb-2"
+                    <button class="product__image btn position-absolute bottom-0 end-0 me-lg-3 me-2 mb-2"
                             type="button" data-bs-toggle="modal" data-bs-target="#myModal"
                             data-link="<?php echo esc_url($image_url); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -90,7 +90,7 @@ $wrapper_classes = apply_filters(
                     <div class="swiper-slide" data-image-id="<?php echo esc_attr($image_id); ?>">
                         <img class="img-fluid rounded-4 m-0 shadow" height="450" src="<?php echo esc_url($image_url); ?>"
                              alt="<?php echo esc_attr__('Product Image', 'woocommerce'); ?>"/>
-                        <button class="product__image btn position-absolute bottom-0 end-0 me-3 mb-2"
+                        <button class="product__image btn position-absolute bottom-0 end-0 me-lg-3 me-2 mb-2"
                                 type="button" data-bs-toggle="modal" data-bs-target="#myModal"
                                 data-link="<?php echo esc_url($image_url); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -106,7 +106,7 @@ $wrapper_classes = apply_filters(
                 <?php } ?>
 
             </div>
-            <div class="swiper-pagination position-static"></div>
+            <div class="swiper-pagination position-static mt-4"></div>
         </div>
     </figure>
     <script>

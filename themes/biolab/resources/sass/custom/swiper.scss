@@ -49,3 +49,22 @@
     transform: translate(-50%, 50%);
 }
 }
+.product_image_swiper {
+  .swiper-slide {
+    transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    &.swiper-slide-prev , &.swiper-slide-next {
+      opacity: 0;
+    }
+  }
+}
+
+.swiper-pagination-bullet {
+  transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  background-color: $secondary;
+  opacity: 1;
+  &.swiper-pagination-bullet-active {
+    background-color: $success;
+    padding: 0 15px;
+    border-radius: 5px;
+  }
+}

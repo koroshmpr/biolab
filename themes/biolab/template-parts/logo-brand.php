@@ -8,6 +8,6 @@ $sizeLogo = isset($args['sizeLogo']) ? $args['sizeLogo'] : ' '; // set the defau
 <?php }
 if (get_field('logo_type', 'option') == 'svg') { ?>
     <a class="logo-brand <?= $sizeLogo;?>" href="/" aria-label="logo">
-        <span><?= get_field('brand_logo', 'option'); ?></span>
+        <?= get_field('brand_logo', 'option'); ?>
     </a>
 <?php } ?>
