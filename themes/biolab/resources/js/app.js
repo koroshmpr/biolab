@@ -8,6 +8,34 @@ import 'swiper/css/bundle';
 import Search from "./search";
 
 $(document).ready(function () {
+    let countElement = $('#product-count');
+    let minQuantity = parseInt($('#quantity-input-box').data('min'));
+    let maxQuantity = parseInt($('#quantity-input-box').data('max'));
+        $('#decrease-product-btn').click(function(e) {
+            e.preventDefault();
+            let count = parseInt(countElement.text());
+                console.log(count);
+            if (count > minQuantity) {
+                count = count - 1;
+                countElement.text(count);
+                $('#product-quantity').val(count); // Update the hidden input field
+            }
+            else {
+                console.log('not work')
+            }
+        });
+
+        $('#increase-product-btn').click(function(e) {
+            e.preventDefault();
+            let count = parseInt(countElement.text());
+                console.log(count);
+            if (count < maxQuantity) {
+                count = count + 1;
+                countElement.text(count);
+                $('#product-quantity').val(count); // Update the hidden input field
+            }
+        });
+    });
     $(".nav-pills > button").hover(function () {
         let megaMenu = $(this).children("button")
         if (!megaMenu.hasClass('active')) {
@@ -20,7 +48,6 @@ $(document).ready(function () {
             } else if ($(document).scrollTop() < 30) {
                 $('.sticky-post__detail').addClass('d-none');
             }
-        })
     }
 );
 // When the user scrolls the page, execute myFunction

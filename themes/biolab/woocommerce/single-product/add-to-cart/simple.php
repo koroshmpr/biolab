@@ -32,7 +32,7 @@ if ($product->is_in_stock()) : ?>
     <form class="cart"
           action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
           method="post" enctype='multipart/form-data'>
-        <div class="d-flex gap-3 align-items-center">
+        <div class="d-flex gap-3 align-items-center flex-md-column flex-xxl-row">
             <div class="col">
                 <div id="quantity-input-box" data-min="<?= $product->get_min_purchase_quantity() ?>"
                      data-max="<?= $product->get_max_purchase_quantity() ?>">
@@ -91,32 +91,3 @@ if ($product->is_in_stock()) : ?>
     <!--            </a>-->
     <!--        </div>-->
 <?php endif; ?>
-<script>
-    jQuery(document).ready(function($) {
-        $('#decrease-product-btn').click(function(e) {
-            e.preventDefault();
-            var $countElement = $('#product-count');
-            var count = parseInt($countElement.text(), 10);
-            var minQuantity = parseInt($('#quantity-input-box').data('min'), 10);
-
-            if (count > minQuantity) {
-                count = count - 1;
-                $countElement.text(count);
-                $('#product-quantity').val(count); // Update the hidden input field
-            }
-        });
-
-        $('#increase-product-btn').click(function(e) {
-            e.preventDefault();
-            var $countElement = $('#product-count');
-            var count = parseInt($countElement.text(), 10);
-            var maxQuantity = parseInt($('#quantity-input-box').data('max'), 10);
-
-            if (count < maxQuantity) {
-                count = count + 1;
-                $countElement.text(count);
-                $('#product-quantity').val(count); // Update the hidden input field
-            }
-        });
-    });
-</script>

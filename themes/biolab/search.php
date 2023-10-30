@@ -51,7 +51,7 @@
                 $post_type_query->the_post();
                 $current_post_type = get_post_type();
                 if ($current_post_type == 'product') {
-                    get_template_part('template-parts/services/services-card');
+                    get_template_part('template-parts/products/product-card');
                 } elseif ($current_post_type == 'post') {
                     get_template_part('template-parts/blog/noimage-card');
                 } elseif ($current_post_type == 'portfolio') {

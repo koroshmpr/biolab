@@ -2,7 +2,7 @@
 global $product;
 
 ?>
-<div class="card p-2 rounded-3 border-info border-opacity-50">
+<div class="card p-2 h-100 rounded-3 border-info border-opacity-50">
 
     <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($product->ID), 'single-post-thumbnail'); ?>
     <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"

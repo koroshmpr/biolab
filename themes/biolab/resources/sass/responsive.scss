@@ -1,4 +1,7 @@
 @include media-breakpoint-up(lg) {
+  .hero {
+    background-size: contain;
+  }
   .top-gap-shop {
     padding-top: 150px;
   }
@@ -40,7 +43,16 @@
   }
   .hero {
     padding-top: 160px;
-    background-size: cover!important;
+    background-size: cover;
+  }
+  body.woocommerce-shop .hero , body.tax-product_cat .hero {
+    background-size: 1270px!important;
+  }
+  body.single-post .hero {
+    background-size: 2040px!important;
+  }
+  body.single-product .hero {
+    background-size: 3100px!important;
   }
   #hero-section {
       height: 350px;

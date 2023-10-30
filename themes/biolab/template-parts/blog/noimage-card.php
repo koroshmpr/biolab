@@ -1,4 +1,4 @@
-<div class="rounded-3 bg-info bg-opacity-25 p-4">
+<div class="rounded-3 <?= $args['bgColor'] ?? 'bg-info bg-opacity-25'; ?> p-4">
     <div class="d-flex gap-2">
         <?php
         $sizeSvgX = '90';

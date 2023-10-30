@@ -28,5 +28,12 @@ switch ( $template ) {
 	case 'biolab':
 		echo '<div id="primary"><div id="content" role="main" class="hero biolab top-gap-shop">';
         echo '<div class="container">';
+        if (is_shop() or is_product_category()) {?>
+            <div class="row">
+            <div class="col-lg-3 p-lg-4 p-3 py-lg-0 overflow-hidden">
+                <?php get_template_part('template-parts/products/archive-sidebar');?>
+            </div>
+            <div class="col-lg-9">
+        <?php }
 		break;
 }

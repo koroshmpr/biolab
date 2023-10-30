@@ -1,4 +1,4 @@
-    <div id="comment-section" class="mx-2 my-4 bg-secondary bg-opacity-25 text-center rounded-2 shadow-sm p-lg-5 p-md-3 p-4 row align-items-center justify-content-lg-start">
+    <div id="comment-section" class="mx-2 my-4 bg-info bg-opacity-25 text-center rounded-2 shadow-sm p-lg-5 p-md-3 p-4 row align-items-center justify-content-lg-start">
         <div class="col-12 col-lg-2 py-2 py-md-0">
             <?php
                 $sizeSvgX = '90';

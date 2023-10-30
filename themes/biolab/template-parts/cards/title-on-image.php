@@ -1,5 +1,5 @@
-<article class="rounded card__title-on-image post-card object-fit position-relative overflow-hidden border border-1 border-primary"
-         style="background-image: url('<?php echo the_post_thumbnail_url(); ?>')">
+<article class="rounded-5 card__title-on-image post-card object-fit position-relative overflow-hidden"
+         style="height:300px;background-image: url('<?php echo the_post_thumbnail_url(); ?>')">
     <a class="d-flex info_card h-100 flex-column justify-content-start align-items-start position-relative"
        href="<?php the_permalink(); ?>">
         <?php get_template_part('template-parts/cards/post-detail/category-position-absolute'); ?>

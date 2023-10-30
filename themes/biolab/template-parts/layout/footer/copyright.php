@@ -41,7 +41,7 @@
                     ?>
                 </div>
                 <hr class="w-100 text-dark text-opacity-75 my-2">
-                <p class="text-dark mb-0">© 2020 طراحی سایت توسط  <a target="_blank" href="https://binsy.ir" class="fw-bold">آژانس دیجیتال مارکتینگ بینزی</a></p>
+                <p class="text-dark mb-0 text-lg-start text-center">© 2020 طراحی سایت توسط  <a target="_blank" href="https://binsy.ir" class="fw-bold">آژانس دیجیتال مارکتینگ بینزی</a></p>
             </div>
             <div class="">
                 <!--                social media-->

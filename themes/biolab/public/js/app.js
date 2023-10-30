@@ -3290,21 +3290,47 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".nav-pills > button").hover(function () {
-    var megaMenu = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children("button");
-    if (!megaMenu.hasClass('active')) {
-      megaMenu.addClass("active");
+  var countElement = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#product-count');
+  var minQuantity = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#quantity-input-box').data('min'));
+  var maxQuantity = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#quantity-input-box').data('max'));
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#decrease-product-btn').click(function (e) {
+    e.preventDefault();
+    var count = parseInt(countElement.text());
+    console.log(count);
+    if (count > minQuantity) {
+      count = count - 1;
+      countElement.text(count);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#product-quantity').val(count); // Update the hidden input field
+    } else {
+      console.log('not work');
     }
   });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scroll(function () {
-    // check if scroll event happened
-    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).scrollTop() > 130) {
-      // check if user scrolled more than 50 from top of the browser window
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.sticky-post__detail').removeClass('d-none');
-    } else if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).scrollTop() < 30) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.sticky-post__detail').addClass('d-none');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#increase-product-btn').click(function (e) {
+    e.preventDefault();
+    var count = parseInt(countElement.text());
+    console.log(count);
+    if (count < maxQuantity) {
+      count = count + 1;
+      countElement.text(count);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#product-quantity').val(count); // Update the hidden input field
     }
   });
+});
+
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(".nav-pills > button").hover(function () {
+  var megaMenu = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children("button");
+  if (!megaMenu.hasClass('active')) {
+    megaMenu.addClass("active");
+  }
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scroll(function () {
+  // check if scroll event happened
+  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).scrollTop() > 130) {
+    // check if user scrolled more than 50 from top of the browser window
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.sticky-post__detail').removeClass('d-none');
+  } else if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).scrollTop() < 30) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.sticky-post__detail').addClass('d-none');
+  }
 });
 // When the user scrolls the page, execute myFunction
 window.onscroll = function () {

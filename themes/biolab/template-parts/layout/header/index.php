@@ -69,7 +69,7 @@
             if ($menu) :
                 wp_nav_menu(array(
                     'theme_location' => 'headerSecondMenuLocation',
-                    'menu_class' => 'd-flex list-unstyled gap-2 align-items-center desktop-menu flex-wrap gap-2 mb-0',
+                    'menu_class' => 'd-flex list-unstyled gap-3 align-items-center desktop-menu flex-wrap gap-2 mb-0',
                     'container' => false,
                     'menu_id' => 'headerSecondMenu',
                     'item_class' => 'nav-item', // Add 'dropdown' class to top-level menu items

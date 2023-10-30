@@ -28,6 +28,9 @@ switch ( $template ) {
 	case 'biolab':
 		echo '</div>';
 		get_sidebar( 'shop' );
+        if (is_shop() or is_product_category()) {?>
+         </div> </div>
+        <?php }
 		echo '</div></div>';
 		break;
 

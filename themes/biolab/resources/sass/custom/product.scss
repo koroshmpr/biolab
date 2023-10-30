@@ -5,6 +5,22 @@
   border-radius: 8px !important;
 }
 
+.image-square {
+  width: 150px;
+  height: 150px;
+}
+
+/* Style for the 'active' class */
+.orderby-item {
+  label{
+  cursor: pointer;
+  }
+  &.active label {
+    color: $success; /* Change the color to your desired style */
+    font-weight: bold;
+  }
+}
+
 .posted_in {
   a {
     color: white;

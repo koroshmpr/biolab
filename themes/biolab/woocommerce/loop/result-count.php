@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<p class="woocommerce-result-count">
+<p class="woocommerce-result-count text-success text-center fw-bold w-100">
 	<?php
 	// phpcs:disable WordPress.Security
 	if ( 1 === intval( $total ) ) {
