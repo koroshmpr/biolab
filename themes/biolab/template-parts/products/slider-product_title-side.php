@@ -26,7 +26,7 @@
                 'ignore_sticky_posts' => true
             );
             $loop = new WP_Query($args); ?>
-            <div class="d-flex row-cols-xl-5 row-cols-1 row-cols-md-3 flex-wrap gap-3 flex-nowrap overflow-x-lg-scroll ps-lg-4 pe-xl-3">
+            <div class="d-flex row-cols-xl-5 row-cols-1 row-cols-md-3 flex-wrap gap-3 flex-nowrap align-items-stretch overflow-x-lg-scroll ps-lg-4 pe-xl-3">
                 <?php
                 if ($loop->have_posts()) {
                     while ($loop->have_posts()) : $loop->the_post();?>

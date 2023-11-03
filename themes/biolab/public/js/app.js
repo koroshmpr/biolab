@@ -3274,7 +3274,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.min.css");
 /* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.esm.js");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
-/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search */ "./resources/js/search.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -3288,6 +3287,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+// import Search from "./search";
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   var countElement = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#product-count');
@@ -3359,7 +3359,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
-  var search = new _search__WEBPACK_IMPORTED_MODULE_6__["default"]();
+  var search = new Search();
   aos__WEBPACK_IMPORTED_MODULE_1___default().init();
   var backToTop = document.getElementById("backToTop");
   backToTop.addEventListener('click', backtoTopHandler);
@@ -3405,123 +3405,6 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     disableOnInteraction: false
   });
-  // if ($('body').hasClass('home')) {
-  //     // hero slide
-  //     const swiper1 = new Swiper('.hero_swiper', {
-  //         // Optional parameters
-  //         loop: false,
-  //         effect: 'slide',
-  //         speed: 500,
-  //         slidesPerView: 1,
-  //         spaceBetween: 50,
-  //         direction: 'horizontal',
-  //         // If we need pagination
-  //         pagination: {
-  //             el: '.hero-pagination',
-  //             bulletActiveClass: 'active',
-  //             clickable: true,
-  //         },
-  //         navigation: {
-  //             nextEl: '.swiper-button-next',
-  //             prevEl: '.swiper-button-prev',
-  //         },
-  //         autoplay: {
-  //             delay: 10000,
-  //         },
-  //         disableOnInteraction: false,
-  //     });
-  //     // change background of section based on slide image
-  //     const heroSection = document.querySelector('#hero-section');
-  //     const firstSlideImage = document.querySelector('.swiper-slide:first-child').dataset.image;
-  //     heroSection.style.backgroundImage = `url(${firstSlideImage})`;
-  //     swiper1.on('slideChange', function () {
-  //         const activeSlide = this.slides[this.activeIndex];
-  //         const imageUrl = activeSlide.getAttribute('data-image');
-  //         heroSection.style.backgroundImage = `url(${imageUrl})`;
-  //     });
-  //     const swiper6 = new Swiper('.portfolio-main', {
-  //         // Optional parameters
-  //         loop: true,
-  //         effect: 'coverflow',
-  //         speed: 500,
-  //         slidesPerView: 1,
-  //         spaceBetween: 30,
-  //         direction: 'horizontal',
-  //         // If we need pagination
-  //         pagination: {
-  //             el: '.portfolio-pagination',
-  //             bulletActiveClass: 'active',
-  //             clickable: true,
-  //         },
-  //         navigation: {
-  //             nextEl: '.portfolio-button-next',
-  //             prevEl: '.portfolio-button-prev',
-  //         },
-  //         breakpoints: {
-  //             768: {
-  //                 slidesPerView: 3,
-  //             },
-  //         },
-  //         autoplay: {
-  //             delay: 10000,
-  //         },
-  //         disableOnInteraction: false,
-  //     })
-  // }
-  // if ($('body').hasClass('home') || $('body').hasClass('blog')) {
-  //     const swiper5 = new Swiper('.post_swiper', {
-  //         // Optional parameters
-  //         loop: true,
-  //         effect: 'slide',
-  //         speed: 500,
-  //         slidesPerView: 1,
-  //         spaceBetween: 30,
-  //         direction: 'horizontal',
-  //         // If we need pagination
-  //         pagination: {
-  //             el: '.swiper-pagination',
-  //             bulletActiveClass: ''
-  //         },
-  //         navigation: {
-  //             nextEl: '.swiper-button-next',
-  //             prevEl: '.swiper-button-prev',
-  //         },
-  //         breakpoints: {
-  //             768: {
-  //                 slidesPerView: 3,
-  //             },
-  //         },
-  //         autoplay: {
-  //             delay: 10000,
-  //         },
-  //         disableOnInteraction: false,
-  //     })
-  // }
-  // if ($('body').hasClass('single-services')) {
-  //     const swiper7 = new Swiper('.services-main', {
-  //         // Optional parameters
-  //         loop: true,
-  //         effect: 'cube',
-  //         speed: 500,
-  //         slidesPerView: 1,
-  //         grabCursor: true,
-  //         direction: 'horizontal',
-  //         // If we need pagination
-  //         pagination: {
-  //             el: '.swiper-pagination',
-  //             bulletActiveClass: 'active',
-  //             clickable: true,
-  //         },
-  //         navigation: {
-  //             nextEl: '.swiper-button-next',
-  //             prevEl: '.swiper-button-prev',
-  //         },
-  //         autoplay: {
-  //             delay: 3000,
-  //         },
-  //         disableOnInteraction: false,
-  //     })
-  // }
 });
 
 /***/ }),
@@ -3566,117 +3449,6 @@ window.bootstrap = __webpack_require__(/*! bootstrap */ "./node_modules/bootstra
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/search.js":
-/*!********************************!*\
-  !*** ./resources/js/search.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-
-var Search = /*#__PURE__*/function () {
-  function Search() {
-    var _this = this;
-    _classCallCheck(this, Search);
-    this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay__close, .mobile-overlay__close , body");
-    this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay");
-    this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()("input[type=search]");
-    this.resultsDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay__results");
-    this.searchForm = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-form");
-    this.searchForm.on("submit", function (event) {
-      return _this.submitForm(event);
-    });
-    this.events();
-    this.isOverlayOpen = false;
-    this.isSpinnerVisible = false;
-    //
-    // this.previousValue;
-    // this.typingTimer;
-  }
-  _createClass(Search, [{
-    key: "events",
-    value: function events() {
-      this.closeButton.on("click", this.closeOverlay.bind(this));
-      this.searchForm.on("submit", this.submitForm.bind(this));
-      this.searchField.on("keyup", this.typingLogic.bind(this));
-    }
-  }, {
-    key: "typingLogic",
-    value: function typingLogic() {
-      if (this.searchField.val()) {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".mobile-overlay__close").removeClass('d-none');
-      }
-      if (this.searchField.val() != this.previousValue) {
-        clearTimeout(this.typingTimer);
-        if (this.searchField.val()) {
-          if (!this.isSpinnerVisible) {
-            this.resultsDiv.html("<div class=\"text-center mt-2\"><div class=\"spinner-border align-baseline text-primary\" role=\"status\"></div></div>");
-            this.isSpinnerVisible = true;
-          }
-          this.typingTimer = setTimeout(this.getResults.bind(this), 750);
-        } else {
-          this.resultsDiv.html('');
-          this.isSpinnerVisible = false;
-        }
-      }
-      this.previousValue = this.searchField.val();
-    }
-  }, {
-    key: "getResults",
-    value: function getResults() {
-      var _this2 = this;
-      jquery__WEBPACK_IMPORTED_MODULE_0___default().getJSON(jsData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val() + '&_embed', function (results) {
-        _this2.resultsDiv.html("\n            <div class=\"pt-3\">\n                <div class=\"g-3\">\n                    <!-- POSTS -->\n                    <div class=\"container\">\n                    <h5 class=\"mb-2 text-center fw-bold fs-3\">\u0645\u0642\u0627\u0644\u0627\u062A</h5>\n                    ".concat(results.length ? '<div class="row row-cols-lg-3 row-cols-1 py-4">' : '<p class="p-2' + ' m-0' + ' border-top">هیچ مقاله ای یافت' + ' نشد</p>', "\n                    ").concat(results.map(function (item) {
-          return "<a class=\"my-2\" href=\"".concat(item.link, "\" alt=\"").concat(item.title.rendered, "\">\n                            <div class=\"card p-2 border-top shadow-sm my-2\">\n                                <div class=\"row gx-2 gy-0 align-items-center\">\n                                    <div class=\"col-3\">\n                                        <div class=\"ratio ratio-1x1\">\n                                            <img src=\"").concat(item._embedded['wp:featuredmedia'][0].source_url, "\"\n                                                 class=\"rounded object-fit\"\n                                                 alt=\"").concat(item.title.rendered, "\">\n                                        </div>\n                                    </div>\n\n                                    <div class=\"col\">\n                                        <div class=\"vstack h-100 py-2\">\n                                            <h6 class=\"text-primary fw-bold fw-4 mb-1\">").concat(item.title.rendered, "</h6>\n                                            <p class=\"text-muted\">").concat(item.content.rendered.split(' ').slice(0, 18).join(' '), "</p>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                        </a>");
-        }).join(''), "\n                    ").concat(results.length ? '</div>' : '', "\n                    </div>\n                </div>\n            </div>\n        "));
-        _this2.isSpinnerVisible = false;
-      });
-    }
-  }, {
-    key: "openOverlay",
-    value: function openOverlay() {
-      var _this3 = this;
-      this.searchField.val('');
-      setTimeout(function () {
-        return _this3.searchField.focus();
-      }, 301);
-      this.isOverlayOpen = true;
-      return false;
-    }
-  }, {
-    key: "closeOverlay",
-    value: function closeOverlay() {
-      this.resultsDiv.html('');
-      // this.searchField.val('');
-      this.isOverlayOpen = false;
-    }
-  }, {
-    key: "submitForm",
-    value: function submitForm() {
-      var searchTerm = this.searchField.val();
-      if (searchTerm) {
-        window.location.href = jsData.root_url + "/?s=" + searchTerm;
-      }
-    }
-  }]);
-  return Search;
-}();
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);
 
 /***/ }),
 

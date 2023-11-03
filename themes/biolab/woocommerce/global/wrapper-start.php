@@ -22,15 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 $template = wc_get_theme_slug_for_templates();
 
 switch ( $template ) {
-	case 'twentyten':
-		echo '<div id="container"><div id="content" role="main">';
-		break;
-	case 'biolab':
-		echo '<div id="primary"><div id="content" role="main" class="hero biolab top-gap-shop">';
+    default:
+		echo '<div id="primary" class="content-area"><div id="main" role="main" class="site-main hero biolab top-gap-shop">';
         echo '<div class="container">';
         if (is_shop() or is_product_category()) {?>
             <div class="row">
-            <div class="col-lg-3 p-lg-4 p-3 py-lg-0 overflow-hidden">
+            <div class="col-lg-3 pe-4 py-0 overflow-hidden order-last order-lg-first">
                 <?php get_template_part('template-parts/products/archive-sidebar');?>
             </div>
             <div class="col-lg-9">

@@ -21,14 +21,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<p class="woocommerce-result-count text-success text-center fw-bold w-100">
+<p class="woocommerce-result-count text-success text-center fw-bold position-fixed bottom-0 end-0 pe-5 d-none d-lg-block">
 	<?php
 	// phpcs:disable WordPress.Security
 	if ( 1 === intval( $total ) ) {
 		_e( 'Showing the single result', 'woocommerce' );
 	} elseif ( $total <= $per_page || -1 === $per_page ) {
 		/* translators: %d: total results */
-		printf( _n( 'Showing all %d result', 'Showing all %d results', $total, 'woocommerce' ), $total );
+		printf( _n( ' %d محصول', ' %d محصول', $total, 'woocommerce' ), $total );
+//		printf( _n( 'Showing all %d result', 'Showing all %d results', $total, 'woocommerce' ), $total );
 	} else {
 		$first = ( $per_page * $current ) - $per_page + 1;
 		$last  = min( $total, $per_page * $current );

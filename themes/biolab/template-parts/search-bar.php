@@ -1,7 +1,7 @@
-<form class="search-form p-2 py-4 py-lg-2 bg-white rounded-pill shadow-sm" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+<form class="search-form p-2 py-4 py-md-2 bg-white rounded-pill shadow-sm" method="get" action="<?php echo esc_url(home_url('/')); ?>">
     <div class="input-group d-flex gap-3 align-items-center">
-        <input id="search-form" type="search" name="s" class="form-control col-12 col-lg-8 w-50 text-primary border-0 shadow-0 text-center text-lg-start" placeholder="دنبال چه چیزی هستید؟" aria-label="Search">
-        <button type="button" class="btn text-dark border-start d-flex align-items-center py-0 ps-3 col-12 col-lg justify-content-center" data-bs-toggle="dropdown" aria-expanded="false">دسته‌بندی</button>
+        <input id="search-form" type="search" name="s" class="form-control col-12 col-md-8  text-primary border-0 shadow-0 text-center text-lg-start" placeholder="دنبال چه چیزی هستید؟" aria-label="Search">
+        <button type="button" class="btn text-dark border-start d-flex align-items-center py-0 ps-3 col-12 col-md-3 justify-content-center" data-bs-toggle="dropdown" aria-expanded="false">دسته‌بندی</button>
         <ul class="dropdown-menu">
             <?php
             $post_types = array('post', 'product');
@@ -17,6 +17,6 @@
             }
             ?>
         </ul>
-        <button type="submit" class="btn-success btn text-white d-flex align-items-center rounded-pill px-5 col-12 col-lg justify-content-center" aria-label="Search">جستجو</button>
+        <button type="submit" class="btn-success btn text-white d-flex align-items-center rounded-pill px-5 col-12 col-md-3 justify-content-center" aria-label="Search">جستجو</button>
     </div>
 </form>

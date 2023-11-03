@@ -1,8 +1,38 @@
+body.woocommerce-account {
+  header {
+    @extend .hero
+  }
+}
+
 /*products*/
 .onsale {
   position: static !important;
   background-color: #5BBB7B1A !important;
   border-radius: 8px !important;
+}
+
+.accordion-item {
+  .accordion-button {
+    &[aria-expanded="false"] {
+      .category-title {
+        transition: all 400ms $custom-timing-function;
+        color: $secondary;
+      }
+    }
+
+    &[aria-expanded="true"] {
+      .category-title {
+        color: $success;
+      }
+    }
+  }
+}
+//banner
+.cta_home.banner {
+  background-position: left ;
+}
+.accordion-button:after {
+  margin-left: unset;
 }
 
 .image-square {
@@ -12,9 +42,10 @@
 
 /* Style for the 'active' class */
 .orderby-item {
-  label{
-  cursor: pointer;
+  label {
+    cursor: pointer;
   }
+
   &.active label {
     color: $success; /* Change the color to your desired style */
     font-weight: bold;
@@ -45,5 +76,23 @@
         content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='7' viewBox='0 0 6 7' fill='none'%3E%3Crect y='0.5' width='6' height='6' rx='3' fill='%235BBB7B'/%3E%3C/svg%3E");
       }
     }
+  }
+}
+//my-account page
+
+.list-group-item.is-active {
+  .btn-primary {
+      background-color: unset!important;
+      background-position: left;
+      color: $primary;
+      path {
+        stroke: white;
+    }
+  }
+}
+//vendor
+.dokan-store-contact {
+  h3.widget-title {
+    display: none!important;
   }
 }

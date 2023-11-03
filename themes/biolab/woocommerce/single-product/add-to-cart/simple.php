@@ -78,16 +78,4 @@ if ($product->is_in_stock()) : ?>
     </form>
 
     <?php do_action('woocommerce_after_add_to_cart_form'); ?>
-    <!--        <div class="hstack gap-4 mt-4 flex-wrap">-->
-    <!--            --><?php //echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
-    <!--             <a href="#">-->
-    <!--                 <i class="bi bi-arrow-down-up fw-bold me-1"></i>-->
-    <!--                 افزودن به لیست مقایسه-->
-    <!--                </a>-->
-    <!---->
-    <!--            <a href="#">-->
-    <!--                <i class="bi bi-info-circle fw-bold me-1"></i>-->
-    <!--                راهنمای اندازه-->
-    <!--            </a>-->
-    <!--        </div>-->
 <?php endif; ?>

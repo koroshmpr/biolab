@@ -1,7 +1,7 @@
 <section class="hero">
     <div class="container p-lg-5">
-        <div class="row justify-content-lg-between justify-content-center align-content-center">
-            <div class="col-lg-6 my-auto">
+        <div class="row justify-content-lg-between justify-content-center align-content-center mt-md-3 pt-md-3 pt-xl-0 mt-xl-0">
+            <div class="col-11 col-xl-6 my-auto">
                 <h1 class="display-4 text-white fw-bold"><?= get_field('hero_title'); ?></h1>
                 <p class="fs-5 text-opacity-75 text-white py-4"><?= get_field('hero_content'); ?></p>
                 <?php get_template_part('template-parts/search-bar');?>

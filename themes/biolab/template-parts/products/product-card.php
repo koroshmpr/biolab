@@ -2,12 +2,12 @@
 global $product;
 
 ?>
-<div class="card p-2 h-100 rounded-3 border-info border-opacity-50">
+<div class="card h-auto rounded-3 border-info border-opacity-50 overflow-hidden">
 
     <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($product->ID), 'single-post-thumbnail'); ?>
     <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"
-         class=" mx-2 d-block border-0 rounded object-fit img-thumbnail" height="210">
-    <div class="card-body text-lg-start text-center pb-0 px-0">
+         class="mx-auto rounded object-fit" width="200" height="200">
+    <div class="p-2 pb-1 h-100 d-flex flex-column justify-content-between align-items-start">
         <?php
         if ($product->is_on_sale()) { ?>
             <span class="px-2 py-1 btn-success rounded-pill small">فروش ویژه</span>

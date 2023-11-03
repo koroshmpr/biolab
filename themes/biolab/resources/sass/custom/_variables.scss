@@ -27,6 +27,7 @@ $transition-base: all .4s;
 $transition-fast: all .2s ease-in-out;
 $transition: all .4s ease-in-out;
 $transition-slow: all .6s;
+$custom-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 //FONTS
 $font-weight-normal: 500;

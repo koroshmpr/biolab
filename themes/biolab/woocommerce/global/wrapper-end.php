@@ -22,10 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $template = wc_get_theme_slug_for_templates();
 
 switch ( $template ) {
-	case 'twentyten':
-		echo '</div></div>';
-		break;
-	case 'biolab':
+    default:
 		echo '</div>';
 		get_sidebar( 'shop' );
         if (is_shop() or is_product_category()) {?>
