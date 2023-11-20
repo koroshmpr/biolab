@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
 
 do_action('woocommerce_before_customer_login_form');
 ?>
-<section class="hero vh-100" style="padding-top:150px">
+<section class="hero min-vh-100" style="padding-top:150px">
     <div class="container-fluid pb-3">
         <div class="row justify-content-center">
             <div class="col-lg-4 rounded-3 p-3" style="background-color: #F9FBFA;">
