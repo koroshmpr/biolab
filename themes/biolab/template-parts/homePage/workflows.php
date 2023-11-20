@@ -7,7 +7,7 @@
         <?php while (have_rows('workflows')):
             the_row(); ?>
             <div class="d-flex gap-3 align-content-start">
-                <span class="lh-1 display-1 fw-bold text-info mb-auto"><?= get_row_index();?></span>
+                <div class="lh-1 display-1 fw-bold text-info mb-auto"><?= get_row_index();?></div>
                 <div>
                     <span class="fs-4"><?= get_sub_field('pre_text'); ?></span>
                     <h4 class="fw-bold fs-3"><?= get_sub_field('title'); ?></h4>

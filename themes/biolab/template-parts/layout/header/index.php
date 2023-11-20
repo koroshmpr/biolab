@@ -56,7 +56,8 @@
 
                     if (in_array('seller', $user_roles) || in_array('administrator', $user_roles) || in_array('editor', $user_roles)) { ?>
                         <a href="/dashboard" class="btn btn-white rounded-1 px-2 py-2 lh-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="25" height="25" viewBox="0 0 80.000000 80.000000"
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="20" height="20"
+                                 viewBox="0 0 80.000000 80.000000"
                                  preserveAspectRatio="xMidYMid meet">
                                 <g transform="translate(0,80) scale(0.1,-0.1)" fill="currentColor"
                                    stroke="currentColor">
@@ -102,7 +103,7 @@
                         echo '<button class="btn py-0 px-1">قروشمنده شوید</button>';
                     }
                 } else { ?>
-                    <button class="btn py-0 px-1">قروشمنده شوید</button>
+                    <button class="btn py-0 px-1">قروشنده شوید</button>
                 <?php } ?>
                 <div class="d-flex gap-2">
                     <?php
@@ -111,7 +112,7 @@
                             <a type="button" class="px-1 shadow-sm rounded-circle text-white"
                                id="dropdownMenuReference"
                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                      class="bi bi-person" viewBox="0 0 16 16">
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                                 </svg>
@@ -141,7 +142,7 @@
                     ?>
                 </div>
                 <a href="/cart" class="btn btn-white rounded-1 px-2 py-2 lh-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001"
                               stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
                               stroke-linejoin="round"/>
@@ -179,7 +180,8 @@
         </nav>
 
     </div>
-
-    <!--    --><?php //if (is_singular('post')) { get_template_part('template-parts/loop/post-detail-sticky');} ?>
 </nav>
-
+<?php get_template_part('template-parts/layout/header/mobile-canvas-menu');?>
+<nav class="d-lg-none bg-secondary fixed-bottom pb-1 pt-2 shadow-sm">
+    <?php get_template_part('template-parts/layout/header/shop-navigation'); ?>
+</nav>

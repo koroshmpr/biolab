@@ -25,6 +25,9 @@ if (!wc_coupons_enabled()) { // @codingStandardsIgnoreLine.
 <div class="hero">
     <div class="container">
         <div class="min-vh-100 row align-items-center top-gap-shop">
+            <div class="d-flex justify-content-center border-bottom mb-4 border-info border-opacity-50">
+                <h1 class="display-2 fw-bold text-center pb-2 mb-0 border-bottom border-success border-2 text-white" data-aos="fade-left"><?= get_the_title(); ?></h1>
+            </div>
             <div class="woocommerce-form-coupon-toggle text-white bg-white bg-opacity-25 rounded-5 p-0 mb-5">
                 <?php wc_print_notice(apply_filters('woocommerce_checkout_coupon_message', esc_html__('Have a coupon?', 'woocommerce') . ' <a href="#" class="showcoupon">' . esc_html__('Click here to enter your code', 'woocommerce') . '</a>'), 'notice'); ?>
             </div>

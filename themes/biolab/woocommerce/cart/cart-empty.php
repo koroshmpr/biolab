@@ -22,7 +22,7 @@ defined('ABSPATH') || exit;
  */ ?>
 <div class="hero">
     <div class="container">
-        <div class="row align-items-center text-white vh-100">
+        <div class="row align-items-lg-center text-white min-vh-lg-80">
             <?php do_action('woocommerce_cart_is_empty');
 
             if (wc_get_page_id('shop') > 0) : ?>

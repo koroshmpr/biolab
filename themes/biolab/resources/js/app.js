@@ -5,36 +5,10 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 import 'swiper/css';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
-// import Search from "./search";
+import Search from "./search";
 
 $(document).ready(function () {
-    let countElement = $('#product-count');
-    let minQuantity = parseInt($('#quantity-input-box').data('min'));
-    let maxQuantity = parseInt($('#quantity-input-box').data('max'));
-        $('#decrease-product-btn').click(function(e) {
-            e.preventDefault();
-            let count = parseInt(countElement.text());
-                console.log(count);
-            if (count > minQuantity) {
-                count = count - 1;
-                countElement.text(count);
-                $('#product-quantity').val(count); // Update the hidden input field
-            }
-            else {
-                console.log('not work')
-            }
-        });
 
-        $('#increase-product-btn').click(function(e) {
-            e.preventDefault();
-            let count = parseInt(countElement.text());
-                console.log(count);
-            if (count < maxQuantity) {
-                count = count + 1;
-                countElement.text(count);
-                $('#product-quantity').val(count); // Update the hidden input field
-            }
-        });
     });
     $(".nav-pills > button").hover(function () {
         let megaMenu = $(this).children("button")
@@ -85,13 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const search = new Search();
     AOS.init();
     let backToTop = document.getElementById("backToTop");
-    backToTop.addEventListener('click', backtoTopHandler)
+    if (backToTop) {
+        backToTop.addEventListener('click', backtoTopHandler)
 
-    function backtoTopHandler() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        function backtoTopHandler() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
     }
-
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
@@ -121,6 +96,24 @@ document.addEventListener('DOMContentLoaded', function () {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+        },
+        disableOnInteraction: false,
+    });
+    const swiper1 = new Swiper('.testimonial', {
+        loop: false,
+        effect: 'fade',
+        speed: 500,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        grabCursor: true,
+        centeredSlides: true,
+        direction: 'horizontal',
+        navigation: {
+            nextEl: '.testimonial-button-next',
+            prevEl: '.testimonial-button-prev',
         },
         autoplay: {
             delay: 5000,

@@ -22,8 +22,8 @@
                 </ul>
             <?php }; ?>
             <div class="d-flex">
-                <button class="btn btn-primary px-5 rounded-pill">درخواست مشاوره</button>
-                <button class="btn text-dark btn-arrow">تماس باما</button>
+                <button class="btn btn-primary px-5 py-1 rounded-3">درخواست مشاوره</button>
+                <button class="btn text-dark btn-arrow py-1">تماس باما</button>
             </div>
         </div>
     </div>

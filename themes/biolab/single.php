@@ -11,11 +11,11 @@ while (have_posts()) :
 
     ?>
     <section class="top-gap-shop hero">
-        <div class="container pt-3">
+        <div class="container">
             <div class="row align-items-start pb-4 justify-content-lg-between justify-content-center">
                 <!--            sidebar-->
                 <aside class="row justify-content-center col-lg-4 col-12 mx-lg-0">
-                    <div class="img-fluid mb-2">
+                    <div class="img-fluid mb-5">
                         <img class="w-100 object-fit rounded-3 d-none d-lg-inline shadow-sm img-fluid"
                              src="<?= get_the_post_thumbnail_url(); ?>" width="368" height="368"
                              alt="<?= the_title(); ?>"/>

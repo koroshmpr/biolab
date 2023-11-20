@@ -2,9 +2,22 @@
 /** * Enqueue scripts and styles. */
 //require get_theme_file_path('/inc/filter-route.php');
 require get_theme_file_path('/inc/search-route.php');
+function enqueue_custom_js_on_product_page() {
+    if (is_product()) {
+        global $product;
+        $product_price = $product->get_price();
+        wp_localize_script('product-quantity-script', 'productData', array(
+            'productPrice' => $product_price,
+        ));
+    }
+}
+
+add_action('woocommerce_before_single_product', 'enqueue_custom_js_on_product_page');
+
 function theme_scripts()
 {
     wp_enqueue_style('font', get_template_directory_uri() . '/public/fonts/yekanBakh/fontface.css', array(), null);
+    wp_enqueue_script('jquery-ui-sortable');
     // Add preload attributes to the enqueued font
     wp_style_add_data('font', 'preload', true);
     wp_style_add_data('font', 'as', 'font');
@@ -26,6 +39,7 @@ function theme_setup()
     register_nav_menu('footerLocationOne', 'منوی اول فوتر');
     register_nav_menu('footerLocationTwo', 'منوی دوم فوتر');
     register_nav_menu('footerLocationThree', 'منوی سوم فوتر');
+    register_nav_menu('navigationLocation', 'منو نویگیشن');
     add_theme_support('woocommerce');
 }
 
@@ -338,4 +352,47 @@ function custom_post_type_args( $args, $post_type ) {
 
 }
 
-add_filter( 'register_post_type_args', 'custom_post_type_args', 10, 2 );
+//add_filter( 'register_post_type_args', 'custom_post_type_args', 10, 2 );
+//
+//register_post_type('vendor', array(
+//    'labels' => array(
+//        'name' => 'Vendors',
+//        'singular_name' => 'Vendor',
+//    ),
+//    'public' => true,
+//    'has_archive' => true,
+//    // Add other arguments as needed
+//));
+function delete_gallery_item() {
+    $attachment_id = $_POST['attachment_id'];
+    // Delete the attachment ID from the user meta
+    $user_gallery = get_user_meta(get_current_user_id(), 'gallery', true);
+    $user_gallery = array_diff($user_gallery, array($attachment_id));
+    update_user_meta(get_current_user_id(), 'gallery', $user_gallery);
+
+    wp_die();
+}
+
+function update_gallery_order() {
+    $gallery_order = $_POST['gallery_order'];
+    // Update the user meta with the new gallery order
+    update_user_meta(get_current_user_id(), 'gallery', $gallery_order);
+
+    wp_die();
+}
+
+
+add_action('wp_ajax_upload_acf_gallery_item', 'upload_acf_gallery_item');
+
+function upload_acf_gallery_item() {
+    $file = $_FILES['file'];
+    $field_key = $_POST['field_key'];
+    $user_id = $_POST['user_id'];
+
+    $attachment_id = acf_photo_gallery_upload_image($file, 'user_' . $user_id, $field_key);
+
+    // Return the attachment ID
+    echo $attachment_id;
+
+    wp_die();
+}

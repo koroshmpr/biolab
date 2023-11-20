@@ -19,8 +19,8 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-
-<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">
+<div class="border-bottom border-info border-opacity-50 d-flex justify-content-center mb-lg-4 mb-2 text-center text-white fs-4">
+<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received border-bottom border-success mb-0 pb-3 border-2 fw-bold fs-4">
 	<?php
 	/**
 	 * Filter the message shown after a checkout is complete.
@@ -39,3 +39,4 @@ defined( 'ABSPATH' ) || exit;
 	echo esc_html( $message );
 	?>
 </p>
+</div>

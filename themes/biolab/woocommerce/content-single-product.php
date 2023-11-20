@@ -31,7 +31,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'd-flex align-items-start flex-wrap justify-content-center', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'row align-items-start  justify-content-center', $product ); ?>>
 
 	<?php
 	/**
@@ -68,7 +68,7 @@ if ( post_password_required() ) {
         <div class="row col-11 col-lg-5 bg-white rounded-4 shadow-sm p-4" data-aos="fade-right">
             <div class="d-flex justify-content-between py-2 px-0">
                 <span>فروشنده</span>
-                <span class="text-success fw-bold"><?= do_shortcode('[product_vendors_count]') ?>  فرشنده دیگر</span>
+                <span class="text-success fw-bold"><?= do_shortcode('[product_vendors_count]') ?></span>
             </div>
             <div class="d-flex align-items-center py-2 px-0 border-bottom border-info">
                 <div class="col-2">
@@ -113,7 +113,7 @@ if ( post_password_required() ) {
                         </svg>
                     </div>
                     <div class="row">
-                        <span>شماره تماس</span>
+                        <span>ایمیل</span>
                         <p class="text-dark text-opacity-75 mb-0"><?=$author_email; ?></p>
                     </div>
                 </a>
@@ -129,7 +129,7 @@ if ( post_password_required() ) {
         </div>
 	</div>
     <?php get_template_part('template-parts/products/single-property'); ?>
-    <?php get_template_part('template-parts/products/vendors-list_single'); ?>
+<!--    --><?php //get_template_part('template-parts/products/vendors-list_single'); ?>
 	<?php
 	/**
 	 * Hook: woocommerce_after_single_product_summary.

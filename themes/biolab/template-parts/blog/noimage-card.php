@@ -1,4 +1,4 @@
-<div class="rounded-3 <?= $args['bgColor'] ?? 'bg-info bg-opacity-25'; ?> p-4">
+<div class="rounded-3 <?= $args['bgColor'] ?? 'bg-info bg-opacity-25'; ?> p-4" style="background-color: <?= $args['style-bg'] ?? '';?>">
     <div class="d-flex gap-2">
         <?php
         $sizeSvgX = '90';
@@ -9,9 +9,11 @@
         );
         get_template_part('template-parts/cards/post-detail/author-image', null, $args); ?>
         <div>
-            <p class="text-lg-start mb-0">ارسال توسط
-                <span class="fw-bold"><?= get_the_author_meta('nickname', get_queried_object()->post_author); ?></span>
-            </p>
+           <?php if(!is_search()) { ?>
+               <p class="text-lg-start mb-0">ارسال توسط
+                   <span class="fw-bold"><?= get_the_author_meta('nickname', get_queried_object()->post_author); ?></span>
+               </p>
+           <?php }?>
             <span><?php echo get_the_date('d  F , Y'); ?></span>
         </div>
     </div>

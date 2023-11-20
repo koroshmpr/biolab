@@ -1,4 +1,4 @@
-<section class="rounded-1">
+<section class="<?= is_404() ? 'd-none ' : ''; ?>rounded-1">
     <div class="container">
         <!--    main footer -->
         <div class="row justify-content-center py-5 align-items-center">
@@ -13,8 +13,8 @@
                         <?= get_field('footer_description', 'option'); ?>
                     </div>
                     <div class="d-flex">
-                        <button class="btn btn-primary px-5 rounded-pill">فروشنده شو!</button>
-                        <button class="btn text-white btn-arrow">مشاوره</button>
+                        <button class="btn btn-primary px-5 py-1 rounded-3">فروشنده شو!</button>
+                        <button class="btn text-white btn-arrow py-1">مشاوره</button>
                     </div>
        
                 </div>

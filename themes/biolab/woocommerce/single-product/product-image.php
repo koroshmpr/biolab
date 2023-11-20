@@ -45,13 +45,14 @@ $wrapper_classes = apply_filters(
 
 <div class="<?php echo esc_attr(implode(' ', array_map('sanitize_html_class', $wrapper_classes))); ?>"
      data-columns="<?php echo esc_attr($columns); ?>">
-    <div data-aos="fade-left" data-aos-duration="500" class="col-5 rounded-4 position-absolute bg-white shadow-sm top-0 bottom-0 mb-3 start-0 p-2 p-lg-3 d-flex flex-column align-items-start">
+    <div data-aos="fade-left" data-aos-duration="500" class="col-5 rounded-4 position-absolute bg-white shadow-sm top-0 bottom-0 mb-3 start-0 p-3 px-lg-3 px-2 d-flex flex-column align-items-start">
         <?php
 
         if ($product->is_on_sale()) {
             wc_get_template_part('single-product/sale-flash');
         }
         ?>
+        <?= do_shortcode('[yith_wcwl_add_to_wishlist]');?>
     </div>
     <figure data-aos="fade-left" data-aos-delay="100" data-aos-duration="500" class="woocommerce-product-gallery__wrapper h-100 col-11 ps-2">
         <?php

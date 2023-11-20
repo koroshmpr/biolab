@@ -1,14 +1,8 @@
-body.woocommerce-account {
-  header {
-    @extend .hero
-  }
-}
-
 /*products*/
 .onsale {
   position: static !important;
   background-color: #5BBB7B1A !important;
-  border-radius: 8px !important;
+  @extend .rounded-3
 }
 
 .accordion-item {
@@ -66,6 +60,7 @@ body.woocommerce-account {
   }
 
   .tab-shop {
+    width: max-content;
     background-color: #F3F3F3;
 
     &.active {
@@ -95,4 +90,46 @@ body.woocommerce-account {
   h3.widget-title {
     display: none!important;
   }
+}
+.add_to_wishlist{
+  padding: 0.25rem 0.25rem 0 0.25rem !important;
+i.fa-heart-o {
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0!important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M17.1999 22.75C14.1399 22.75 11.6499 20.26 11.6499 17.2C11.6499 14.14 14.1399 11.65 17.1999 11.65C20.2599 11.65 22.7499 14.14 22.7499 17.2C22.7499 20.26 20.2599 22.75 17.1999 22.75ZM17.1999 13.15C14.9699 13.15 13.1499 14.97 13.1499 17.2C13.1499 19.43 14.9699 21.25 17.1999 21.25C19.4299 21.25 21.2499 19.43 21.2499 17.2C21.2499 14.97 19.4299 13.15 17.1999 13.15Z' fill='%236C757D'/%3E%3Cpath d='M18.9899 18.01H15.3999C14.9899 18.01 14.6499 17.67 14.6499 17.26C14.6499 16.85 14.9899 16.51 15.3999 16.51H18.9899C19.3999 16.51 19.7399 16.85 19.7399 17.26C19.7399 17.67 19.4099 18.01 18.9899 18.01Z' fill='%236C757D'/%3E%3Cpath d='M17.2002 19.85C16.7902 19.85 16.4502 19.51 16.4502 19.1V15.51C16.4502 15.1 16.7902 14.76 17.2002 14.76C17.6102 14.76 17.9502 15.1 17.9502 15.51V19.1C17.9502 19.51 17.6102 19.85 17.2002 19.85Z' fill='%236C757D'/%3E%3Cpath d='M12 21.65C11.69 21.65 11.38 21.61 11.13 21.52C8.57 20.65 1.25 16.41 1.25 8.69C1.25 5.19 4.08 2.34998 7.56 2.34998C9.23 2.34998 10.83 3.02 12 4.19C13.17 3.02 14.78 2.34998 16.44 2.34998C19.92 2.34998 22.75 5.19 22.75 8.69C22.75 10.64 22.28 12.51 21.35 14.26C21.24 14.47 21.03 14.62 20.79 14.65C20.54 14.68 20.31 14.6 20.14 14.42C19.36 13.6 18.31 13.14 17.19 13.14C14.96 13.14 13.14 14.96 13.14 17.19C13.14 18.18 13.51 19.14 14.18 19.89C14.34 20.07 14.4 20.31 14.35 20.54C14.3 20.77 14.14 20.97 13.93 21.07C13.53 21.25 13.17 21.4 12.84 21.51C12.61 21.61 12.31 21.65 12 21.65ZM7.56 3.84998C4.91 3.84998 2.75 6.02 2.75 8.69C2.75 15.53 9.31999 19.31 11.62 20.1C11.8 20.17 12.19 20.16 12.37 20.1C12.4 20.09 12.43 20.08 12.46 20.07C11.94 19.21 11.65 18.22 11.65 17.2C11.65 14.14 14.14 11.65 17.2 11.65C18.38 11.65 19.5 12.02 20.44 12.69C20.98 11.41 21.25 10.07 21.25 8.69C21.25 6.02 19.09 3.84998 16.44 3.84998C14.94 3.84998 13.5 4.57003 12.6 5.78003C12.32 6.16003 11.68 6.16003 11.4 5.78003C10.5 4.57003 9.06 3.84998 7.56 3.84998Z' fill='%236C757D'/%3E%3C/svg%3E");
+}
+}
+i.fa-heart {
+  width: 30px;
+  height: 30px;
+  margin: 0 !important;
+  text-align: center;
+}
+#add_payment_method #payment div.payment_box::before, .woocommerce-cart #payment div.payment_box::before, .woocommerce-checkout #payment div.payment_box::before {
+  border-bottom: 1em solid $primary;
+  @extend .border-opacity-50;
+}
+.woocommerce-billing-fields__field-wrapper , .woocommerce-additional-fields {
+  input , textarea {
+    @extend .border ,.shadow-none ,.border-1 ,.border-info ,.p-3 ,.rounded-3;
+  }
+}
+.select2-selection{
+  border: 0!important;
+}
+.select2-selection__rendered {
+  padding: 5px 15px!important;
+  margin: 10px 0;
+  @extend .border ,.shadow-none ,.border-1 ,.border-info ,.rounded-3;
+}
+.select2-selection__arrow {
+  top: 50%!important;
+  right: 10px!important;
+}
+.yith-wcwl-add-to-wishlist {
+  @extend .bg-info , .bg-opacity-10 , .rounded-3 , .p-1 ;
+  font-size: 25px;
+  line-height: 1;
+  color: #868585;
 }

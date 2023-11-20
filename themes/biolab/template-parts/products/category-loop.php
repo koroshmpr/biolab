@@ -24,7 +24,7 @@
             $thumbnail_id = get_term_meta($subcat->term_id, 'thumbnail_id', true);
             $category_class = 'border';
             if ($subcat->term_id === $current_category_id) {
-                $category_class = 'border border-success border-2';
+                $category_class = 'border border-success border-4';
             }
             ?>
             <a class="" href="<?= esc_url(get_term_link($subcat, $subcat->taxonomy)); ?>" data-aos="fade-left" data-aos-duration="<?= $i;?>00">

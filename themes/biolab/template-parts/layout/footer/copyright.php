@@ -1,5 +1,5 @@
-<div class="bg-white copyright py-4">
-    <div class="container">
+<div class="bg-white copyright py-4 pb-5 pb-lg-4">
+    <div class="container pb-4 pb-lg-0">
         <div class="d-flex align-items-center flex-wrap justify-content-center">
             <div class="col-lg-10 col-12">
                 <div>
@@ -10,7 +10,7 @@
                     if ($menu) :
                         $menu_items = wp_get_nav_menu_items($menu);
 
-                        echo '<ul class="d-flex justify-content-center justify-content-lg-start gap-3 list-unstyled mb-0">';
+                        echo '<ul class="d-flex justify-content-center justify-content-lg-start gap-3 list-unstyled mb-0 flex-wrap">';
 
                         foreach ($menu_items as $item) :
                             $menu_item_title = $item->title;

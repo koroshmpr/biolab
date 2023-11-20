@@ -22,7 +22,7 @@
 }
 
 #submit {
-  @extend .text-white, .fw-bold, .rounded, .btn, .bg-primary, .px-5, .py-3;
+  @extend .text-white, .fw-bold, .rounded-3, .btn, .bg-primary, .px-5, .py-1;
   transition: 0.5s;
 }
 
@@ -40,15 +40,6 @@
     border: 1px solid #80808040;
     border-radius: 5px;
     padding: 15px;
-
-    &:hover, &:focus-visible, &:active {
-      @extend .bg-primary, .text-white;
-      outline-color: $primary !important;
-
-      &::placeholder {
-        color: white;
-      }
-    }
   }
 
   .gform_footer {
@@ -56,7 +47,7 @@
     padding: 0!important;
 
     input[type=submit] {
-      @extend .btn-success
+      @extend .btn-success , .py-1;
     }
   }
 }
@@ -85,4 +76,7 @@
   .reply {
     text-align: right;
   }
+}
+.mobile-search::placeholder {
+  color:white;
 }

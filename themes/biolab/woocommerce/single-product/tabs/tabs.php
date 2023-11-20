@@ -32,10 +32,10 @@ if (!empty($product_tabs)) : $index = 0 ?>
 
     <div class="my-5 border rounded-3 p-lg-4 col-12 border-info border-opacity-50">
         <div class="row justify-content-center justify-content-lg-start bg-white">
-            <ul class="nav col-lg-auto nav-tabs border-0 align-items-center p-3 mb-4 rounded gap-2 tab-product" id="myTab" role="tablist">
+            <ul class="nav col-lg-auto nav-tabs border-0 align-items-center p-3 mb-4 rounded-3 gap-2 tab-product flex-nowrap overflow-x-scroll" id="myTab" role="tablist">
                 <?php foreach ($product_tabs as $key => $product_tab) : ?>
                     <li class="nav-item  rounded" role="presentation">
-                        <button class="tab-shop text-primary border-0 lh-1 rounded fs-5 p-3 small-sm-down fw-bold lazy <?= $index == 0 ? 'active' : '' ?>"
+                        <button class="tab-shop text-primary border-0 lh-1 rounded-3 fs-5 px-4 py-3 small-sm-down fw-bold lazy <?= $index == 0 ? 'active' : '' ?>"
                                 id="cat-<?php echo esc_attr($key); ?>-tab"
                                 data-bs-toggle="tab"
                                 data-bs-target="#cat-<?php echo esc_attr($key); ?>"

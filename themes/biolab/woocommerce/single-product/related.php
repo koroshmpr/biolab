@@ -28,7 +28,11 @@ if ($related_products) : ?>
 
         if ($heading) :
             ?>
-            <h2 class="col-lg-2 border-bottom-2 pb-2 border-bottom border-success mb-3 text-lg-start text-center"><?php echo esc_html($heading); ?></h2>
+        <div class="border-bottom border-info border-opacity-50 d-flex mb-4">
+            <h6 class="border-bottom text-secondary border-success mb-0 pb-3 border-2 fw-bold fs-4">
+                <?php echo esc_html($heading); ?>
+                </h6>
+        </div>
         <?php endif; ?>
             <?php woocommerce_product_loop_start(); ?>
 

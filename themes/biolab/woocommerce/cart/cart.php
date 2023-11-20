@@ -18,12 +18,12 @@
 defined('ABSPATH') || exit;
 
 do_action('woocommerce_before_cart'); ?>
-<section class="hero top-gap-shop vh-100">
-    <div class="container text-white">
-        <div class="d-flex justify-content-center">
-            <h1 class="display-2 fw-bold text-center p2-4 mb-3 border-bottom border-success border-2">سبد خرید</h1>
+<section class="hero top-gap-shop min-vh-100">
+    <div class="container text-primary">
+        <div class="d-flex justify-content-center border-bottom mb-4 border-info border-opacity-50">
+            <h1 class="display-2 fw-bold text-center pb-2 mb-0 border-bottom border-success border-2 text-white" data-aos="fade-left"><?= get_the_title(); ?></h1>
         </div>
-        <form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
+        <form class="woocommerce-cart-form bg-white rounded-3 p-4 py-5 mb-5 shadow" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
             <?php do_action('woocommerce_before_cart_table'); ?>
 
             <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
@@ -197,7 +197,7 @@ do_action('woocommerce_before_cart'); ?>
         </form>
         <?php do_action('woocommerce_before_cart_collaterals'); ?>
 
-        <div class="cart-collaterals-dis d-flex justify-content-lg-end row-cols-lg-3">
+        <div class="cart-collaterals-dis d-flex justify-content-lg-end row-cols-lg-3 row-cols-1">
             <div class="bg-white p-3 rounded-3 text-secondary shadow text-center">
                 <?php
                 /**

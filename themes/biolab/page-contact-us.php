@@ -31,9 +31,9 @@ get_header(); ?>
                           stroke="#222222" stroke-width="3" stroke-miterlimit="10"/>
                 </svg>
                 <p class="py-3 fw-bold fs-3">شماره پشتیبانی</p>
-                <p><?= get_field('address', 'option'); ?></p>
+                <p>شنبه تا چهارشنبه ( 9 تا 18 )</p>
                 <a aria-label="tel" target="_blank" href="tel:<?= get_field('phone_number', 'option'); ?>"
-                   class="btn btn-success"><?= get_field('phone_number_label', 'option'); ?></a>
+                   class="btn btn-success rounded-3"><?= get_field('phone_number_label', 'option'); ?></a>
             </div>
             <div class="rounded-3 z-2 shadow-sm bg-white col p-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="61" viewBox="0 0 60 61" fill="none">
@@ -50,7 +50,7 @@ get_header(); ?>
                 <p class="py-3 fw-bold fs-3">ارسال ایمیل</p>
                 <p>پاسخ 24 ساعته تمامی ایمیل ها</p>
                 <a aria-label="email" target="_blank" href="mailto:<?= get_field('email', 'option'); ?>"
-                   class="btn btn-success"> <?= get_field('email', 'option'); ?></a>
+                   class="btn btn-success rounded-3"> <?= get_field('email', 'option'); ?></a>
             </div>
             <div class="rounded-3 z-2 shadow-sm bg-white col p-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="61" viewBox="0 0 60 61" fill="none">
@@ -62,7 +62,7 @@ get_header(); ?>
                 </svg>
                 <p class="py-3 fw-bold fs-3">آدرس</p>
                 <address><?= get_field('address', 'option'); ?></address>
-                <a class="btn btn-success" aria-label="map-link" target="_blank" href="<?= get_field('map-link', 'option'); ?>">مشاهده روی نقشه</a>
+                <a class="btn btn-success rounded-3" aria-label="map-link" target="_blank" href="<?= get_field('map-link', 'option'); ?>">مشاهده روی نقشه</a>
             </div>
         </div>
     </section>

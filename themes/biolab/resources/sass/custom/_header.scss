@@ -79,8 +79,7 @@ body.search-results .search-btn {
   transition: top  0.8s ease-in-out;
 }
 .category-dropdown__button {
-  mix-blend-mode: difference;
-  transition: all 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55) , border-radius 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55) , border-radius 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   .bi-chevron-down{
   transition: tranform 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }

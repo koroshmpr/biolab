@@ -20,7 +20,8 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="woocommerce-order">
+<div class="woocommerce-order hero top-gap-shop">
+    <div class="container">
 
 	<?php
 	if ( $order ) :
@@ -30,7 +31,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php if ( $order->has_status( 'failed' ) ) : ?>
 
-			<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed"><?php esc_html_e( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'woocommerce' ); ?></p>
+			<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed display-4 text-center text-success"><?php esc_html_e( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'woocommerce' ); ?></p>
 
 			<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions">
 				<a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="button pay"><?php esc_html_e( 'Pay', 'woocommerce' ); ?></a>
@@ -43,26 +44,26 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php wc_get_template( 'checkout/order-received.php', array( 'order' => $order ) ); ?>
 
-			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
+			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details text-center mb-2 my-lg-5 flex-wrap d-lg-flex d-grid row-gap-3 row-gap-lg-0 justify-content-lg-center justify-content-end fs-3 text-white">
 
-				<li class="woocommerce-order-overview__order order">
+				<li class="woocommerce-order-overview__order order border-info border-opacity-50">
 					<?php esc_html_e( 'Order number:', 'woocommerce' ); ?>
 					<strong><?php echo $order->get_order_number(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
 				</li>
 
-				<li class="woocommerce-order-overview__date date">
+				<li class="woocommerce-order-overview__date date border-info border-opacity-50">
 					<?php esc_html_e( 'Date:', 'woocommerce' ); ?>
 					<strong><?php echo wc_format_datetime( $order->get_date_created() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
 				</li>
 
 				<?php if ( is_user_logged_in() && $order->get_user_id() === get_current_user_id() && $order->get_billing_email() ) : ?>
-					<li class="woocommerce-order-overview__email email">
+					<li class="woocommerce-order-overview__email email border-info border-opacity-50">
 						<?php esc_html_e( 'Email:', 'woocommerce' ); ?>
 						<strong><?php echo $order->get_billing_email(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
 					</li>
 				<?php endif; ?>
 
-				<li class="woocommerce-order-overview__total total">
+				<li class="woocommerce-order-overview__total total border-info border-opacity-50">
 					<?php esc_html_e( 'Total:', 'woocommerce' ); ?>
 					<strong><?php echo $order->get_formatted_order_total(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
 				</li>
@@ -77,14 +78,14 @@ defined( 'ABSPATH' ) || exit;
 			</ul>
 
 		<?php endif; ?>
-
+<div class="d-flex justify-content-center bg-success col-lg-2 col-10 mx-auto pt-3 mb-3 rounded-5 fw-bold">
 		<?php do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
+</div>
 		<?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
-
 	<?php else : ?>
 
 		<?php wc_get_template( 'checkout/order-received.php', array( 'order' => false ) ); ?>
 
 	<?php endif; ?>
-
+    </div>
 </div>

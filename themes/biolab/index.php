@@ -21,8 +21,10 @@ get_header(); ?>
                         $loop->the_post(); ?>
                         <div data-aos="fade-up">
                             <?php
-                            $bgColor = 'bg-white shadow-sm';
+                            $styleBg = '#F9FBFA';
+                            $bgColor = ' ';
                             $args = array(
+                                'style-bg' => $styleBg,
                                 'bgColor' => $bgColor,
                             );
                             get_template_part('template-parts/blog/noimage-card', null, $args); ?>

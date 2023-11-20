@@ -22,6 +22,10 @@
   }
 }
 @include media-breakpoint-down(lg) {
+  .hero {
+    padding-top: 130px;
+    background-size: cover;
+  }
   .-overflow-x-scroll {
     overflow-x:scroll;
   }
@@ -40,10 +44,6 @@
   }
   .-min-vh-lg-60 {
     min-height: 50vh !important;
-  }
-  .hero {
-    padding-top: 160px;
-    background-size: cover;
   }
   body.woocommerce-shop .hero , body.tax-product_cat .hero {
     background-size: 1270px!important;

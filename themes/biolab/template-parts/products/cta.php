@@ -3,7 +3,7 @@
          alt="<?= get_field('archive-banner_image', 'option')['title']; ?>">
     <div class="p-2">
         <p class="fs-5"><?= get_field('archive-banner_title', 'option'); ?></p>
-        <a class="btn btn-secondary rounded-pill px-2 py-0" href="<?= get_field('archive-banner_link' , 'option');?>">
+        <a class="btn btn-secondary rounded-3 px-3 py-0" href="<?= get_field('archive-banner_link' , 'option')['url'];?>">
             <?= get_field('archive-banner_link-text' , 'option');?>
         </a>
     </div>

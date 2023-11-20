@@ -35,23 +35,23 @@ if ($product->is_in_stock()) : ?>
         <div class="d-flex gap-3 align-items-center flex-md-column flex-xxl-row">
             <div class="col">
                 <div id="quantity-input-box" data-min="<?= $product->get_min_purchase_quantity() ?>"
-                     data-max="<?= $product->get_max_purchase_quantity() ?>">
+                     data-min="<?= $product->get_min_purchase_quantity() ?>" data-max="<?= $product->get_max_purchase_quantity() ?>">
                     <div class="hstack gap-4 justify-content-center justify-content-lg-start">
                         <div class="gap-2 d-flex justify-content-evenly align-items-center">
-                            <button type="button"
-                                    class="btn p-0 text-dark fw-bold fs-3"
-                                    id="decrease-product-btn">
+                            <button type="button" class="btn p-0 text-dark fw-bold fs-3" id="decrease-product-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
                                     <rect y="0.5" width="32" height="32" rx="10" fill="white"/>
                                     <path d="M22 17.25H10C9.59 17.25 9.25 16.91 9.25 16.5C9.25 16.09 9.59 15.75 10 15.75H22C22.41 15.75 22.75 16.09 22.75 16.5C22.75 16.91 22.41 17.25 22 17.25Z" fill="#212529"/>
                                 </svg>
                             </button>
                             <span id="product-count" class="fs-5 text-center ps-2">
-                                     <?= isset($_POST['quantity']) ? wc_stock_amount(wp_unslash($_POST['quantity'])) : $product->get_min_purchase_quantity() ?>
-                            </span>
-                            <button type="button"
-                                    class="btn p-0 text-dark fw-bold fs-3"
-                                    id="increase-product-btn">
+                                 <?= isset($_POST['quantity']) ? wc_stock_amount(wp_unslash($_POST['quantity'])) : $product->get_min_purchase_quantity() ?>
+                                </span>
+
+                            <!-- Add this element for displaying the updated price -->
+                            <span id="price-display" class="d-none fs-5 text-center ps-2 position-absolute bottom-0 translate-middle start-50"></span>
+
+                            <button type="button" class="btn p-0 text-dark fw-bold fs-3" id="increase-product-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
                                     <rect y="0.5" width="32" height="32" rx="10" fill="white"/>
                                     <path d="M22 17.25H10C9.59 17.25 9.25 16.91 9.25 16.5C9.25 16.09 9.59 15.75 10 15.75H22C22.41 15.75 22.75 16.09 22.75 16.5C22.75 16.91 22.41 17.25 22 17.25Z" fill="#212529"/>
@@ -79,3 +79,38 @@ if ($product->is_in_stock()) : ?>
 
     <?php do_action('woocommerce_after_add_to_cart_form'); ?>
 <?php endif; ?>
+<script>
+    // Get the necessary elements
+    const quantityInputBox = document.getElementById('quantity-input-box');
+    let decreaseBtn = document.getElementById('decrease-product-btn');
+    let increaseBtn = document.getElementById('increase-product-btn');
+    let productCount = document.getElementById('product-count');
+    let productQuantity = document.getElementById('product-quantity');
+    const priceDisplay = document.getElementById('price-display');
+    const productPrice = <?= $product->get_price() ?>;
+
+    // Set the initial product count and price display
+    var count = parseInt(productCount.textContent);
+    var price = productPrice * count;
+    priceDisplay.textContent = Number(price.toFixed(0)).toLocaleString().split(/\s/).join(',');
+
+    // Decrease the product count and update the price when the decrease button is clicked
+    decreaseBtn.addEventListener('click', function () {
+        if (count > 1) {
+            count -= 1;
+            productCount.textContent = count;
+            productQuantity.value = count;
+            price = productPrice * count;
+            priceDisplay.textContent = Number(price.toFixed(0)).toLocaleString().split(/\s/).join(',');
+        }
+    });
+
+    // Increase the product count and update the price when the increase button is clicked
+    increaseBtn.addEventListener('click', function () {
+        count++;
+        productCount.textContent = count;
+        productQuantity.value = count;
+        price = productPrice * count;
+        priceDisplay.textContent = Number(price.toFixed(0)).toLocaleString().split(/\s/).join(',');
+    });
+</script>
