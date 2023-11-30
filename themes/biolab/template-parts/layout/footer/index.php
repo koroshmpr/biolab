@@ -13,8 +13,8 @@
                         <?= get_field('footer_description', 'option'); ?>
                     </div>
                     <div class="d-flex">
-                        <button class="btn btn-primary px-5 py-1 rounded-3">فروشنده شو!</button>
-                        <button class="btn text-white btn-arrow py-1">مشاوره</button>
+                        <a href="<?= get_field('footer_btn_link' , 'option')['url'] ?? ''; ?>" class="btn btn-primary px-5 py-1 rounded-3"><?= get_field('footer_btn_title' , 'option'); ?></a>
+                        <a href="<?= get_field('footer_btn_link_1' , 'option')['url'] ?? ''; ?>" class="btn text-white btn-arrow py-1"><?= get_field('footer_btn_title_1' , 'option'); ?></a>
                     </div>
        
                 </div>
@@ -86,8 +86,8 @@
                 if ($google_map_iframe): ?>
                     <div class="position-relative rounded-1 h-100 overflow-hidden">
                         <?php echo $google_map_iframe; ?>
-                        <a href="https://goo.gl/maps/2dUeBwPYSwTo8tNE7"
-                           class="btn bg-white text-primary d-flex justify-content-between align-items-center rounded-1 fw-bold position-absolute bottom-0 mb-4 mx-3 p-3 w-auto end-0 start-0">
+                        <a href="<?= get_field('map-link' , 'option')['url'] ?? ''; ?>"
+                           class="btn bg-white text-primary d-flex justify-content-between align-items-center rounded fw-bold position-absolute bottom-0 mb-4 mx-3 py-1 px-3 col-9 ms-auto end-0 start-0">
                             باز کردن نقشه
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>

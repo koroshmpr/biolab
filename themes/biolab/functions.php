@@ -328,6 +328,40 @@ function modify_search_query($query) {
 }
 add_action('pre_get_posts', 'modify_search_query');
 
+function load_more_posts_scripts() {
+    global $wp_query; // Ensure that $wp_query is global
+    wp_enqueue_script('load-more-posts', get_template_directory_uri() . '/js/load-more-posts.js', array('jquery'), '1.0', true);
+    wp_localize_script('load-more-posts', 'load_more_params', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'posts' => json_encode($wp_query->query_vars),
+        'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
+        'max_page' => $wp_query->max_num_pages
+    ));
+}
+add_action('wp_enqueue_scripts', 'load_more_posts_scripts');
+
+
+function load_more_posts_ajax_handler(){
+    $args = json_decode( stripslashes( $_POST['query'] ), true );
+    $args['paged'] = $_POST['page'] + 1;
+    $args['post_status'] = 'publish';
+
+    $loop = new WP_Query( $args );
+
+    if( $loop->have_posts() ) :
+        while( $loop->have_posts() ): $loop->the_post();
+            get_template_part('template-parts/blog/title-side-image_big');
+        endwhile;
+    endif;
+
+    wp_reset_postdata();
+
+    die();
+}
+
+add_action('wp_ajax_loadmore', 'load_more_posts_ajax_handler');
+add_action('wp_ajax_nopriv_loadmore', 'load_more_posts_ajax_handler');
+
 function custom_post_type_args( $args, $post_type ) {
 
     // Change 'project' to the slug of your custom post type

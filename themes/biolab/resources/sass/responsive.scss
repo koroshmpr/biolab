@@ -123,4 +123,8 @@
   }
 }
 @include media-breakpoint-down(md) {
+  .row-cols-costume > * {
+    flex: 0 0 auto;
+    width: 90%;
+  }
 }

@@ -22,8 +22,8 @@
                 </ul>
             <?php }; ?>
             <div class="d-flex">
-                <button class="btn btn-primary px-5 py-1 rounded-3">درخواست مشاوره</button>
-                <button class="btn text-dark btn-arrow py-1">تماس باما</button>
+                <a href="<?= get_field('property_btn_link')['url'] ?? ' '; ?>" class="btn btn-primary px-5 py-1 rounded-3"><?= get_field('property_btn_title'); ?></a>
+                <a href="<?= get_field('property_btn_link_1')['url'] ?? ' '; ?>" class="btn text-dark btn-arrow py-1"><?= get_field('property_btn_title_1'); ?></a>
             </div>
         </div>
     </div>

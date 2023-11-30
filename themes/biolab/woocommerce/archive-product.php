@@ -44,7 +44,7 @@ if (woocommerce_product_loop()) {
      */
     do_action('woocommerce_before_shop_loop');
 
-    woocommerce_product_loop_start();
+//    woocommerce_product_loop_start();
     ?>
     <div class="row row-cols-lg-5 row-cols-2 align-items-stretch">
         <?php
@@ -65,7 +65,7 @@ if (woocommerce_product_loop()) {
         } ?>
     </div>
     <?php
-    woocommerce_product_loop_end();
+//    woocommerce_product_loop_end();
 
     /**
      * Hook: woocommerce_after_shop_loop.

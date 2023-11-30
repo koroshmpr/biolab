@@ -35,7 +35,7 @@ if (!empty($product_tabs)) : $index = 0 ?>
             <ul class="nav col-lg-auto nav-tabs border-0 align-items-center p-3 mb-4 rounded-3 gap-2 tab-product flex-nowrap overflow-x-scroll" id="myTab" role="tablist">
                 <?php foreach ($product_tabs as $key => $product_tab) : ?>
                     <li class="nav-item  rounded" role="presentation">
-                        <button class="tab-shop text-primary border-0 lh-1 rounded-3 fs-5 px-4 py-3 small-sm-down fw-bold lazy <?= $index == 0 ? 'active' : '' ?>"
+                        <button class="tab-shop text-primary border-0 lh-1 rounded-3 fs-6 px-4 py-3 small-sm-down fw-bold lazy <?= $index == 0 ? 'active' : '' ?>"
                                 id="cat-<?php echo esc_attr($key); ?>-tab"
                                 data-bs-toggle="tab"
                                 data-bs-target="#cat-<?php echo esc_attr($key); ?>"
@@ -53,7 +53,7 @@ if (!empty($product_tabs)) : $index = 0 ?>
 
             <div class="tab-content" id="myTabContent">
                 <?php foreach ($product_tabs as $key => $product_tab) : ?>
-                    <div class="tab-pane px-4 fade <?= $index == 0 ? 'show active' : '' ?>"
+                    <div class="tab-pane px-2 px-lg-4 fade <?= $index == 0 ? 'show active' : '' ?>"
                          id="cat-<?php echo esc_attr($key); ?>"
                          role="tabpanel"
                          aria-labelledby="cat-<?php echo esc_attr($key); ?>-tab">

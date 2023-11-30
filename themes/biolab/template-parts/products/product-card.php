@@ -6,7 +6,7 @@ global $product;
 
     <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($product->ID), 'single-post-thumbnail'); ?>
     <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"
-         class="mx-auto rounded object-fit" width="200" height="200">
+         class="mx-auto rounded object-fit w-100" width="200" height="200">
     <div class="p-2 pb-1 h-100 d-flex flex-column justify-content-between align-items-start">
         <?php
         if ($product->is_on_sale()) { ?>

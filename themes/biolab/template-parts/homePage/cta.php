@@ -5,8 +5,8 @@
             <h5 class="display-6 fw-bold py-3"><?= get_field('cta_title' , 'option'); ?></h5>
             <p class="small text-opacity-75"><?= get_field('cta_content' , 'option'); ?></p>
             <div class="d-flex">
-                <button class="btn btn-primary px-5 py-1 rounded-3">درخواست مشاوره</button>
-                <button class="btn text-primary btn-arrow py-1">تماس باما</button>
+                <a href="<?= get_field('cta_btn_link' , 'option')['url'] ?? ' '; ?>" class="btn btn-primary px-5 py-1 rounded-3"><?= get_field('cta_btn_title' , 'option'); ?></a>
+                <a href="<?= get_field('cta_btn_link_1' , 'option')['url'] ?? ' '; ?>" class="btn text-primary btn-arrow py-1"><?= get_field('cta_btn_title_1' , 'option'); ?></a>
             </div>
         </div>
         <div class="col-lg-3 h-100 order-first order-lg-last pb-4 pb-lg-0">

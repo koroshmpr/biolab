@@ -100,10 +100,10 @@
                     <?php } else {
                         // User doesn't have one of the specified roles
                         // Show another button or content
-                        echo '<button class="btn py-0 px-1">قروشمنده شوید</button>';
+                        echo '<button class="btn py-0 px-1">فروشمنده شوید</button>';
                     }
                 } else { ?>
-                    <button class="btn py-0 px-1">قروشنده شوید</button>
+                    <button class="btn py-0 px-1">فروشنده شوید</button>
                 <?php } ?>
                 <div class="d-flex gap-2">
                     <?php

@@ -6,7 +6,7 @@
         <div class="col-lg-5 order-lg-first order-last ms-lg-auto p-5 my-auto">
             <span class="text-success"><?= get_field('card_badge'); ?></span>
             <h5 class="display-6 text-white fw-bold pe-lg-5 pt-4"><?= get_field('card_title'); ?></h5>
-            <p class="small text-opacity-75 text-white"><?= get_field('card_content'); ?></p>
+            <article class="fs-6 py-2 text-opacity-75 text-white"><?= get_field('card_content'); ?></article>
             <?php if (have_rows('card_list')) { ?>
                 <ul class="list-unstyled text-white">
                     <?php while (have_rows('card_list')):
@@ -24,8 +24,8 @@
                 </ul>
             <?php }; ?>
             <div class="d-flex">
-                <button class="btn btn-primary px-5 py-1 rounded-3">درخواست مشاوره</button>
-                <button class="btn text-white btn-arrow py-1">تماس باما</button>
+                <a href="<?= get_field('card_btn_link')['url'] ?? ''; ?>" class="btn btn-primary px-5 py-1 rounded-3"><?= get_field('card_btn_title'); ?></a>
+                <a href="<?= get_field('card_btn_link_2')['url'] ?? ''; ?>" class="btn text-white btn-arrow py-1"><?= get_field('card_btn_title_2'); ?></a>
             </div>
         </div>
         <div class="col-lg-6 order-lg-last order-first ms-lg-auto">
@@ -47,17 +47,10 @@
                          src="<?= get_sub_field('slider_image')['url']; ?>"
                          alt="<?= get_sub_field('slider_image')['title']; ?>">
                 </div>
-                <div class="col-lg-5 me-lg-auto p-4 my-auto">
+                <div class="col-lg-5 mx-lg-auto p-4 my-auto">
                     <span class="text-success"><?= get_sub_field('slider_badge'); ?></span>
                     <h5 class="display-6 text-white fw-bold pe-lg-5 pt-4"><?= get_sub_field('slider_title'); ?></h5>
-                    <p class="small text-opacity-75 text-white"><?= get_Sub_field('slider_content'); ?></p>
-                    <div class="py-3 d-flex gap-3">
-                        <img class="rounded-circle border border-1 border-white" width="50" height="50" src="<?= get_Sub_field('user_image')['url']; ?>" alt="<?= get_Sub_field('user_image')['title']; ?>">
-                        <div class="row gap-2">
-                            <h6 class="fw-bold text-white"><?= get_Sub_field('user_name'); ?></h6>
-                            <p class="text-white text-opacity-75"><?= get_Sub_field('user_job'); ?></p>
-                        </div>
-                    </div>
+                    <p class="small text-opacity-75 fs-6 text-white"><?= get_Sub_field('slider_content'); ?></p>
                     <div class="d-flex justify-content-start gap-3 align-items-center">
                         <div class="testimonial-button-next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-short text-info" viewBox="0 0 16 16">

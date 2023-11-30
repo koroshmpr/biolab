@@ -17,27 +17,33 @@
         </div>
         <div class="col-lg-10 col-md-9 ps-lg-5 col-7 ps-xl-0 pe-xl-5">
             <?php
-            $args = array(
-                'post_type' => 'product',
-                'post_status' => 'publish',
-                'order' => 'ASC',
-                'orderby' => 'rand',
-                'posts_per_page' => '5',
-                'ignore_sticky_posts' => true
-            );
-            $loop = new WP_Query($args); ?>
-            <div class="d-flex row-cols-xl-5 row-cols-1 row-cols-md-3 flex-wrap gap-3 flex-nowrap align-items-stretch overflow-x-lg-scroll ps-lg-4 pe-xl-3">
-                <?php
-                if ($loop->have_posts()) {
-                    while ($loop->have_posts()) : $loop->the_post();?>
-                            <?php     get_template_part('template-parts/products/product-card'); ?>
-                    <?php endwhile;
-                } else {
-                    echo __('No products found');
-                }
-                wp_reset_postdata();
+            $saleProducts = get_field('sale-products');
+            if ($saleProducts) :
                 ?>
-            </div>
+                <div class="d-flex row-cols-xl-5 row-cols-costume row-cols-md-3 flex-wrap gap-3 flex-nowrap align-items-stretch overflow-x-lg-scroll ps-lg-4 pe-xl-3">
+                    <?php foreach ($saleProducts as $saleProduct) :
+                        $args = array(
+                            'post_type' => 'product',
+                            'post_status' => 'publish',
+                            'p' => $saleProduct->ID, // Set the post ID from the ACF field
+                            'ignore_sticky_posts' => true
+                        );
+                        $loop = new WP_Query($args);
+                        if ($loop->have_posts()) :
+                            while ($loop->have_posts()) : $loop->the_post(); ?>
+                                <?php get_template_part('template-parts/products/product-card'); ?>
+                            <?php endwhile;
+                            wp_reset_postdata();
+                        else :
+                            echo __('محصولی یاقت نشد');
+                        endif;
+                    endforeach; ?>
+                </div>
+            <?php else :
+                echo __('محصولی یاقت نشد');
+            endif;
+            ?>
         </div>
+
     </div>
 </section>

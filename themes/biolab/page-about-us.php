@@ -38,8 +38,8 @@ get_header(); ?>
                 </ul>
             <?php }; ?>
             <div class="d-flex">
-                <button class="btn btn-primary px-5 rounded-3 py-1">درخواست مشاوره</button>
-                <button class="btn text-dark btn-arrow py-1">تماس باما</button>
+                <a href="<?= get_field('section_property_button_link')['url'] ?? ''; ?>" class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('section_property_button_title'); ?></a>
+                <a href="<?= get_field('section_property_button_link_1')['url'] ?? ''; ?>" class="btn text-dark btn-arrow py-1"><?= get_field('section_property_button_title_1'); ?></a>
             </div>
         </div>
     </div>
@@ -52,8 +52,8 @@ get_header(); ?>
                 <h5 class="display-6 text-white fw-bold pe-lg-5 pt-4"><?= get_field('aboutus-title'); ?></h5>
                 <p class="small text-opacity-75 text-white"><?= get_field('aboutus-description'); ?></p>
                 <div class="d-flex">
-                    <button class="btn btn-primary px-5 rounded-3 py-1">درخواست مشاوره</button>
-                    <button class="btn text-white btn-arrow py-1">تماس باما</button>
+                    <a href="<?= get_field('ourteam_button_link_1')['url'] ?? ''; ?>" class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('ourteam_button_title_1'); ?></a>
+                    <a href="<?= get_field('ourteam_button_link_2')['url'] ?? ''; ?>" class="btn text-white btn-arrow py-1"><?= get_field('ourteam_button_title_2'); ?></a>
                 </div>
             </div>
             <div class="col-lg-7 mt-5 mt-lg-0 p-lg-5">
@@ -75,7 +75,7 @@ get_header(); ?>
                         </div>
                     <?php endwhile; ?>
                 </div>
-                <button class="btn btn-white w-100 rounded-3 mt-3">به تیم ما بپیوندید</button>
+                <a href="<?= get_field('ourteam_button_link')['url'] ?? ''; ?>" class="btn btn-white w-100 rounded-3 mt-3"><?= get_field('ourteam_button_title'); ?></a>
             </div>
             <div class="col-lg-8 row row-cols-2 justify-content-center">
                 <?php while (have_rows('team')) : the_row(); ?>
@@ -136,8 +136,8 @@ get_header(); ?>
                 </ul>
             <?php }; ?>
             <div class="d-flex">
-                <button class="btn btn-primary px-5 rounded-3 py-1">درخواست مشاوره</button>
-                <button class="btn text-dark btn-arrow py-1">تماس باما</button>
+                <a href="<?= get_field('section_property_button_link_2')['url'] ?? ''; ?>" class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('section_property_button_title_2'); ?></a>
+                <a href="<?= get_field('section_property_button_link_3')['url'] ?? ''; ?>" class="btn text-primary btn-arrow py-1"><?= get_field('section_property_button_title_3'); ?></a>
             </div>
         </div>
     </div>

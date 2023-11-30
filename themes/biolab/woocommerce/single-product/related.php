@@ -34,9 +34,9 @@ if ($related_products) : ?>
                 </h6>
         </div>
         <?php endif; ?>
-            <?php woocommerce_product_loop_start(); ?>
+<!--            --><?php //woocommerce_product_loop_start(); ?>
 
-        <div class="d-flex row-cols-xl-6 row-cols-1 row-cols-md-3 flex-wrap gap-3 flex-nowrap overflow-x-lg-scroll">
+        <div class="d-flex row-cols-xl-6 row-cols-costume row-cols-md-3 flex-wrap gap-3 flex-nowrap overflow-x-lg-scroll">
             <?php foreach ($related_products as $related_product) : ?>
 
                 <?php
@@ -47,7 +47,7 @@ if ($related_products) : ?>
                 get_template_part('template-parts/products/product-card');
             endforeach; ?>
         </div>
-        <?php woocommerce_product_loop_end(); ?>
+<!--        --><?php //woocommerce_product_loop_end(); ?>
 
     </section>
 <?php
