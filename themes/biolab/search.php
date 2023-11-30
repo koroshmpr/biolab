@@ -9,7 +9,9 @@
             $inputClass = 'py-3 bg-white';
             $buttonClass = "px-4";
             $dropdownClass = 'px-3';
+            $inputValue = esc_attr(get_search_query());
             $args = array(
+                'inputValue' => $inputValue,
                 'place' => $place,
                 'size' => $sizeSearch,
                 'inputClass' => $inputClass,
@@ -45,7 +47,7 @@
         );
         $post_type_query = new WP_Query($args);
         if ($post_type_query->have_posts()) {
-            echo '<div class="row pt-5 m-0 row-cols-lg-3 justify-content-lg-between justify-content-center row-cols-1 gy-5">';
+            echo '<div class="d-flex row-cols-xl-6 row-cols-costume row-cols-md-3 flex-wrap gap-3 flex-nowrap overflow-x-lg-scroll">';
 
             while ($post_type_query->have_posts()) {
                 $post_type_query->the_post();
