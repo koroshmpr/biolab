@@ -3,10 +3,10 @@
     //    card
     ?>
     <div class="row justify-content-lg-around justify-content-center align-content-center">
-        <div class="col-lg-5 order-lg-first order-last ms-lg-auto p-5 my-auto">
+        <div class="col-xl-5 col-md-6 order-lg-first order-last ms-lg-auto py-5 px-4 px-lg-0 my-auto">
             <span class="text-success"><?= get_field('card_badge'); ?></span>
             <h5 class="display-6 text-white fw-bold pe-lg-5 pt-4"><?= get_field('card_title'); ?></h5>
-            <article class="fs-6 py-2 text-opacity-75 text-white"><?= get_field('card_content'); ?></article>
+            <article class="fs-6 py-2 text-opacity-75 text-white text-justify"><?= get_field('card_content'); ?></article>
             <?php if (have_rows('card_list')) { ?>
                 <ul class="list-unstyled text-white">
                     <?php while (have_rows('card_list')):
@@ -28,7 +28,7 @@
                 <a href="<?= get_field('card_btn_link_2')['url'] ?? ''; ?>" class="btn text-white btn-arrow py-1"><?= get_field('card_btn_title_2'); ?></a>
             </div>
         </div>
-        <div class="col-lg-6 order-lg-last order-first ms-lg-auto">
+        <div class="col-xl-6 col-md-6 order-lg-last order-first ms-lg-auto">
             <img class="w-100 h-auto object-fit-cover rounded-bottom-start-circle"
                  src="<?= get_field('card_image')['url']; ?>"
                  alt="<?= get_field('card_image')['title']; ?>">
@@ -42,27 +42,15 @@
             <?php while (have_rows('slider')):
             the_row(); ?>
             <div class="swiper-slide row justify-content-lg-start justify-content-center align-content-center">
-                <div class="col-lg-6 mb-5 mb-lg-0 px-0">
+                <div class="col-md-6 mb-5 mb-lg-0 px-0 d-flex">
                     <img class="w-100 h-auto object-fit-cover rounded-top-end-circle" height="500"
                          src="<?= get_sub_field('slider_image')['url']; ?>"
                          alt="<?= get_sub_field('slider_image')['title']; ?>">
                 </div>
-                <div class="col-lg-5 mx-lg-auto p-4 my-auto">
+                <div class="col-xl-5 col-md-6 mx-lg-auto px-3 px-lg-0 py-5 my-auto">
                     <span class="text-success"><?= get_sub_field('slider_badge'); ?></span>
                     <h5 class="display-6 text-white fw-bold pe-lg-5 pt-4"><?= get_sub_field('slider_title'); ?></h5>
-                    <p class="small text-opacity-75 fs-6 text-white"><?= get_Sub_field('slider_content'); ?></p>
-                    <div class="d-flex justify-content-start gap-3 align-items-center">
-                        <div class="testimonial-button-next">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-short text-info" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
-                            </svg>
-                        </div>
-                        <div class="testimonial-button-prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-short text-info" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
-                            </svg>
-                        </div>
-                    </div>
+                    <article class="small text-opacity-75 fs-6 text-white text-justify"><?= get_Sub_field('slider_content'); ?></article>
                 </div>
             </div>
             <?php

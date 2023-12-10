@@ -3397,6 +3397,27 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     disableOnInteraction: false
   });
+  var swiper2 = new swiper_bundle__WEBPACK_IMPORTED_MODULE_4__["default"]('.onsale-slider', {
+    loop: false,
+    speed: 500,
+    slidesPerView: 1.1,
+    spaceBetween: 10,
+    grabCursor: true,
+    direction: 'horizontal',
+    breakpoints: {
+      992: {
+        slidesPerView: 5
+      }
+    },
+    navigation: {
+      nextEl: '.onsale-button-next',
+      prevEl: '.onsale-button-prev'
+    },
+    autoplay: {
+      delay: 5000
+    },
+    disableOnInteraction: false
+  });
 });
 
 /***/ }),

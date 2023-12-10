@@ -3,7 +3,7 @@ $home_url     = home_url();
 $active_class = ' class="active"'
 ?>
 
-<div class="dokan-dash-sidebar py-5">
+<div class="dokan-dash-sidebar min-vh-100 py-5">
     <?php
     global $allowedposttags;
 
@@ -20,7 +20,11 @@ $active_class = ' class="active"'
 
     // Adding a Custom Menu Item for Catalogs & Videos
     ?>
-    <ul class="dokan-dashboard-menu">
+    <style>
+        .dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li.active:after {
+            border-width: 16px 16px 16px 0!important;
+    </style>
+    <ul class="dokan-dashboard-menu d-none">
         <li<?php echo $active_menu === 'custom_section' ? $active_class : ''; ?>>
             <a href="<?php echo home_url( '/vendors-cataloge/' ); ?>">
                 <i class="fas fa-cog"></i>

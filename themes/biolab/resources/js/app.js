@@ -120,4 +120,25 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         disableOnInteraction: false,
     });
+    const swiper2 = new Swiper('.onsale-slider', {
+        loop: false,
+        speed: 500,
+        slidesPerView: 1.1,
+        spaceBetween: 10,
+        grabCursor: true,
+        direction: 'horizontal',
+        breakpoints: {
+            992: {
+                slidesPerView: 5,
+            }
+        },
+        navigation: {
+            nextEl: '.onsale-button-next',
+            prevEl: '.onsale-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+        },
+        disableOnInteraction: false,
+    });
 })

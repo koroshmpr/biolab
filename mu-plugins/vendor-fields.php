@@ -52,7 +52,7 @@ function extra_fields($current_user, $profile_info)
         </div>
     </div>
     <!-- Add a gallery field for multiple images -->
-    <div class="gregcustom dokan-form-group d-flex align-items-center">
+    <div class="gregcustom d-none dokan-form-group d-flex align-items-center">
         <label class="dokan-w3 dokan-control-label">
             <?php _e('کاتالوگ', 'dokan'); ?>
         </label>
@@ -152,7 +152,7 @@ function extra_fields($current_user, $profile_info)
 
     </div>
     <!-- Add a videos field for multiple videos -->
-    <div class="gregcustom dokan-form-group d-flex align-items-center">
+    <div class="gregcustom d-none dokan-form-group d-flex align-items-center">
         <label class="dokan-w3 dokan-control-label">
             <?php _e('ویدئو', 'dokan'); ?>
         </label>
@@ -315,18 +315,27 @@ add_action('wp_ajax_update_gallery_order', 'update_gallery_order');
 
 function count_product_vendors_shortcode()
 {
-    global $post;
-    // Get the product's author (seller)
-    $seller = get_post_field('post_author', $post->ID);
-    $vendor_count = sprintf('%d', $seller);
-    if ($vendor_count == 1) {
-        return "تنها فروشنده";
-    } else {
-        return sprintf('%d فرشنده دیگر', $vendor_count - 1);
+    global $product;
+
+    // Check if Dokan_SPMV_Products class is available
+    if (class_exists('Dokan_SPMV_Products')) {
+        $dokan_spmv_products = new Dokan_SPMV_Products();
+        $lists = $dokan_spmv_products->get_other_reseller_vendors($product->get_id());
+
+        $vendor_count = count($lists);
+
+        if ($vendor_count === 1) {
+            return "تنها فروشنده";
+        } else {
+            return sprintf('%d فروشنده دیگر', $vendor_count);
+        }
     }
+
+    return ''; // Handle the case when Dokan_SPMV_Products class is not available
 }
 
 add_shortcode('product_vendors_count', 'count_product_vendors_shortcode');
+
 
 
 function store_name_below_price_shortcode()

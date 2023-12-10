@@ -9,8 +9,8 @@
                 <a href="<?= get_field('cta_btn_link_1' , 'option')['url'] ?? ' '; ?>" class="btn text-primary btn-arrow py-1"><?= get_field('cta_btn_title_1' , 'option'); ?></a>
             </div>
         </div>
-        <div class="col-lg-3 h-100 order-first order-lg-last pb-4 pb-lg-0">
-            <img  class="w-100 object-fit-cover mt-n5 overflow-visible" data-aos="fade-up" data-aos-delay="200" src="<?= get_field('cta_image' , 'option')['url']; ?>"
+        <div class="col-lg-3 h-100 order-first order-lg-last pb-4 pb-lg-0 d-flex justify-content-center align-items-start">
+            <img  class="w-auto object-fit-cover mt-n5 overflow-visible" data-aos="fade-up" data-aos-delay="200" src="<?= get_field('cta_image' , 'option')['url']; ?>"
                  alt="<?= get_field('cta_image' , 'option')['title']; ?>">
         </div>
     </div>

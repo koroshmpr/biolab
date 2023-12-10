@@ -17,10 +17,10 @@ $layout = get_theme_mod('store_layout', 'left');
 
 get_header('shop');
 
-if (function_exists('yoast_breadcrumb')) {
-    yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
-}
-?>
+//if (function_exists('yoast_breadcrumb')) {
+//    yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
+//}
+//?>
 <?php do_action('woocommerce_before_main_content'); ?>
 
 <div class="dokan-store-wrap flex-wrap flex-column flex-lg-row layout-<?php echo esc_attr($layout); ?>">
@@ -47,7 +47,11 @@ if (function_exists('yoast_breadcrumb')) {
             );
                     get_template_part('template-parts/loop/header_underline' , null , $args);
             ?>
-            <?php echo do_shortcode('[dokan_vendor_bio]') ?>
+            <?php
+            $bio_content = do_shortcode('[dokan_vendor_bio]');
+
+            echo $bio_content; ?>
+<!--            --><?php //echo do_shortcode('[dokan_vendor_bio]') != '' ? do_shortcode('[dokan_vendor_bio]') : '<p class="py-5"></p>'; ?>
         </article>
             <?php
             $title = 'اطلاعات شرکت';
@@ -93,12 +97,12 @@ if (function_exists('yoast_breadcrumb')) {
 
             <?php } ?>
         </div>
-<div>
-    <div class="border-bottom border-info border-opacity-50 d-flex mb-2 mt-4">
-        <h5 class="border-bottom border-success fs-3 mb-0 pb-3 border-2 fw-bold">کاتالوگ</h5>
-    </div>
-    <?php get_template_part('template-parts/products/vendors-gallery');?>
-</div>
+<!--<div>-->
+<!--    <div class="border-bottom border-info border-opacity-50 d-flex mb-2 mt-4">-->
+<!--        <h5 class="border-bottom border-success fs-3 mb-0 pb-3 border-2 fw-bold">کاتالوگ</h5>-->
+<!--    </div>-->
+<!--    --><?php //get_template_part('template-parts/products/vendors-gallery');?>
+<!--</div>-->
     </div><!-- .dokan-single-store -->
 
     <?php if ('right' === $layout) { ?>

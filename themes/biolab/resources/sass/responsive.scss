@@ -1,6 +1,6 @@
 @include media-breakpoint-up(lg) {
   .hero {
-    background-size: contain;
+    background-size: contain!important;
   }
   .top-gap-shop {
     padding-top: 150px;
@@ -22,10 +22,6 @@
   }
 }
 @include media-breakpoint-down(lg) {
-  .hero {
-    padding-top: 130px;
-    background-size: cover;
-  }
   .-overflow-x-scroll {
     overflow-x:scroll;
   }
@@ -81,6 +77,10 @@
 }
 
 @include media-breakpoint-down(xl) {
+  .hero {
+    padding-top: 130px;
+    background-size: cover;
+  }
   .overflow-x-lg-scroll {
     overflow-x: scroll!important;
   }

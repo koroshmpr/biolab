@@ -30,14 +30,14 @@ if ( ! empty( $breadcrumb ) ) {
     foreach ( $breadcrumb as $key => $crumb ) {
 
         echo $before;
-
+        $index = count( $breadcrumb ); // product name is always last item
         if ( ! empty( $crumb[1] ) && sizeof( $breadcrumb ) !== $key + 1 ) {
             echo '<a class="text-white text-opacity-75" href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a>';
-        } else {
+        } if ($crumb < $index ){
             echo esc_html( $crumb[0] );
         }
-
         echo $after;
+
 
         if ( sizeof( $breadcrumb ) !== $key + 1 ) {
             echo '>&nbsp&nbsp';

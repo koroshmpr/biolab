@@ -100,11 +100,11 @@
                     <?php } else {
                         // User doesn't have one of the specified roles
                         // Show another button or content
-                        echo '<button class="btn py-0 px-1">فروشمنده شوید</button>';
+                        echo '<a href="/my-account/#sellerRadio" id="beSeller" class="btn py-0 px-1">فروشنده شوید</a>';
                     }
                 } else { ?>
-                    <button class="btn py-0 px-1">فروشنده شوید</button>
-                <?php } ?>
+                    <a href="/my-account/#sellerRadio" id="beSeller" class="btn py-0 px-1">فروشنده شوید</a>
+                             <?php } ?>
                 <div class="d-flex gap-2">
                     <?php
                     if (is_user_logged_in()) { ?>

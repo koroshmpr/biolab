@@ -32,10 +32,8 @@ $wrapper_classes = apply_filters(
         'd-flex',
         'justify-content-end',
         'position-relative',
-//		'woocommerce-product-gallery',
         'woocommerce-product-gallery--' . ($post_thumbnail_id ? 'with-images' : 'without-images'),
-//		'woocommerce-product-gallery--columns-' . absint( $columns ),
-//		'images',
+		'px-0',
         'overflow-hiddem',
         'col-lg-5',
         'col-11'

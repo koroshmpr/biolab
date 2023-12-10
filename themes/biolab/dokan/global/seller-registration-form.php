@@ -26,7 +26,7 @@
     </p>
 
     <p class="form-row form-group form-row-wide">
-        <label for="seller-url" class="pull-left"><?php esc_html_e( 'Shop URL', 'dokan-lite' ); ?> <span class="required">*</span></label>
+        <label for="seller-url"><?php esc_html_e( 'Shop URL', 'dokan-lite' ); ?> <span class="required">*</span></label>
         <strong id="url-alart-mgs" class="pull-right"></strong>
         <input type="text" class="input-text form-control" name="shopurl" id="seller-url" value="<?php echo ! empty( $data['shopurl'] ) ? esc_attr( $data['shopurl'] ) : ''; ?>" required="required" />
         <small><?php echo esc_url( home_url() . '/' . dokan_get_option( 'custom_store_url', 'dokan_general', 'store' ) ); ?>/<strong id="url-alart"></strong></small>
@@ -88,9 +88,10 @@
     </label>
     <br/>
     <label class="radio">
-        <input type="radio" name="role" value="seller"<?php checked( $role, 'seller' ); ?>>
+        <input id="sellerRadio" type="radio" name="role" value="seller"<?php checked( $role, 'seller' ); ?>>
         <?php esc_html_e( 'I am a vendor', 'dokan-lite' ); ?>
     </label>
     <?php do_action( 'dokan_registration_form_role', $role ); ?>
+
 
 </p>

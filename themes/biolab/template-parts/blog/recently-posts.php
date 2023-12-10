@@ -19,7 +19,7 @@
     $i = 0;
     /* Start the Loop */
     ?>
-    <div class="d-flex flex-nowrap row-cols-lg-4 row-cols-costume gy-2 pt-lg-3 pb-lg-5 overflow-x-scroll">
+    <div class="d-flex flex-nowrap row-cols-md-2 row-cols-lg-4 row-cols-costume gy-2 pt-lg-3 pb-lg-5 overflow-x-scroll">
         <?php while ($loop->have_posts()) :
             $loop->the_post(); ?>
         <article class="p-2">

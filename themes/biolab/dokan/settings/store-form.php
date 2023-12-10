@@ -98,8 +98,8 @@ $args     = apply_filters( 'dokan_store_time_arguments', $args, $all_times );
     <?php do_action( 'dokan_settings_after_banner', $current_user, $profile_info ); ?>
 
     <div class="dokan-form-group">
-        <label class="dokan-w3 dokan-control-label" for="dokan_gravatar"><?php esc_html_e( 'Profile Picture', 'dokan-lite' ); ?></label>
-
+        <label class="dokan-w3 dokan-control-label" for="dokan_gravatar">لوگو</label>
+<!--        --><?php //esc_html_e( 'Profile Picture', 'dokan-lite' ); ?>
         <div class="dokan-w5 dokan-gravatar">
             <div class="dokan-left gravatar-wrap<?php echo $gravatar_id ? '' : ' dokan-hide'; ?>">
                 <?php $gravatar_url = $gravatar_id ? wp_get_attachment_url( $gravatar_id ) : ''; ?>

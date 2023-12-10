@@ -80,3 +80,12 @@
 .mobile-search::placeholder {
   color:white;
 }
+select {
+  border-radius: 15px!important;
+}
+input, textarea {
+  transition: all 0.3s ease-out !important;
+  border: 1px solid #80808040 !important;
+  border-radius: 15px !important;
+  padding: 15px !important;
+}
