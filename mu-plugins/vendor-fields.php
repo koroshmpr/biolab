@@ -9,8 +9,7 @@ function extra_fields($current_user, $profile_info)
     $technical_manager = $profile_info['technical_manager'] ?? '';
     $registration_number = $profile_info['registration_number'] ?? '';
     $company_type = $profile_info['company_type'] ?? '';
-    $gallery = $profile_info['gallery'] ?? array();
-    $videos = $profile_info['videos'] ?? array();
+    $vendor_video = $profile_info['vendor_video'] ?? '';
 
     ?>
     <div class="gregcustom dokan-form-group">
@@ -51,148 +50,25 @@ function extra_fields($current_user, $profile_info)
                    value="<?php echo $company_type; ?>"/>
         </div>
     </div>
-    <!-- Add a gallery field for multiple images -->
-    <div class="gregcustom d-none dokan-form-group d-flex align-items-center">
-        <label class="dokan-w3 dokan-control-label">
-            <?php _e('کاتالوگ', 'dokan'); ?>
-        </label>
-        <div class="dokan-w5 d-flex align-items-center gap-3 rounded-2 border border-info my-2">
-            <?php
-            $field_key = 'gallery'; // Replace with your ACF field key
-            $user_gallery = get_field($field_key, 'user_' . get_current_user_id());
-            ?>
-<!--            <div class="row row-cols-4 gap-3 justify-content-center gallery-container p-1 col overflow-y-scroll align-items-start" id="sortable-gallery" style="min-height: 150px">-->
-<!--                --><?php //if ($user_gallery): ?>
-<!--                    --><?php //foreach ($user_gallery as $image): ?>
-<!--                        <div class="position-relative gallery-item border border-info border-opacity-50 p-2 rounded-3" data-attachment-id="--><?//= $image['ID']; ?><!--">-->
-<!--                            <img class="object-fit" width="100" height="100" src="--><?//= $image['url']; ?><!--" />-->
-<!--                            <button class="delete-item bg-danger lh-1 position-absolute top-0 start-0 p-1 rounded-circle btn">X</button>-->
-<!--                        </div>-->
-<!--                    --><?php //endforeach; ?>
-<!--                --><?php //endif; ?>
-<!--            </div>-->
-
-            <input value="اضافه کنید" type="file" class="dokan-form-control-dis col-2 p-1 valid py-5" name="gallery[]" id="gallery" multiple />
-
-            <script>
-                jQuery(function($) {
-                    // Handle delete button click
-                    $(document).on('click', '.delete-item', function() {
-                        var item = $(this).closest('.gallery-item');
-                        var attachmentId = item.data('attachment-id');
-
-                        // Remove the item from the DOM
-                        item.remove();
-
-                        // Update the order after deletion
-                        updateGalleryOrder();
-
-                        // AJAX call to delete the attachment ID from the ACF gallery field
-                        $.ajax({
-                            url: ajaxurl,
-                            type: 'POST',
-                            data: {
-                                action: 'delete_acf_gallery_item',
-                                attachment_id: attachmentId,
-                                field_key: '<?= $field_key; ?>',
-                                user_id: <?= get_current_user_id(); ?>
-                            },
-                            success: function(response) {
-                                console.log(response);
-                            },
-                            error: function(error) {
-                                console.log(error);
-                            }
-                        });
-                    });
-
-                    // Handle file input change
-                    $('#gallery').on('change', function() {
-                        var files = this.files;
-
-                        // Loop through selected files and perform actions
-                        for (var i = 0; i < files.length; i++) {
-                            var file = files[i];
-                            uploadFile(file);
-                        }
-                    });
-
-                    function uploadFile(file) {
-                        var formData = new FormData();
-                        formData.append('action', 'upload_acf_gallery_item');
-                        formData.append('file', file);
-                        formData.append('field_key', '<?= $field_key; ?>');
-                        formData.append('user_id', <?= get_current_user_id(); ?>);
-
-                        // AJAX call to upload the file and update the ACF gallery field
-                        $.ajax({
-                            url: ajaxurl,
-                            type: 'POST',
-                            processData: false,
-                            contentType: false,
-                            data: formData,
-                            success: function(response) {
-                                console.log(response);
-
-                                // TODO: Handle the response and update the UI with the new image
-                            },
-                            error: function(error) {
-                                console.log(error);
-                            }
-                        });
-                    }
-
-                    function updateGalleryOrder() {
-                        // Handle any additional actions needed when the order changes
-                    }
-                });
-            </script>
-        </div>
-
-
-    </div>
-    <!-- Add a videos field for multiple videos -->
-    <div class="gregcustom d-none dokan-form-group d-flex align-items-center">
-        <label class="dokan-w3 dokan-control-label">
-            <?php _e('ویدئو', 'dokan'); ?>
+    <div class="gregcustom dokan-form-group">
+        <label class="dokan-w3 dokan-control-label" for="vendor_video">
+            <?php _e('ویدیو', 'dokan'); ?>
         </label>
         <div class="dokan-w5">
-            <input type="file" class="dokan-form-control input-md valid py-5" name="videos[]" id="videos" multiple/>
+            <input type="file" name="vendor_video" id="vendor_video" accept="video/*"/>
+            <?php if ($vendor_video) : ?>
+                <p><?php _e('Current Video:', 'dokan'); ?></p>
+                <video width="320" height="240" controls>
+                    <source src="<?php echo esc_url($vendor_video); ?>" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            <?php endif; ?>
         </div>
     </div>
     <?php
 }
 
-// Display the gallery and videos on the vendor's single page
-function display_gallery_and_videos($vendor_id)
-{
-    $gallery = get_user_meta($vendor_id, 'gallery', true);
-    $videos = get_user_meta($vendor_id, 'videos', true);
-
-    // Loop through and display gallery images
-    if (!empty($gallery)) {
-        echo '<h2>Gallery</h2>';
-        foreach ($gallery as $image_url) {
-            echo '<img src="' . esc_url($image_url) . '" alt="Gallery Image" />';
-        }
-    }
-
-    // Loop through and display videos
-    if (!empty($videos)) {
-        echo '<h2>Videos and Demos</h2>';
-        foreach ($videos as $video_url) {
-            echo '<video controls width="320" height="240">
-                <source src="' . esc_url($video_url) . '" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>';
-        }
-    }
-}
-
-// Hook to display gallery and videos on the vendor's single page
-add_action('dokan_store_profile_frame_after', 'display_gallery_and_videos', 10);
-
-// Save the field values, including the new gallery and videos fields
+// Save the field values, excluding the gallery and videos fields
 add_action('dokan_store_profile_saved', 'save_extra_fields', 15);
 
 function save_extra_fields($store_id)
@@ -206,35 +82,25 @@ function save_extra_fields($store_id)
     if (isset($_POST['technical_manager'])) {
         $dokan_settings['technical_manager'] = sanitize_text_field($_POST['technical_manager']);
     }
+
     if (isset($_POST['company_type'])) {
         $dokan_settings['company_type'] = sanitize_text_field($_POST['company_type']);
     }
+
     if (isset($_POST['registration_number'])) {
         $dokan_settings['registration_number'] = sanitize_text_field($_POST['registration_number']);
     }
-    if (isset($_FILES['gallery'])) {
-        $gallery_files = $_FILES['gallery'];
+    if (isset($_FILES['vendor_video']) && !empty($_FILES['vendor_video']['name'])) {
+        $video_url = dokan_media_handle_upload('vendor_video', 0);
 
-        // Check if any files were uploaded
-        if (!empty($gallery_files['name'][0])) {
-            $uploaded_gallery = dokan_media_handle_upload('gallery', 0);
-
-            if (!is_wp_error($uploaded_gallery)) {
-                // Gallery uploaded successfully, update the user meta
-                $user_gallery = get_user_meta($store_id, 'gallery', true);
-                if (!is_array($user_gallery)) {
-                    $user_gallery = array();
-                }
-
-                $user_gallery[] = $uploaded_gallery;
-                update_user_meta($store_id, 'gallery', $user_gallery);
-            } else {
-                // Display the upload error
-                echo 'Gallery Upload Error: ' . $uploaded_gallery->get_error_message();
-            }
+        if (!is_wp_error($video_url)) {
+            // Video uploaded successfully, update the user meta
+            $dokan_settings['vendor_video'] = esc_url($video_url);
+        } else {
+            // Display the upload error
+            echo 'Video Upload Error: ' . $video_url->get_error_message();
         }
     }
-
 
     update_user_meta($store_id, 'dokan_profile_settings', $dokan_settings);
 }
@@ -263,16 +129,19 @@ function save_seller_info($store_user)
         echo esc_html($store_info['registration_number']);
         echo '<br>';
     }
+
     if (isset($store_info['company_type']) && !empty($store_info['company_type'])) {
         echo '<svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M211 7.3C205 1 196-1.4 187.6 .8s-14.9 8.9-17.1 17.3L154.7 80.6l-62-17.5c-8.4-2.4-17.4 0-23.5 6.1s-8.5 15.1-6.1 23.5l17.5 62L18.1 170.6c-8.4 2.1-15 8.7-17.3 17.1S1 205 7.3 211l46.2 45L7.3 301C1 307-1.4 316 .8 324.4s8.9 14.9 17.3 17.1l62.5 15.8-17.5 62c-2.4 8.4 0 17.4 6.1 23.5s15.1 8.5 23.5 6.1l62-17.5 15.8 62.5c2.1 8.4 8.7 15 17.1 17.3s17.3-.2 23.4-6.4l45-46.2 45 46.2c6.1 6.2 15 8.7 23.4 6.4s14.9-8.9 17.1-17.3l15.8-62.5 62 17.5c8.4 2.4 17.4 0 23.5-6.1s8.5-15.1 6.1-23.5l-17.5-62 62.5-15.8c8.4-2.1 15-8.7 17.3-17.1s-.2-17.3-6.4-23.4l-46.2-45 46.2-45c6.2-6.1 8.7-15 6.4-23.4s-8.9-14.9-17.3-17.1l-62.5-15.8 17.5-62c2.4-8.4 0-17.4-6.1-23.5s-15.1-8.5-23.5-6.1l-62 17.5L341.4 18.1c-2.1-8.4-8.7-15-17.1-17.3S307 1 301 7.3L256 53.5 211 7.3z"/></svg>';
         echo esc_html($store_info['company_type']);
         echo '<br>';
     }
-    if (isset($store_info['gallery']) && !empty($store_info['gallery'])) {
-        echo '<i class="fa fa-file"></i>';
-        foreach ($store_info['gallery'] as $image_url) {
-            echo '<img src="' . esc_url($image_url) . '" alt="Gallery Image" />';
-        }
+    // Check if vendor_video is set and not empty
+    if (isset($store_info['vendor_video']) && !empty($store_info['vendor_video'])) {
+        echo '<p>Vendor Video:</p>';
+        echo '<video width="320" height="240" controls>';
+        echo '<source src="' . esc_url($store_info['vendor_video']) . '" type="video/mp4">';
+        echo 'Your browser does not support the video tag.';
+        echo '</video>';
         echo '<br>';
     }
 }
@@ -336,8 +205,6 @@ function count_product_vendors_shortcode()
 
 add_shortcode('product_vendors_count', 'count_product_vendors_shortcode');
 
-
-
 function store_name_below_price_shortcode()
 {
     global $product;
@@ -372,37 +239,61 @@ function custom_dokan_store_header_fields_shortcode($atts) {
     $dokan_settings = get_user_meta($store_id, 'dokan_profile_settings', true);
 
     // Get and display the custom fields
-    $manager_name = !empty($dokan_settings['manager_name']) ? esc_html($dokan_settings['manager_name']) : '-';
-    $technical_manager = !empty($dokan_settings['technical_manager']) ? esc_html($dokan_settings['technical_manager']) : '-';
-    $registration_number = !empty($dokan_settings['registration_number']) ? esc_html($dokan_settings['registration_number']) : '-';
-    $company_type = !empty($dokan_settings['company_type']) ? esc_html($dokan_settings['company_type']) : '-';
+    $manager_name = !empty($dokan_settings['manager_name']) ? esc_html($dokan_settings['manager_name']) : '';
+    $technical_manager = !empty($dokan_settings['technical_manager']) ? esc_html($dokan_settings['technical_manager']) : '';
+    $registration_number = !empty($dokan_settings['registration_number']) ? esc_html($dokan_settings['registration_number']) : '';
+    $company_type = !empty($dokan_settings['company_type']) ? esc_html($dokan_settings['company_type']) : '';
+    $vendor_video = !empty($dokan_settings['vendor_video']) ? esc_url($dokan_settings['vendor_video']) : '';
+
 
     ob_start(); ?>
-
+<?php if ($manager_name or $technical_manager or $registration_number or $company_type or $vendor_video ): ?>
     <table class="dokan-store-info mb-4 table table-striped table-hover">
         <tbody>
-        <tr class="dokan-store-address">
-            <th class="col-lg-2 col-5">مدیر عامل :</th>
-            <td><?php echo $manager_name; ?></td>
-        </tr>
-        <tr class="dokan-store-address">
-            <th>مسئول فنی :</th>
-            <td><?php echo $technical_manager; ?></td>
-        </tr>
-        <tr class="dokan-store-address">
-            <th>شماره ثبت شرکت :</th>
-            <td><?php echo $registration_number; ?></td>
-        </tr>
-        <tr class="dokan-store-address">
-            <th>نوع شرکت :</th>
-            <td><?php echo $company_type; ?></td>
-        </tr>
+        <?php if ($manager_name) : ?>
+            <tr class="dokan-store-address">
+                <th class="col-lg-2 col-5">مدیر عامل :</th>
+                <td><?php echo esc_html($manager_name); ?></td>
+            </tr>
+        <?php endif; ?>
+
+        <?php if ($technical_manager) : ?>
+            <tr class="dokan-store-address">
+                <th>مسئول فنی :</th>
+                <td><?php echo esc_html($technical_manager); ?></td>
+            </tr>
+        <?php endif; ?>
+
+        <?php if ($registration_number) : ?>
+            <tr class="dokan-store-address">
+                <th>شماره ثبت شرکت :</th>
+                <td><?php echo esc_html($registration_number); ?></td>
+            </tr>
+        <?php endif; ?>
+
+        <?php if ($company_type) : ?>
+            <tr class="dokan-store-address">
+                <th>نوع شرکت :</th>
+                <td><?php echo esc_html($company_type); ?></td>
+            </tr>
+        <?php endif; ?>
+        <?php if ($vendor_video) : ?>
+            <tr class="dokan-store-address">
+                <th>Vendor Video :</th>
+                <td>
+                    <video width="560" height="315" controls>
+                        <source src="<?php echo esc_url($vendor_video); ?>" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </td>
+            </tr>
+        <?php endif; ?>
         </tbody>
     </table>
+    <?php endif; ?>
 
     <?php
     return ob_get_clean();
 }
-
 
 add_shortcode('dokan_store_custom_fields', 'custom_dokan_store_header_fields_shortcode');

@@ -1,7 +1,7 @@
 <section class="<?= is_404() ? 'd-none ' : ''; ?>rounded-1">
     <div class="container">
         <!--    main footer -->
-        <div class="row justify-content-center py-5 align-items-center">
+        <div class="row justify-content-center py-5 align-items-start">
             <!--            column-01-->
             <div class="col-lg-4 p-lg-5 pt-lg-0 pb-4 pb-lg-0 mb-4 mb-lg-0" data-aos="fade-left" data-aos-duration="500">
                 <div class="p-4 text-center bg-secondary rounded-3">
@@ -36,7 +36,7 @@
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'footerLocationOne',
-                    'menu_class' => 'list-unstyled pe-0 d-lg-grid d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center align-items-center align-items-lg-start',
+                    'menu_class' => 'list-unstyled pe-0 d-lg-grid d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center align-items-start',
                     'container' => false,
                     'menu_id' => 'navbarTogglerMenu',
                     'item_class' => 'nav-item',
@@ -56,7 +56,7 @@
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'footerLocationTwo',
-                    'menu_class' => 'list-unstyled pe-0 d-lg-grid d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center align-items-center align-items-lg-start',
+                    'menu_class' => 'list-unstyled pe-0 d-lg-grid d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center align-items-start',
                     'container' => false,
                     'menu_id' => 'navbarTogglerMenu',
                     'item_class' => 'nav-item',
@@ -76,7 +76,7 @@
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'footerLocationThree',
-                    'menu_class' => 'list-unstyled pe-0 d-lg-grid d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center align-items-center align-items-lg-start',
+                    'menu_class' => 'list-unstyled pe-0 d-lg-grid d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center align-items-start',
                     'container' => false,
                     'menu_id' => 'navbarTogglerMenu',
                     'item_class' => 'nav-item',

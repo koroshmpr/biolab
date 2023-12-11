@@ -9,7 +9,7 @@
                 $brand_id = $brand->term_id;
                 $brandImg = get_field('icon', 'brand_' . $brand_id);
                 ?>
-                <div class="brand-item">
+                <div class="brand-item border-start border-end border-info">
                     <?php if ($brandImg) : ?>
                         <img class="w-100" src="<?= esc_url($brandImg['url']) ?? ' '; ?>" alt="<?= esc_attr($brand->name); ?>">
                     <?php endif; ?>

@@ -1,4 +1,4 @@
-<section class="container py-3">
+<section class="container p-3 rounded-3 border border-info border-opacity-50">
     <h4 class="text-center fs-5 pt-3 pb-5"><?= get_field('selected-brands-title'); ?></h4>
 
     <?php
@@ -10,7 +10,7 @@
                 $vendor = dokan()->vendor->get($seller->ID);
                 $store_url = $vendor->get_shop_url();
                 ?>
-                <li class="dokan-single-seller woocommerce rounded-circle overflow-hidden" style="width: 80px;">
+                <li class="dokan-single-seller woocommerce  overflow-hidden border-start border-end border-info px-4 border-opacity-50" style="width: 150px;">
                     <a href="<?php echo esc_url($store_url); ?>">
                         <img src="<?php echo esc_url($vendor->get_avatar()); ?>"
                              alt="<?php echo esc_attr($vendor->get_shop_name()); ?>"
