@@ -146,42 +146,6 @@ function save_seller_info($store_user)
     }
 }
 
-/**
- * Plugin Name: Dokan Vendor Biography Shortcode
- */
-add_shortcode('dokan_vendor_bio', 'dokan_vendor_bio_shortcode');
-function dokan_vendor_bio_shortcode()
-{
-    $vendor = dokan()->vendor->get(get_query_var('author'));
-    $store_info = $vendor->get_shop_info();
-    if (empty($store_info['vendor_biography'])) {
-        return;
-    }
-    printf('%s', apply_filters('the_content', $store_info['vendor_biography']));
-}
-
-// user vendor bio shortcode on single product page
-add_shortcode('dokan_vendor_bio_single', 'dokan_vendor_bio_shortcode_single');
-function dokan_vendor_bio_shortcode_single()
-{
-    global $product;
-    $seller = get_post_field('post_author', $product->get_id());
-    $author = get_user_by('id', $seller);
-    $vendor = dokan()->vendor->get($seller);
-
-    $store_info = dokan_get_store_info($author->ID);
-
-    if (!empty($store_info['vendor_biography'])) { ?>
-        <span class="details">
-             <?php printf($vendor->get_vendor_biography()); ?>
-         </span>
-        <?php
-    }
-}
-
-add_action('wp_ajax_delete_gallery_item', 'delete_gallery_item');
-add_action('wp_ajax_update_gallery_order', 'update_gallery_order');
-
 function count_product_vendors_shortcode()
 {
     global $product;
@@ -224,7 +188,8 @@ function store_name_below_price_shortcode()
 
 add_shortcode('vendors_name', 'store_name_below_price_shortcode');
 
-function custom_dokan_store_header_fields_shortcode($atts) {
+function custom_dokan_store_header_fields_shortcode($atts)
+{
     $atts = shortcode_atts(array(
         'store_id' => null,
     ), $atts);
@@ -243,57 +208,80 @@ function custom_dokan_store_header_fields_shortcode($atts) {
     $technical_manager = !empty($dokan_settings['technical_manager']) ? esc_html($dokan_settings['technical_manager']) : '';
     $registration_number = !empty($dokan_settings['registration_number']) ? esc_html($dokan_settings['registration_number']) : '';
     $company_type = !empty($dokan_settings['company_type']) ? esc_html($dokan_settings['company_type']) : '';
-    $vendor_video = !empty($dokan_settings['vendor_video']) ? esc_url($dokan_settings['vendor_video']) : '';
 
+    ob_start();
 
-    ob_start(); ?>
-<?php if ($manager_name or $technical_manager or $registration_number or $company_type or $vendor_video ): ?>
-    <table class="dokan-store-info mb-4 table table-striped table-hover">
-        <tbody>
-        <?php if ($manager_name) : ?>
-            <tr class="dokan-store-address">
-                <th class="col-lg-2 col-5">مدیر عامل :</th>
-                <td><?php echo esc_html($manager_name); ?></td>
-            </tr>
-        <?php endif; ?>
+    if ($manager_name or $technical_manager or $registration_number or $company_type) {
+        ?>
+        <table class="dokan-store-info mb-4 table table-striped table-hover">
+            <tbody>
+            <?php if ($manager_name) : ?>
+                <tr class="dokan-store-address">
+                    <th class="col-lg-2 col-5">مدیر عامل :</th>
+                    <td><?php echo esc_html($manager_name); ?></td>
+                </tr>
+            <?php endif; ?>
 
-        <?php if ($technical_manager) : ?>
-            <tr class="dokan-store-address">
-                <th>مسئول فنی :</th>
-                <td><?php echo esc_html($technical_manager); ?></td>
-            </tr>
-        <?php endif; ?>
+            <?php if ($technical_manager) : ?>
+                <tr class="dokan-store-address">
+                    <th>مسئول فنی :</th>
+                    <td><?php echo esc_html($technical_manager); ?></td>
+                </tr>
+            <?php endif; ?>
 
-        <?php if ($registration_number) : ?>
-            <tr class="dokan-store-address">
-                <th>شماره ثبت شرکت :</th>
-                <td><?php echo esc_html($registration_number); ?></td>
-            </tr>
-        <?php endif; ?>
+            <?php if ($registration_number) : ?>
+                <tr class="dokan-store-address">
+                    <th>شماره ثبت شرکت :</th>
+                    <td><?php echo esc_html($registration_number); ?></td>
+                </tr>
+            <?php endif; ?>
 
-        <?php if ($company_type) : ?>
-            <tr class="dokan-store-address">
-                <th>نوع شرکت :</th>
-                <td><?php echo esc_html($company_type); ?></td>
-            </tr>
-        <?php endif; ?>
-        <?php if ($vendor_video) : ?>
-            <tr class="dokan-store-address">
-                <th>Vendor Video :</th>
-                <td>
-                    <video width="560" height="315" controls>
-                        <source src="<?php echo esc_url($vendor_video); ?>" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </td>
-            </tr>
-        <?php endif; ?>
-        </tbody>
-    </table>
-    <?php endif; ?>
+            <?php if ($company_type) : ?>
+                <tr class="dokan-store-address">
+                    <th>نوع شرکت :</th>
+                    <td><?php echo esc_html($company_type); ?></td>
+                </tr>
+            <?php endif; ?>
+            </tbody>
+        </table>
+        <?php
+    } else {
+        return false; // No fields found
+    }
 
-    <?php
     return ob_get_clean();
 }
 
 add_shortcode('dokan_store_custom_fields', 'custom_dokan_store_header_fields_shortcode');
+// Enqueue Dokan file upload scripts
+function enqueue_dokan_file_upload_scripts() {
+    if (function_exists('dokan_enqueue_file_upload_scripts')) {
+        dokan_enqueue_file_upload_scripts();
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_dokan_file_upload_scripts');
+
+// Save ACF values on Dokan store profile save
+add_action('dokan_store_profile_saved', 'save_acf_values', 15, 2);
+
+function save_acf_values($store_id, $dokan_settings) {
+    // Retrieve and update ACF values
+    $your_acf_image_value = sanitize_text_field($dokan_settings['cat-image'] ?? '');
+    update_field('cat-image', $your_acf_image_value, 'user_' . $store_id);
+
+    // Add similar lines for other ACF fields if needed
+}
+function get_dashboard_nav( $menus ) {
+    $custom_menus = [
+        'custom_menu' => [
+            'title' => __( 'کاتالوگ ها', 'dokan-lite' ),
+            'icon'  => '<i class="fas fa-briefcase"></i>',
+            'url'   => dokan_get_navigation_url( 'custom_menu' ),
+            'pos'   => 50,
+        ],
+    ];
+
+    return array_merge( $menus, $custom_menus );
+}
+
+add_filter( 'dokan_get_dashboard_nav', 'get_dashboard_nav' );

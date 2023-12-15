@@ -1,13 +1,13 @@
 <?php function_exists( 'wc_print_notices' ) ? wc_print_notices() : ''; ?>
 
-<form id="dokan-vendor-register" method="post" class="register dokan-vendor-register">
+<form id="dokan-vendor-register" method="post" class="register dokan-vendor-register bg-white rounded-3 p-4 p-lg-5">
 
     <?php do_action( 'dokan_vendor_reg_form_start' ); ?>
 
     <div class="split-row name-field form-row-wide">
         <p class="form-row form-group">
             <label for="first-name"><?php esc_html_e( 'First Name', 'dokan-lite' ); ?> <span class="required">*</span></label>
-            <input type="text" class="input-text form-control" name="fname" id="first-name" value="<?php echo ! empty( $data['fname'] ) ? esc_attr( $data['fname'] ) : ''; ?>" required="required" />
+            <input type="text" placeholder="<?php esc_html_e( 'First Name', 'dokan-lite' ); ?>" class="input-text form-control" name="fname" id="first-name" value="<?php echo ! empty( $data['fname'] ) ? esc_attr( $data['fname'] ) : ''; ?>" required="required" />
         </p>
 
         <p class="form-row form-group">
@@ -51,7 +51,7 @@
     <p class="form-row form-group form-row-wide">
         <label for="seller-url"><?php esc_html_e( 'Shop URL', 'dokan-lite' ); ?> <span class="required">*</span></label>
         <strong id="url-alart-mgs" class="pull-right"></strong>
-        <input type="text" class="input-text form-control" name="shopurl" id="seller-url" value="<?php echo ! empty( $data['shopurl'] ) ? esc_attr( $data['shopurl'] ) : ''; ?>" required="required" />
+        <input type="text" class="input-text form-control" placeholder="<?php esc_html_e( 'Shop URL', 'dokan-lite' ); ?>" name="shopurl" id="seller-url" value="<?php echo ! empty( $data['shopurl'] ) ? esc_attr( $data['shopurl'] ) : ''; ?>" required="required" />
         <small><?php echo esc_url( home_url() . '/' . dokan_get_option( 'custom_store_url', 'dokan_general', 'store' ) ); ?>/<strong id="url-alart"></strong></small>
     </p>
 

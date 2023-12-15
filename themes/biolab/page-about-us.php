@@ -50,7 +50,7 @@ get_header(); ?>
             <div class="col-lg-5 my-auto">
                 <span class="text-success"><?= get_field('aboutus-badge'); ?></span>
                 <h5 class="display-6 text-white fw-bold pe-lg-5 pt-4"><?= get_field('aboutus-title'); ?></h5>
-                <p class="small text-opacity-75 text-white"><?= get_field('aboutus-description'); ?></p>
+                <p class="small text-opacity-75 text-white text-justify"><?= get_field('aboutus-description'); ?></p>
                 <div class="d-flex">
                     <a href="<?= get_field('ourteam_button_link_1')['url'] ?? ''; ?>" class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('ourteam_button_title_1'); ?></a>
                     <a href="<?= get_field('ourteam_button_link_2')['url'] ?? ''; ?>" class="btn text-white btn-arrow py-1"><?= get_field('ourteam_button_title_2'); ?></a>

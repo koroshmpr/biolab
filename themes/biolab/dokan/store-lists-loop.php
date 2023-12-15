@@ -1,7 +1,7 @@
 <div id="dokan-seller-listing-wrap" class="grid-view">
     <div class="seller-listing-content">
         <?php if ($sellers['users']) : ?>
-            <ul class="dokan-seller-wrap">
+            <ul class="dokan-seller-wrap d-flex">
                 <?php
                 foreach ($sellers['users'] as $seller) {
                     $vendor = dokan()->vendor->get($seller->ID);

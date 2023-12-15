@@ -11,6 +11,7 @@ if (!defined('ABSPATH')) {
 }
 
 $store_user = dokan()->vendor->get(get_query_var('author'));
+$vendor_id = $store_user->get_id();
 $store_info = $store_user->get_shop_info();
 $map_location = $store_user->get_location();
 $layout = get_theme_mod('store_layout', 'left');
@@ -38,71 +39,119 @@ get_header('shop');
         );
         ?>
     <?php } ?>
-    <div id="dokan-primary" class="col-12 col-lg-8 dokan-single-store-dis col border border-info border-opacity-50 rounded-4 p-4">
-        <article class="biography text-justify">
-            <?php
-            $title = 'بایوگرافی';
-            $args = array(
-                    'title' => $title
-            );
-                    get_template_part('template-parts/loop/header_underline' , null , $args);
-            ?>
-            <?php
-            $bio_content = do_shortcode('[dokan_vendor_bio]');
+    <div id="dokan-primary"
+         class="col-12 col-lg-8 dokan-single-store-dis col border border-info border-opacity-50 rounded-4 p-4">
+        <?php
+        $vendor_id = get_query_var('author');
+        $vendor = dokan()->vendor->get($vendor_id);
+        $store_info = $vendor->get_shop_info();
+        $biography = $store_info['vendor_biography'] ?? '';
 
-            echo $bio_content; ?>
-<!--            --><?php //echo do_shortcode('[dokan_vendor_bio]') != '' ? do_shortcode('[dokan_vendor_bio]') : '<p class="py-5"></p>'; ?>
-        </article>
+        if (!empty($biography)) {
+            ?>
+            <article class="biography text-justify">
+                <?php
+                $title = 'بایوگرافی';
+                $args = array(
+                    'title' => $title
+                );
+                get_template_part('template-parts/loop/header_underline', null, $args);
+
+                echo apply_filters('the_content', $biography);
+                ?>
+            </article>
             <?php
+        }
+        ?>
+        <?php
+        $fields = do_shortcode('[dokan_store_custom_fields]');
+
+        if ($fields != false) {
             $title = 'اطلاعات شرکت';
             $args = array(
                 'title' => $title
             );
-            get_template_part('template-parts/loop/header_underline' , null , $args);
-            ?>
-        <?= do_shortcode('[dokan_store_custom_fields]');?>
+            get_template_part('template-parts/loop/header_underline', null, $args);
+            echo $fields;
+        }
+        ?>
+
         <div id="dokan-content" class="store-page-wrap woocommerce" role="main">
-            <?php
-            $title = 'محصولات';
-            $args = array(
-                'title' => $title
-            );
-            get_template_part('template-parts/loop/header_underline' , null , $args);
-            ?>
+
             <?php do_action('dokan_store_profile_frame_after', $store_user->data, $store_info); ?>
-
             <?php if (have_posts()) { ?>
-
+                <?php
+                $title = 'محصولات';
+                $args = array(
+                    'title' => $title
+                );
+                get_template_part('template-parts/loop/header_underline', null, $args);
+                ?>
                 <div class="seller-items">
-
-<!--                    --><?php //woocommerce_product_loop_start(); ?>
-                        <div class="row row-cols-lg-4 flex-nowrap overflow-x-scroll">
-                    <?php
-                    while (have_posts()) :
-                        the_post();?>
-                    <div class="p-2 h-auto">
-                        <?php get_template_part('template-parts/products/product-card'); ?>
-                    </div>
-                    <?php endwhile; // end of the loop. ?>
-                        </div>
-<!--                    --><?php //woocommerce_product_loop_end(); ?>
+                    <div class="row row-cols-lg-4 flex-nowrap flex-lg-wrap overflow-x-scroll">
+                        <?php
+                        while (have_posts()) :
+                            the_post(); ?>
+                            <div class="p-2 h-auto">
+                                <?php get_template_part('template-parts/products/product-card'); ?>
+                            </div>
+                        <?php endwhile; // end of the loop. ?>
 
                 </div>
 
                 <?php dokan_content_nav('nav-below'); ?>
 
-            <?php } else { ?>
-
-                <p class="dokan-info"><?php esc_html_e('No products were found of this vendor!', 'dokan-lite'); ?></p>
-
             <?php } ?>
         </div>
-<!--<div>-->
-<!--    <div class="border-bottom border-info border-opacity-50 d-flex mb-2 mt-4">-->
-<!--        <h5 class="border-bottom border-success fs-3 mb-0 pb-3 border-2 fw-bold">کاتالوگ</h5>-->
-<!--    </div>-->
-<!--    --><?php //get_template_part('template-parts/products/vendors-gallery');?>
-<!--</div>-->
+        <div>
+            <?php if (have_posts()): ?>
+            <div class="mb-2 mt-4">
+                <?php
+                $title = 'کاتالوگ';
+                $args = array(
+                    'title' => $title
+                );
+                get_template_part('template-parts/loop/header_underline', null, $args);
+                ?>
+                <div class="seller-items">
+                    <div class="row row-cols-lg-4 flex-nowrap flex-lg-wrap">
+                        <?php
+                        // Assuming you are within the loop on the vendor page
+                        while (have_posts()) : the_post();
+
+                            // Get the repeater field values
+                            $gallery = get_field('catalogues_list');
+
+                            // Check if the repeater field has rows
+                            if ($gallery) {
+                                // Loop through the rows of the repeater field
+                                foreach ($gallery as $row) {
+                                    // Get values from the repeater field
+                                    $title = $row['title'];
+                                    $cover = $row['cover'];
+                                    $catalog = $row['cataloge'];
+                                    $pages = $row['pages'];
+
+                                    // Output the card HTML with the repeater field values
+                                    ?>
+                                    <a href="<?= $catalog['url']; ?>" download class="p-2 h-auto card border-0">
+                                        <img height="230" class="object-fit-cover rounded-3"
+                                             src="<?php echo $cover['url']; ?>" alt="<?php echo $cover['alt']; ?>">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?php echo $title; ?></h5>
+                                            <p class="mb-0 text-primary"><?= $pages; ?> صقحه </p>
+                                        </div>
+                                    </a>
+                                    <?php
+                                }
+                            }
+                        endwhile; // end of the loop.
+                        ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
     </div><!-- .dokan-single-store -->
 
     <?php if ('right' === $layout) { ?>

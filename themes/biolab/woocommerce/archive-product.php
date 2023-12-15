@@ -62,7 +62,7 @@ if (woocommerce_product_loop()) {
                     <?php get_template_part('template-parts/products/product-card'); ?>
                 </article>
             <?php }
-        } ?>
+        }?>
     </div>
     <?php
 //    woocommerce_product_loop_end();
@@ -79,8 +79,10 @@ if (woocommerce_product_loop()) {
      *
      * @hooked wc_no_products_found - 10
      */
-    do_action('woocommerce_no_products_found');
-}
+//    do_action('woocommerce_no_products_found');
+    ?>
+    <h2 class="text-center fw-bold fs-4 border rounded-3 border-info p-5 bg-white bg-opacity-10">محصولی یافت نشد</h2>
+<?php }
 
 /**
  * Hook: woocommerce_after_main_content.

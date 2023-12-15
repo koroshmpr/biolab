@@ -112,7 +112,6 @@ $args     = apply_filters( 'dokan_store_time_arguments', $args, $all_times );
             </div>
         </div>
     </div>
-
     <div class="dokan-form-group">
         <label class="dokan-w3 dokan-control-label" for="dokan_store_name"><?php esc_html_e( 'Store Name', 'dokan-lite' ); ?></label>
 
@@ -173,7 +172,39 @@ $args     = apply_filters( 'dokan_store_time_arguments', $args, $all_times );
             </div>
         </div>
     <?php endif; ?>
+<!--        add acf fields-->
+    <div class="dokan-form-group d-flex justify-content-center py-4">
+            <div>
 
+                <?php
+                // Get all ACF fields for the current user
+                $user_id = get_current_user_id();
+
+                // Check if the user has the 'seller' role
+                if (in_array('seller', get_userdata($user_id)->roles)) {
+                    // Get the ACF fields associated with the specified field group key
+                    $acf_fields = acf_get_fields('group_6543ee241ca11'); // Replace with your actual field group key
+
+                    // Loop through each ACF field and generate input fields
+                    if ($acf_fields) {
+                        foreach ($acf_fields as $field) {
+                            $field_value = get_field($field['name'], 'user_' . $user_id);
+
+                            ?>
+                            <div class="dokan-acf-field">
+                                <label for="<?php echo esc_attr($field['name']); ?>"><?php echo esc_html($field['label']); ?></label>
+                                <div class="acf-input">
+                                    <?php acf_render_field($field, $field_value, 'user_' . $user_id); ?>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                }
+                ?>
+
+            </div>
+        </div>
     <div class="dokan-form-group">
         <label class="dokan-w3 dokan-control-label"><?php esc_html_e( 'More products', 'dokan-lite' ); ?></label>
         <div class="dokan-w5 dokan-text-left">

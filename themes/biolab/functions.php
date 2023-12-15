@@ -330,7 +330,9 @@ add_action('pre_get_posts', 'modify_search_query');
 
 function load_more_posts_scripts() {
     global $wp_query; // Ensure that $wp_query is global
-    wp_enqueue_script('load-more-posts', get_template_directory_uri() . '/js/load-more-posts.js', array('jquery'), '1.0', true);
+//    wp_enqueue_script('load-more-posts', get_template_directory_uri() . '/js/load-more-posts.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('load-more-posts', get_template_directory_uri() . '/wp-content/themes/biolab/js/load-more-posts.js', array('jquery'), '1.0.1702627133', true);
+
     wp_localize_script('load-more-posts', 'load_more_params', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
         'posts' => json_encode($wp_query->query_vars),
@@ -363,70 +365,69 @@ add_action('wp_ajax_loadmore', 'load_more_posts_ajax_handler');
 add_action('wp_ajax_nopriv_loadmore', 'load_more_posts_ajax_handler');
 
 function custom_post_type_args( $args, $post_type ) {
-
     // Change 'project' to the slug of your custom post type
-
     if ( 'portfolio' === $post_type ) {
-
         // Set the with_front parameter to false
-
         $args['rewrite']['with_front'] = false;
-
     }
-
     if ( 'services' === $post_type ) {
-
         // Set the with_front parameter to false
-
         $args['rewrite']['with_front'] = false;
-
     }
-
     return $args;
-
 }
 
-//add_filter( 'register_post_type_args', 'custom_post_type_args', 10, 2 );
-//
-//register_post_type('vendor', array(
-//    'labels' => array(
-//        'name' => 'Vendors',
-//        'singular_name' => 'Vendor',
-//    ),
-//    'public' => true,
-//    'has_archive' => true,
-//    // Add other arguments as needed
-//));
-function delete_gallery_item() {
-    $attachment_id = $_POST['attachment_id'];
-    // Delete the attachment ID from the user meta
-    $user_gallery = get_user_meta(get_current_user_id(), 'gallery', true);
-    $user_gallery = array_diff($user_gallery, array($attachment_id));
-    update_user_meta(get_current_user_id(), 'gallery', $user_gallery);
+// Add this code to your theme's functions.php or in a custom plugin
 
-    wp_die();
+// Register custom REST API endpoint for catalog submissions
+function register_catalog_endpoint() {
+    register_rest_route('custom/v1', '/catalogues/', array(
+        'methods'  => 'POST',
+        'callback' => 'handle_catalog_submission',
+        'permission_callback' => function () {
+            return current_user_can('manage_options');
+        },
+    ));
 }
 
-function update_gallery_order() {
-    $gallery_order = $_POST['gallery_order'];
-    // Update the user meta with the new gallery order
-    update_user_meta(get_current_user_id(), 'gallery', $gallery_order);
+// Hook to register the custom REST API endpoint
+add_action('rest_api_init', 'register_catalog_endpoint');
 
-    wp_die();
-}
+// Callback function to handle catalog submissions
+function handle_catalog_submission($data) {
+    // Your submission handling logic here
+    // You can access form data using $data['name'], $data['pages'], etc.
 
+    // Example: Insert data into the database
+    global $wpdb;
 
-add_action('wp_ajax_upload_acf_gallery_item', 'upload_acf_gallery_item');
+    $table_name = $wpdb->prefix . 'vendors_catalogues';
 
-function upload_acf_gallery_item() {
-    $file = $_FILES['file'];
-    $field_key = $_POST['field_key'];
-    $user_id = $_POST['user_id'];
+    // Get form data
+    $key_value = uniqid(); // Generate a unique key
+    $name = sanitize_text_field($data['name']);
+    $pages = intval($data['pages']);
+    $cover = sanitize_text_field($data['cover']);
+    $catalogue = sanitize_text_field($data['catalogue']);
 
-    $attachment_id = acf_photo_gallery_upload_image($file, 'user_' . $user_id, $field_key);
+    // Insert data into the table
+    $wpdb->insert(
+        $table_name,
+        array(
+            'key_value' => $key_value,
+            'name' => $name,
+            'pages' => $pages,
+            'cover' => $cover,
+            'catalogue' => $catalogue,
+        ),
+        array('%s', '%s', '%d', '%s', '%s')
+    );
 
-    // Return the attachment ID
-    echo $attachment_id;
+    // You can customize the response based on your needs
+    $response = array(
+        'status' => 'success',
+        'message' => 'Catalog submitted successfully.',
+    );
 
-    wp_die();
+    return rest_ensure_response($response);
 }

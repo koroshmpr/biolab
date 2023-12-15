@@ -2,7 +2,7 @@
     <div class="container border-bottom border-white border-opacity-25 bg-primary text-white px-lg-3 pb-1 rounded-bottom">
         <div class="d-flex flex-nowrap align-items-center justify-content-between">
             <!--        brand and search bar -->
-            <div class="col-lg-3 col-11 d-flex align-items-center gap-3 justify-content-between">
+            <div class="col-lg-2 col-11 d-flex align-items-center gap-3 justify-content-between">
                 <!--            logo -->
                 <?php $sizeLogo = 'col-4 col-lg-12';
                 get_template_part('template-parts/logo-brand', null, array('sizeLogo' => $sizeLogo)); ?>
@@ -29,7 +29,7 @@
                 </svg>
             </button>
             <!--            menu-->
-            <div class="me-auto col-lg-5 navbar navbar-expand-lg d-none d-lg-grid justify-content-center">
+            <div class="me-auto col-lg-7 navbar navbar-expand-lg d-none d-lg-grid justify-content-center">
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <?php
                     $locations = get_nav_menu_locations();
@@ -100,10 +100,10 @@
                     <?php } else {
                         // User doesn't have one of the specified roles
                         // Show another button or content
-                        echo '<a href="/my-account/#sellerRadio" id="beSeller" class="btn py-0 px-1">فروشنده شوید</a>';
+                        echo '<a href="/vendor-login/" id="beSeller" class="btn py-0 px-1">فروشنده شوید</a>';
                     }
                 } else { ?>
-                    <a href="/my-account/#sellerRadio" id="beSeller" class="btn py-0 px-1">فروشنده شوید</a>
+                    <a href="/vendor-login/" id="beSeller" class="btn py-0 px-1">فروشنده شوید</a>
                              <?php } ?>
                 <div class="d-flex gap-2">
                     <?php

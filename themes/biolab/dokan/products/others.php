@@ -9,33 +9,38 @@
     </div>
 
     <div class="dokan-section-content">
-        <div class="dokan-form-group content-half-part">
-            <label for="post_status" class="form-label"><?php esc_html_e( 'Product Status', 'dokan-lite' ); ?></label>
-            <?php if ( $post_status !== 'pending' ) : ?>
-                <?php
-                $post_statuses = apply_filters(
-                    'dokan_post_status',
-                    [
-                        'publish' => __( 'Online', 'dokan-lite' ),
-                        'draft'   => __( 'Draft', 'dokan-lite' ),
-                    ],
-                    $post
-                );
-                ?>
+<!--        <div class="dokan-form-group content-half-part">-->
+<!--            <label for="post_status" class="form-label">--><?php //esc_html_e( 'Product Status', 'dokan-lite' ); ?><!--</label>-->
+<!---->
+<!--            --><?php
+//            if (isset($post_status) && in_array($post_status, ['publish', 'draft'])) :
+//                $post_statuses = apply_filters(
+//                    'dokan_post_status',
+//                    [
+//                        'publish' => __( 'Online', 'dokan-lite' ),
+//                        'draft'   => __( 'Draft', 'dokan-lite' ),
+//                    ],
+//                    $post
+//                );
+//                ?>
+<!---->
+<!--                <select id="post_status" class="dokan-form-control" name="post_status">-->
+<!--                    --><?php //foreach ($post_statuses as $status => $label) : ?>
+<!--                        <option value="--><?php //echo esc_attr($status); ?><!--" --><?php //selected($status, $post_status); ?><!---->
+<!--                            --><?php //echo esc_html($label); ?>
+<!--                        </option>-->
+<!--                    --><?php //endforeach; ?>
+<!--                </select>-->
+<!---->
+<!--            --><?php //else : ?>
+<!---->
+<!--                <span class="dokan-toggle-selected-display --><?php //echo 'pending' === $post_status ? 'dokan-label dokan-label-warning' : ''; ?><!--">-->
+<!--            --><?php //echo esc_html(dokan_get_post_status($post_status)); ?>
+<!--        </span>-->
+<!---->
+<!--            --><?php //endif; ?>
+<!--        </div>-->
 
-                <select id="post_status" class="dokan-form-control" name="post_status">
-                    <?php foreach ( $post_statuses as $status => $label ) : // phpcs:ignore ?>
-                        <option value="<?php echo esc_attr( $status ); ?>" <?php selected( $status, $post_status ); ?>>
-                            <?php echo esc_html( $label ); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            <?php else : ?>
-                <span class="dokan-toggle-selected-display <?php echo 'pending' === $post_status ? 'dokan-label dokan-label-warning' : ''; ?>">
-                    <?php echo esc_html( dokan_get_post_status( $post_status ) ); ?>
-                </span>
-            <?php endif; ?>
-        </div>
 
         <div class="dokan-form-group content-half-part">
             <label for="_visibility" class="form-label"><?php esc_html_e( 'Visibility', 'dokan-lite' ); ?></label>

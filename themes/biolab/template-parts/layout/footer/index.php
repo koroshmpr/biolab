@@ -20,7 +20,7 @@
                     </div>
 
                 </div>
-                <div class="py-4 d-flex">
+                <div class="py-4 d-flex justify-content-center justify-content-lg-start">
                     <div class="bg-white bg-opacity-10 p-2">
                         <?= get_field('license', 'option') ?? ''; ?>
                     </div>
