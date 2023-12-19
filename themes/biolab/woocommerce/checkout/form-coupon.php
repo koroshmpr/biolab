@@ -22,9 +22,9 @@ if (!wc_coupons_enabled()) { // @codingStandardsIgnoreLine.
 }
 
 ?>
-<div class="hero">
+<div>
     <div class="container">
-        <div class="min-vh-100 row align-items-center top-gap-shop">
+        <div class="min-vh-100 row align-items-center">
             <div class="d-flex justify-content-center border-bottom mb-4 border-info border-opacity-50">
                 <h1 class="display-2 fw-bold text-center pb-2 mb-0 border-bottom border-success border-2 text-white" data-aos="fade-left"><?= get_the_title(); ?></h1>
             </div>

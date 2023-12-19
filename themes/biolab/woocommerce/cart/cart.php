@@ -18,7 +18,6 @@
 defined('ABSPATH') || exit;
 
 do_action('woocommerce_before_cart'); ?>
-<section class="hero top-gap-shop min-vh-100">
     <div class="container text-primary">
         <div class="d-flex justify-content-center border-bottom mb-4 border-info border-opacity-50">
             <h1 class="display-2 fw-bold text-center pb-2 mb-0 border-bottom border-success border-2 text-white" data-aos="fade-left"><?= get_the_title(); ?></h1>
@@ -211,5 +210,4 @@ do_action('woocommerce_before_cart'); ?>
             </div>
         </div>
     </div>
-</section>
 <?php do_action('woocommerce_after_cart'); ?>

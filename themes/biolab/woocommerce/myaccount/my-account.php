@@ -35,5 +35,4 @@ do_action('woocommerce_account_navigation'); ?>
     ?>
 </div>
 </div>
-</div>
 </section>

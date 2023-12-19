@@ -20,9 +20,8 @@ defined('ABSPATH') || exit;
 /*
  * @hooked wc_empty_cart_message - 10
  */ ?>
-<div class="hero">
     <div class="container">
-        <div class="row align-items-lg-center text-white min-vh-lg-80">
+        <div class="row align-items-lg-center text-white gap-4">
             <?php do_action('woocommerce_cart_is_empty');
 
             if (wc_get_page_id('shop') > 0) : ?>
@@ -42,5 +41,4 @@ defined('ABSPATH') || exit;
             </p>
         </div>
     </div>
-</div>
 <?php endif; ?>

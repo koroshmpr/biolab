@@ -21,8 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 do_action( 'woocommerce_before_account_navigation' );
 ?>
-<section class="hero top-gap-shop min-vh-100">
-    <div class="container myaccount-wrapper">
+<section class="container myaccount-wrapper">
         <div class="row justify-content-center">
 <nav class="woocommerce-MyAccount-navigation w-100 row align-items-start justify-content-center p-lg-4 p-2 bg-white rounded-top-3">
 	<ul class="list-group px-5 flex-lg-row d-flex list-group-item list-group-item-action align-items-center border-0 border-bottom border-2 border-success ">

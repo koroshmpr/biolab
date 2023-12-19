@@ -28,7 +28,7 @@
                     $category_class = 'border border-success border-4';
                 }
                 ?>
-                <a class="swiper-slide" href="<?= esc_url(get_term_link($subcat, $subcat->taxonomy)); ?>" data-aos="fade-left"
+                <a class="w-auto swiper-slide" href="<?= esc_url(get_term_link($subcat, $subcat->taxonomy)); ?>" data-aos="fade-left"
                    data-aos-duration="<?= $i; ?>00">
                     <div class="image-square bg-white rounded-5 border border-1 border-info border-opacity-75">
                         <?php if (wp_get_attachment_url($thumbnail_id)) { ?>
@@ -41,7 +41,7 @@
                             </div>
                         <?php } ?>
                     </div>
-                    <h6 class="text-dark text-opacity-75 text-center mt-3 fs-6"
+                    <h6 class="<?= $args['textClass'] ?? 'text-dark'; ?> text-opacity-75 text-center mt-3 fs-6"
                         style="min-height: 50px;"><?= $subcat->name; ?></h6>
                 </a>
                 <?php

@@ -271,17 +271,17 @@ function save_acf_values($store_id, $dokan_settings) {
 
     // Add similar lines for other ACF fields if needed
 }
-function get_dashboard_nav( $menus ) {
-    $custom_menus = [
-        'custom_menu' => [
-            'title' => __( 'کاتالوگ ها', 'dokan-lite' ),
-            'icon'  => '<i class="fas fa-briefcase"></i>',
-            'url'   => dokan_get_navigation_url( 'custom_menu' ),
-            'pos'   => 50,
-        ],
-    ];
-
-    return array_merge( $menus, $custom_menus );
-}
-
-add_filter( 'dokan_get_dashboard_nav', 'get_dashboard_nav' );
+//function get_dashboard_nav( $menus ) {
+//    $custom_menus = [
+//        'custom_menu' => [
+//            'title' => __( 'کاتالوگ ها', 'dokan-lite' ),
+//            'icon'  => '<i class="fas fa-briefcase"></i>',
+//            'url'   => dokan_get_navigation_url( 'custom_menu' ),
+//            'pos'   => 50,
+//        ],
+//    ];
+//
+//    return array_merge( $menus, $custom_menus );
+//}
+//
+//add_filter( 'dokan_get_dashboard_nav', 'get_dashboard_nav' );

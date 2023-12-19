@@ -1,4 +1,4 @@
-<section class="container bg-secondary rounded-25 p-0">
+<section class="container bg-secondary rounded-25 p-0 overflow-hidden">
     <?php
     //    card
     ?>

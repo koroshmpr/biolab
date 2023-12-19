@@ -7,7 +7,7 @@
     <div class="offcanvas-body row gy-5 justify-content-center align-content-start bg-primary w-75 pe-0">
         <form class="pb-2 border-bottom border-info border-opacity-50 mt-5 position-relative mobile-search" method="get"
               action="<?php echo esc_url(home_url('/')); ?>">
-            <input id="search-form" type="search" name="s"
+            <input id="search-form-mobile" type="search" name="s"
                    class="btn ps-2 py-0 text-white text-opacity-75 border-0 text-start w-100 bg-transparent mobile-search"
                    placeholder="جستجوی محصول ..." aria-label="Search">
             <button type="submit"
@@ -59,7 +59,7 @@
                                     <img class="col-1 w-auto pe-0" width="30" height="30" src="<?= $icon['url']; ?>" alt="<?= $icon['title']; ?>">
                                 <?php } ?>
                                 <a href="<?= esc_url(get_term_link($subcat, $subcat->taxonomy)); ?>"
-                                   class="fs-6 text-white col">
+                                   class="small text-white col">
                                     <?= $subcat->name; ?>
                                 </a>
                             </li>

@@ -15,12 +15,15 @@
 <div class="col-11 col-lg-12 category-dropdown dropdown-menu container mt-n2 py-0 overflow-hidden"
      aria-labelledby="dropdownMenuButton">
     <?php
+    $excluded_category_id = 16;
     $children = get_categories(array(
         'taxonomy' => 'product_cat',
         'orderby' => 'name',
         'pad_counts' => false,
         'hierarchical' => 1,
-        'hide_empty' => true
+        'hide_empty' => true,
+        'exclude' => $excluded_category_id,
+        'parent' => false
     )); ?>
     <div class="container">
         <div class="row justify-content-start">
@@ -46,48 +49,100 @@
             <div class="col-lg-9 tab-content p-3 overflow-scroll">
                 <?php
                 foreach ($children as $key => $subcat) {
-                $thumbnail_id = get_term_meta($subcat->term_id, 'thumbnail_id', true); ?>
-                <article class="tab-pane fade <?= $key == 1 ? 'show active' : ''; ?>"
-                         id="category_tab<?= $key; ?>">
-                    <?php
-                    $args = array(
-                        'post_type' => 'product',
-                        'post_status' => 'publish',
-                        'ignore_sticky_posts' => 1,
-                        'posts_per_page' => '12',
-                        'tax_query' => array(
-                            array(
-                                'taxonomy' => 'product_cat',
-                                'field' => 'term_id',
-                                'terms' => $subcat->term_taxonomy_id,
-                                'operator' => 'IN'
+                    $thumbnail_id = get_term_meta($subcat->term_id, 'thumbnail_id', true); ?>
+                    <article class="tab-pane fade <?= $key == 1 ? 'show active' : ''; ?>"
+                             id="category_tab<?= $key; ?>">
+                        <?php
+                        // Loop for products
+                        $args = array(
+                            'post_type' => 'product',
+                            'post_status' => 'publish',
+                            'ignore_sticky_posts' => 1,
+                            'posts_per_page' => '12',
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'product_cat',
+                                    'field' => 'term_id',
+                                    'terms' => $subcat->term_taxonomy_id,
+                                    'operator' => 'IN'
+                                )
                             )
-                        )
-                    );
-                    $loop = new WP_Query($args); ?>
-                    <div class="mb-lg-3 mb-4 border-start border-3 border-success ps-2 bg-info bg-opacity-10 text-dark text-opacity-50"><?= $subcat->name; ?></div>
-                    <div class="row row-cols-2 row-cols-lg-6">
+                        );
+                        $loop = new WP_Query($args); ?>
+                        <div class="mb-lg-2 mb-3 border-start border-3 border-success ps-2 bg-info bg-opacity-10 text-dark text-opacity-50"><?= $subcat->name; ?></div>
+                        <div class="row row-cols-2 row-cols-lg-6 ps-3 align-items-center">
+                            <?php
+                            if ($loop->have_posts()) {
+                                while ($loop->have_posts()) : $loop->the_post(); ?>
+                                    <a class="p-2 hover_text-primary" href="<?php the_permalink(); ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                <?php endwhile;
+                                if (wp_get_attachment_url($thumbnail_id)) { ?>
+                                    <img class="position-absolute end-0 top-0 opacity-25 object-fit col-5 col-lg-2"
+                                         src="<?= wp_get_attachment_url($thumbnail_id); ?>"
+                                         alt="<?= $subcat->name; ?>">
+                                <?php }
+                            }
+                            wp_reset_postdata();
+                            ?>
+                        </div>
 
                         <?php
+                        // Loop for subcategories of subcategories
+                        $sub_subcategories = get_categories(array(
+                            'taxonomy' => 'product_cat',
+                            'orderby' => 'name',
+                            'parent' => $subcat->term_id,
+                            'hide_empty' => false,
+                        ));
 
-                        if ($loop->have_posts()) {
-                        while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <a class="p-2 hover_text-primary" href="<?php the_permalink(); ?>">
-                                <?php the_title(); ?>
-                            </a>
-                        <?php endwhile;
-                        if (wp_get_attachment_url($thumbnail_id)) { ?>
-                            <img class="position-absolute end-0 top-0 opacity-25 object-fit col-5 col-lg-2"
-                                 src="<?= wp_get_attachment_url($thumbnail_id); ?>"
-                                 alt="<?= $subcat->name; ?>">
-                        <?php } }
-                        wp_reset_postdata();
+                        if ($sub_subcategories) {
+                            echo '<div class="">';
+                            foreach ($sub_subcategories as $sub_subcat) {
+                                $thumbnail_id_sub = get_term_meta($sub_subcat->term_id, 'thumbnail_id', true);
+                                ?>
+                                <div class="mb-lg-3 mb-4 border-start border-3 border-success ps-2 bg-info bg-opacity-10 text-dark text-opacity-50"><?= $sub_subcat->name; ?></div>
+                                <div class="ps-3 row row-cols-2 row-cols-lg-6 align-items-center">
+                                    <?php
+                                    // Loop for products of subcategories of subcategories
+                                    $args_sub = array(
+                                        'post_type' => 'product',
+                                        'post_status' => 'publish',
+                                        'ignore_sticky_posts' => 1,
+                                        'posts_per_page' => '12',
+                                        'tax_query' => array(
+                                            array(
+                                                'taxonomy' => 'product_cat',
+                                                'field' => 'term_id',
+                                                'terms' => $sub_subcat->term_taxonomy_id,
+                                                'operator' => 'IN'
+                                            )
+                                        )
+                                    );
+                                    $loop_sub = new WP_Query($args_sub);
+                                    if ($loop_sub->have_posts()) {
+                                        while ($loop_sub->have_posts()) : $loop_sub->the_post(); ?>
+                                            <a class="p-2 hover_text-primary" href="<?php the_permalink(); ?>">
+                                                <?php the_title(); ?>
+                                            </a>
+                                        <?php endwhile;
+                                        if (wp_get_attachment_url($thumbnail_id_sub)) { ?>
+                                            <img class="position-absolute end-0 top-0 opacity-25 object-fit col-5 col-lg-2"
+                                                 src="<?= wp_get_attachment_url($thumbnail_id_sub); ?>"
+                                                 alt="<?= $sub_subcat->name; ?>">
+                                        <?php }
+                                    }
+                                    wp_reset_postdata();
+                                    ?>
+                                </div>
+                            <?php }
+                            echo '</div>';
+                        }
                         ?>
-                    </div>
-                </article>
-            <?php } ?>
+                    </article>
+                <?php } ?>
             </div>
         </div>
     </div>
-
 </div>

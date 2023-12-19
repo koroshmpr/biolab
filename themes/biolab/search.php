@@ -1,8 +1,12 @@
 <?php get_header(); ?>
 
-<section class="container-fluid">
-    <div class="bg-primary row top-gap-shop">
-        <div class="col-lg-6 col-11 mx-auto pb-3">
+<section class="container-fluid top-gap-shop hero min-vh-lg-80">
+    <div class="row">
+        <div class="text-white d-grid column-gap-3 d-lg-flex align-items-center justify-content-center">
+            نتیجه جستجو برای :
+            <h1 class="fw-bold ms-3 mt-3 mt-lg-0"> <?= the_search_query(); ?> </h1>
+        </div>
+        <div class="col-lg-6 col-11 mx-auto py-3">
             <?php
             $place = 'search-page';
             $sizeSearch = 'col';
@@ -20,12 +24,8 @@
             );
             get_template_part('template-parts/search-bar', null, $args); ?>
         </div>
-        <div class="text-primary d-grid column-gap-3 d-lg-flex align-items-center justify-content-center">
-            نتیجه جستجو برای :
-            <h1 class="fw-bold ms-3 mt-3 mt-lg-0"> <?= the_search_query(); ?> </h1>
-        </div>
     </div>
-    <h2 class="py-5 text-white text-center border-bottom border-2 border-primary bg-secondary border-opacity-50 rounded-bottom-3">
+    <h2 class="py-5 text-white text-center">
         <?php
         // Get the selected post type from the URL query parameters
         $post_type = isset($_GET['post_type']) ? sanitize_text_field($_GET['post_type']) : '';
@@ -38,7 +38,7 @@
             echo ' نتایج جستجو کلی';
         }
         ?> </h2>
-    <div class="container">
+    <div class="container border border-info border-opacity-50 rounded-3 p-lg-4 p-2">
         <?php
         // Create a new WP_Query for the current post type (if filter is applied)
         $args = array(

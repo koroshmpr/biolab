@@ -1,4 +1,4 @@
-<div id="dokan-secondary" class="dokan-store-sidebar order-last ps-3 me-0" role="complementary">
+<div id="dokan-secondary" class="dokan-store-sidebar order-last ps-3 pt-3 pt-lg-0 me-0" role="complementary">
     <?php if ( dokan_get_option( 'enable_theme_store_sidebar', 'dokan_appearance', 'off' ) === 'off' ) { ?>
 
         <div class="dokan-widget-area widget-collapse">

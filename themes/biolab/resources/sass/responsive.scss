@@ -22,6 +22,9 @@
   }
 }
 @include media-breakpoint-down(lg) {
+  .text-sm-primary {
+    color: $primary!important;
+  }
   .-overflow-x-scroll {
     overflow-x:scroll;
   }

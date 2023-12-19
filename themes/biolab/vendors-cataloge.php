@@ -6,14 +6,15 @@
 get_header();
 
 ?>
+
 <section class="hero top-gap-shop min-vh-lg-80">
     <div class="container">
         <div class="d-flex justify-content-center">
             <?php if (!empty($success_message)) : ?>
                 <div class="alert alert-success" id="success-message"><?php echo esc_html($success_message); ?></div>
             <?php endif; ?>
-            <form action="" class="bg-white rounded-3 p-4 row justify-content-center gy-2 col-lg-4 col-11" id="catalog-form">
 
+            <form action="<?php echo admin_url('admin-post.php?action=handle_catalog_submission'); ?>" method="post" enctype="multipart/form-data" class="bg-white rounded-3 p-4 row justify-content-center gy-2 col-lg-4 col-11">
                 <!-- Add Nonce Field -->
                 <?php wp_nonce_field('catalog_form_nonce', 'catalog_nonce'); ?>
 
@@ -21,41 +22,45 @@ get_header();
                 <label for="name">نام کاتالوگ:</label>
                 <input type="text" id="name" name="name" required>
                 <br>
+
                 <!-- Pages Input -->
                 <label for="pages">تعداد صفحات:</label>
                 <input type="number" id="pages" name="pages" required>
                 <br>
+
                 <!-- Cover Input -->
                 <label for="cover">کاور:</label>
                 <input type="file" id="cover" name="cover" accept="image/*">
                 <br>
+
                 <!-- Catalogue Input -->
                 <label for="catalogue">فایل کاتالوگ:</label>
                 <input type="file" id="catalogue" name="catalogue" accept=".pdf, .doc, .docx">
                 <br>
+
                 <!-- Submit Button -->
-                <button class="btn btn-success py-1 col-6" type="button" onclick="submitForm()">
+                <button class="btn btn-success py-1 col-6" type="submit">>
                     ثبت
                 </button>
             </form>
+
             <script>
                 function submitForm() {
                     // Get form data using FormData
                     const formData = new FormData(document.getElementById('catalog-form'));
-
-                    // Log form data to console
-                    for (var pair of formData.entries()) {
-                        console.log(pair[0] + ', ' + pair[1]);
-                    }
 
                     // Get the nonce value
                     const nonce = document.getElementById('catalog_nonce').value;
 
                     // AJAX request to WordPress REST API
                     jQuery.ajax({
-                        url: '/wp-json/custom/v1/catalogues/',
+                        url: ajax_object.ajax_url,
                         type: 'POST',
-                        data: formData,
+                        data: {
+                            action: 'handle_catalog_submission',
+                            nonce: nonce,
+                            formData: formData
+                        },
                         contentType: false,
                         processData: false,
                         beforeSend: function(xhr) {
@@ -72,7 +77,6 @@ get_header();
                     });
                 }
             </script>
-
         </div>
     </div>
 </section>

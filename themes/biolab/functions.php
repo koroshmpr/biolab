@@ -21,12 +21,18 @@ function theme_scripts()
     // Add preload attributes to the enqueued font
     wp_style_add_data('font', 'preload', true);
     wp_style_add_data('font', 'as', 'font');
+
+    // Pass variables to script
     wp_enqueue_style('style', get_stylesheet_directory_uri() . '/public/css/style.css', array(), true);
     wp_enqueue_script('main-js', get_template_directory_uri() . '/public/js/app.js', array(), true);
+
+    wp_localize_script('main-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+
     wp_localize_script('main-js', 'jsData', array('root_url' => get_site_url(), 'nonce' => wp_create_nonce('my-nonce')));
 }
 
 add_action('wp_enqueue_scripts', 'theme_scripts');
+
 add_theme_support('title-tag');
 add_theme_support('post-thumbnails');
 /** * Sets up theme defaults and registers support for various WordPress features. * * Note that this function is hooked into the after_setup_theme hook, which * runs before the init hook. The init hook is too late for some features, such * as indicating support for post thumbnails. */
@@ -393,41 +399,51 @@ function register_catalog_endpoint() {
 // Hook to register the custom REST API endpoint
 add_action('rest_api_init', 'register_catalog_endpoint');
 
-// Callback function to handle catalog submissions
-function handle_catalog_submission($data) {
-    // Your submission handling logic here
-    // You can access form data using $data['name'], $data['pages'], etc.
+function handle_catalog_submission_action() {
+    check_admin_referer('catalog_form_nonce', 'catalog_nonce');
 
-    // Example: Insert data into the database
-    global $wpdb;
+    // Process form data
+    if (isset($_POST['name'], $_POST['pages'])) {
+        // Get form data
+        $key_value = uniqid(); // Generate a unique key
+        $name = sanitize_text_field($_POST['name']);
+        $pages = intval($_POST['pages']);
 
-    $table_name = $wpdb->prefix . 'vendors_catalogues';
+        // Process and save the cover and catalogue files as needed
+        $cover = ''; // Placeholder for cover image URL
+        $catalogue = ''; // Placeholder for catalogue file URL
 
-    // Get form data
-    $key_value = uniqid(); // Generate a unique key
-    $name = sanitize_text_field($data['name']);
-    $pages = intval($data['pages']);
-    $cover = sanitize_text_field($data['cover']);
-    $catalogue = sanitize_text_field($data['catalogue']);
+        if (isset($_FILES['cover']) && !empty($_FILES['cover']['tmp_name'])) {
+            $cover_file = $_FILES['cover'];
+            $cover = sanitize_text_field(wp_upload_bits($cover_file['name'], null, file_get_contents($cover_file['tmp_name']))['url']);
+        }
 
-    // Insert data into the table
-    $wpdb->insert(
-        $table_name,
-        array(
-            'key_value' => $key_value,
-            'name' => $name,
-            'pages' => $pages,
-            'cover' => $cover,
-            'catalogue' => $catalogue,
-        ),
-        array('%s', '%s', '%d', '%s', '%s')
-    );
+        if (isset($_FILES['catalogue']) && !empty($_FILES['catalogue']['tmp_name'])) {
+            $catalogue_file = $_FILES['catalogue'];
+            $catalogue = sanitize_text_field(wp_upload_bits($catalogue_file['name'], null, file_get_contents($catalogue_file['tmp_name']))['url']);
+        }
 
-    // You can customize the response based on your needs
-    $response = array(
-        'status' => 'success',
-        'message' => 'Catalog submitted successfully.',
-    );
+        // Insert data into the database or perform necessary actions
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'vendors_catalogues';
 
-    return rest_ensure_response($response);
+        $wpdb->insert(
+            $table_name,
+            array(
+                'key_value' => $key_value,
+                'name' => $name,
+                'pages' => $pages,
+                'cover' => $cover,
+                'catalogue' => $catalogue,
+            ),
+            array('%s', '%s', '%d', '%s', '%s')
+        );
+        echo 'با موفقیت ثبت شد';
+    } else {
+        // Handle form validation errors or provide feedback
+        wp_die('Form data is missing or invalid.');
+    }
 }
+
+add_action('admin_post_handle_catalog_submission', 'handle_catalog_submission_action');
+add_action('admin_post_nopriv_handle_catalog_submission', 'handle_catalog_submission_action');

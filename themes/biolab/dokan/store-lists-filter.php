@@ -18,7 +18,7 @@
 defined('ABSPATH') || exit; ?>
 
 <?php do_action('dokan_before_store_lists_filter', $stores); ?>
-<section class="hero top-gap-shop" style="min-height: 90vh">
+<section class="min-vh-lg-80">
     <div class="container">
         <div id="dokan-store-listing-filter-wrap" class="bg-success shadow-sm text-white bg-opacity-10 mb-5 rounded-2">
             <?php do_action('dokan_before_store_lists_filter_left', $stores); ?>

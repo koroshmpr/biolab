@@ -160,7 +160,7 @@
         </div>
     </div>
     <div class="d-flex mt-3 align-items-center gap-3">
-        <?php get_template_part('template-parts/layout/header/megaMenu-product'); ?>
+        <?php get_template_part('template-parts/layout/header/megaMenu-cat'); ?>
         <nav class="">
             <?php
             $locations = get_nav_menu_locations();

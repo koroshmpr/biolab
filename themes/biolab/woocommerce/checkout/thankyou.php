@@ -20,9 +20,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="woocommerce-order hero top-gap-shop">
-    <div class="container">
-
+<section class="woocommerce-order container">
 	<?php
 	if ( $order ) :
 
@@ -87,5 +85,4 @@ defined( 'ABSPATH' ) || exit;
 		<?php wc_get_template( 'checkout/order-received.php', array( 'order' => false ) ); ?>
 
 	<?php endif; ?>
-    </div>
-</div>
+</section>

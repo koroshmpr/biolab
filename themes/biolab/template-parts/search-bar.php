@@ -1,4 +1,4 @@
-<form class="p-2 bg-white rounded-5 shadow-sm" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+<form class="p-2 bg-white rounded-5 shadow-sm col-lg-10" method="get" action="<?php echo esc_url(home_url('/')); ?>">
     <div class="input-group d-flex gap-lg-3 align-items-center justify-content-center">
         <input <?= $args['inputValue'] ? 'value="' . $args['inputValue'] . '"' : ' '; ?> id="search-form" type="search" name="s" class="btn p-0 ps-2 col-5 col-md-5 text-primary text-start" placeholder="دنبال چه چیزی هستید؟" aria-label="Search">
         <button type="button" class="btn border-0 pe-0 text-dark border-start d-flex align-items-center py-0 ps-3 col-3 col-md-3 justify-content-center" data-bs-toggle="dropdown" aria-expanded="false">
