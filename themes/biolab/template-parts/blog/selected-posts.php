@@ -1,6 +1,6 @@
 <section class="container py-3">
     <div class="d-flex mb-3 justify-content-between border-bottom border-2 border-info border-opacity-75">
-        <h4 class="mb-0 pb-3 fs-4 border-bottom border-success border-3 fw-bold">منتخب بایولب</h4>
+        <h4 class="mb-0 pb-3 fs-4 border-bottom border-success border-3 fw-bold">منتخب بایوتکنولب</h4>
         <a class="btn btn-arrow text-dark" href="">مشاهده همه</a>
     </div>
     <div class="row row-cols-lg-4 g-3 row-cols-1 pt-3 pt-lg-0 pb-5 justify-content-lg-between justify-content-center">

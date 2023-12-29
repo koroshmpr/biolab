@@ -20,7 +20,7 @@ defined('ABSPATH') || exit; ?>
 <?php do_action('dokan_before_store_lists_filter', $stores); ?>
 <section class="min-vh-lg-80">
     <div class="container">
-        <div id="dokan-store-listing-filter-wrap" class="bg-success shadow-sm text-white bg-opacity-10 mb-5 rounded-2">
+        <div id="dokan-store-listing-filter-wrap" class="bg-white shadow-sm text-white bg-opacity-10 mb-5 rounded-2">
             <?php do_action('dokan_before_store_lists_filter_left', $stores); ?>
             <div class="left">
                 <p class="item store-count fs-5">
@@ -46,9 +46,9 @@ defined('ABSPATH') || exit; ?>
                 </div>
 
                 <form name="stores_sorting" class="sort-by item" method="get">
-                    <label class="pe-3"><?php esc_html_e('Sort by', 'dokan-lite'); ?>:</label>
+                    <label class="px-3"><?php esc_html_e('Sort by', 'dokan-lite'); ?>:</label>
 
-                    <select name="stores_orderby" id="stores_orderby"
+                    <select class="p-1 text-center" name="stores_orderby" id="stores_orderby"
                             aria-label="<?php esc_html_e('Sort by', 'dokan-lite'); ?>">
                         <?php
                         foreach ($sort_filters as $key => $filter) {

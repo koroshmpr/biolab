@@ -166,8 +166,8 @@ while (have_posts()) :
                              alt="<?= the_title(); ?>"/>
                     </div>
                     <!--                content-->
-                    <article class="pt-5 text-justify post-content">
-                        <?= the_content(); ?>
+                    <article class="pt-5 post-content">
+                        <?php the_content(); ?>
                         <div class="pb-3" id="share-section"></div>
                     </article>
                     <!--                rating-->

@@ -56,7 +56,7 @@
                             ?>
                             <li class="row pe-0 gap-2 ps-4 py-2 border-bottom border-info border-opacity-25 align-items-center">
                                 <?php if ($icon) { ?>
-                                    <img class="col-1 w-auto pe-0" width="30" height="30" src="<?= $icon['url']; ?>" alt="<?= $icon['title']; ?>">
+                                    <img class="col-2 pe-0" width="30" height="30" src="<?= $icon['url']; ?>" alt="<?= $icon['title']; ?>">
                                 <?php } ?>
                                 <a href="<?= esc_url(get_term_link($subcat, $subcat->taxonomy)); ?>"
                                    class="small text-white col">

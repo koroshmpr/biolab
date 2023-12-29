@@ -12,7 +12,7 @@
  */
 ?>
 
-<div class="dokan-vendor-info-wrap  border-0 border-start border-2 border-white ps-2 py-0 w-100">
+<div class="dokan-vendor-info-wrap border-0 border-start border-2 border-white ps-2 py-0 w-100">
     <div class="dokan-vendor-image">
         <img src="<?php echo esc_url( $vendor->get_avatar() ); ?>" alt="<?php echo esc_attr( $store_info['store_name'] ); ?>">
     </div>

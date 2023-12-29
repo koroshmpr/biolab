@@ -66,7 +66,7 @@ $wrapper_classes = apply_filters(
                 // Output the first slide with the image
                 ?>
                 <div class="swiper-slide">
-                    <img class="img-fluid rounded-4 m-0 shadow w-100" height="450" src="<?= $image_url; ?>"
+                    <img class="img-fluid rounded-4 m-0 shadow w-100 bg-white" height="450" src="<?= $image_url; ?>"
                          alt="<?php echo esc_attr__('Product Image', 'woocommerce'); ?>"/>
                     <button class="product__image btn position-absolute bottom-0 end-0 me-lg-3 me-2 mb-2"
                             type="button" data-bs-toggle="modal" data-bs-target="#myModal"
@@ -87,7 +87,7 @@ $wrapper_classes = apply_filters(
                     $image_url = wp_get_attachment_url($image_id);
                     ?>
                     <div class="swiper-slide" data-image-id="<?php echo esc_attr($image_id); ?>">
-                        <img class="img-fluid rounded-4 m-0 shadow" height="450" src="<?php echo esc_url($image_url); ?>"
+                        <img class="img-fluid rounded-4 m-0 shadow bg-white" height="450" src="<?php echo esc_url($image_url); ?>"
                              alt="<?php echo esc_attr__('Product Image', 'woocommerce'); ?>"/>
                         <button class="product__image btn position-absolute bottom-0 end-0 me-lg-3 me-2 mb-2"
                                 type="button" data-bs-toggle="modal" data-bs-target="#myModal"

@@ -6,7 +6,7 @@
             نتیجه جستجو برای :
             <h1 class="fw-bold ms-3 mt-3 mt-lg-0"> <?= the_search_query(); ?> </h1>
         </div>
-        <div class="col-lg-6 col-11 mx-auto py-3">
+        <div class="col-lg-6 col-11 mx-auto py-3 d-flex justify-content-center">
             <?php
             $place = 'search-page';
             $sizeSearch = 'col';
@@ -47,7 +47,7 @@
         );
         $post_type_query = new WP_Query($args);
         if ($post_type_query->have_posts()) {
-            echo '<div class="d-flex row-cols-xl-6 row-cols-costume row-cols-md-3 flex-wrap gap-3 flex-nowrap overflow-x-lg-scroll">';
+            echo '<div class="d-flex row-cols-xl-4 row-cols-costume row-cols-md-3 flex-wrap gap-2 flex-wrap justify-content-between overflow-x-lg-scroll">';
 
             while ($post_type_query->have_posts()) {
                 $post_type_query->the_post();

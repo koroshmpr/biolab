@@ -9,7 +9,7 @@ function extra_fields($current_user, $profile_info)
     $technical_manager = $profile_info['technical_manager'] ?? '';
     $registration_number = $profile_info['registration_number'] ?? '';
     $company_type = $profile_info['company_type'] ?? '';
-    $vendor_video = $profile_info['vendor_video'] ?? '';
+//    $vendor_video = $profile_info['vendor_video'] ?? '';
 
     ?>
     <div class="gregcustom dokan-form-group">
@@ -50,21 +50,21 @@ function extra_fields($current_user, $profile_info)
                    value="<?php echo $company_type; ?>"/>
         </div>
     </div>
-    <div class="gregcustom dokan-form-group">
-        <label class="dokan-w3 dokan-control-label" for="vendor_video">
-            <?php _e('ویدیو', 'dokan'); ?>
-        </label>
-        <div class="dokan-w5">
-            <input type="file" name="vendor_video" id="vendor_video" accept="video/*"/>
-            <?php if ($vendor_video) : ?>
-                <p><?php _e('Current Video:', 'dokan'); ?></p>
-                <video width="320" height="240" controls>
-                    <source src="<?php echo esc_url($vendor_video); ?>" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            <?php endif; ?>
-        </div>
-    </div>
+<!--    <div class="gregcustom dokan-form-group">-->
+<!--        <label class="dokan-w3 dokan-control-label" for="vendor_video">-->
+<!--            --><?php //_e('ویدیو', 'dokan'); ?>
+<!--        </label>-->
+<!--        <div class="dokan-w5">-->
+<!--            <input type="file" name="vendor_video" id="vendor_video" accept="video/*"/>-->
+<!--            --><?php //if ($vendor_video) : ?>
+<!--                <p>--><?php //_e('Current Video:', 'dokan'); ?><!--</p>-->
+<!--                <video width="320" height="240" controls>-->
+<!--                    <source src="--><?php //echo esc_url($vendor_video); ?><!--" type="video/mp4">-->
+<!--                    Your browser does not support the video tag.-->
+<!--                </video>-->
+<!--            --><?php //endif; ?>
+<!--        </div>-->
+<!--    </div>-->
     <?php
 }
 
@@ -90,17 +90,17 @@ function save_extra_fields($store_id)
     if (isset($_POST['registration_number'])) {
         $dokan_settings['registration_number'] = sanitize_text_field($_POST['registration_number']);
     }
-    if (isset($_FILES['vendor_video']) && !empty($_FILES['vendor_video']['name'])) {
-        $video_url = dokan_media_handle_upload('vendor_video', 0);
-
-        if (!is_wp_error($video_url)) {
-            // Video uploaded successfully, update the user meta
-            $dokan_settings['vendor_video'] = esc_url($video_url);
-        } else {
-            // Display the upload error
-            echo 'Video Upload Error: ' . $video_url->get_error_message();
-        }
-    }
+//    if (isset($_FILES['vendor_video']) && !empty($_FILES['vendor_video']['name'])) {
+//        $video_url = dokan_media_handle_upload('vendor_video', 0);
+//
+//        if (!is_wp_error($video_url)) {
+//            // Video uploaded successfully, update the user meta
+//            $dokan_settings['vendor_video'] = esc_url($video_url);
+//        } else {
+//            // Display the upload error
+//            echo 'Video Upload Error: ' . $video_url->get_error_message();
+//        }
+//    }
 
     update_user_meta($store_id, 'dokan_profile_settings', $dokan_settings);
 }
@@ -136,14 +136,14 @@ function save_seller_info($store_user)
         echo '<br>';
     }
     // Check if vendor_video is set and not empty
-    if (isset($store_info['vendor_video']) && !empty($store_info['vendor_video'])) {
-        echo '<p>Vendor Video:</p>';
-        echo '<video width="320" height="240" controls>';
-        echo '<source src="' . esc_url($store_info['vendor_video']) . '" type="video/mp4">';
-        echo 'Your browser does not support the video tag.';
-        echo '</video>';
-        echo '<br>';
-    }
+//    if (isset($store_info['vendor_video']) && !empty($store_info['vendor_video'])) {
+//        echo '<p>Vendor Video:</p>';
+//        echo '<video width="320" height="240" controls>';
+//        echo '<source src="' . esc_url($store_info['vendor_video']) . '" type="video/mp4">';
+//        echo 'Your browser does not support the video tag.';
+//        echo '</video>';
+//        echo '<br>';
+//    }
 }
 
 function count_product_vendors_shortcode()

@@ -2,7 +2,7 @@ require('./bootstrap');
 import $ from "jquery";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import 'swiper/css';
+// import 'swiper/css';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import Search from "./search";
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     });
-    const search = new Search();
+    // const search = new Search();
     AOS.init();
     let backToTop = document.getElementById("backToTop");
     if (backToTop) {

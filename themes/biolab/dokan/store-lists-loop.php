@@ -1,7 +1,7 @@
 <div id="dokan-seller-listing-wrap" class="grid-view">
     <div class="seller-listing-content">
         <?php if ($sellers['users']) : ?>
-            <ul class="dokan-seller-wrap d-flex">
+            <ul class="dokan-seller-wrap d-lg-flex flex-wrap">
                 <?php
                 foreach ($sellers['users'] as $seller) {
                     $vendor = dokan()->vendor->get($seller->ID);
@@ -48,7 +48,7 @@
                                         <?php } ?>
                                     <?php endif ?>
 
-                                    <div class="store-data <?php echo esc_attr($store_open_is_on); ?>">
+                                    <div class="ps-3 store-data <?php echo esc_attr($store_open_is_on); ?>">
                                         <h2>
                                             <a href="<?php echo esc_attr($store_url); ?>"><?php echo esc_html($store_name); ?></a> <?php apply_filters('dokan_store_list_loop_after_store_name', $vendor); ?>
                                         </h2>
@@ -109,7 +109,7 @@
                                 </div>
                                 <a href="<?php echo esc_url($store_url); ?>"
                                    title="<?php esc_attr_e('Visit Store', 'dokan-lite'); ?>">
-                                    <span class="dashicons btn-success border-0 dashicons-arrow-right-alt2 dokan-btn-theme dokan-btn-round"></span>
+                                    <span class="dashicons btn-success border-0 dashicons-arrow-left-alt2 dokan-btn-theme dokan-btn-round"></span>
                                 </a>
                                 <?php do_action('dokan_seller_listing_footer_content', $seller, $store_info); ?>
                             </div>
