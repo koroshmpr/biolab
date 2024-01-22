@@ -82,7 +82,7 @@
 }
 
 body:not(.dokan-dashboard) {
-  input:not(#search-form):not(#search-form-mobile), textarea {
+  input:not(#search-form):not(#search-form-mobile):not(.qty):not(#coupon_code), textarea {
     transition: all 0.3s ease-out !important;
     border: 1px solid #80808040 !important;
     border-radius: 15px !important;

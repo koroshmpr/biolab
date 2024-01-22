@@ -14,21 +14,25 @@
             $buttonClass = "px-4";
             $dropdownClass = 'px-3';
             $inputValue = esc_attr(get_search_query());
+            $selectedPostType = isset($_GET['post_type']) ? sanitize_text_field($_GET['post_type']) : ''; // Get selected post type from query parameter
+
             $args = array(
                 'inputValue' => $inputValue,
                 'place' => $place,
                 'size' => $sizeSearch,
                 'inputClass' => $inputClass,
                 'buttonClass' => $buttonClass,
-                'dropdownClass' => $dropdownClass
+                'dropdownClass' => $dropdownClass,
+                'selectedPostType' => $selectedPostType,
             );
-            get_template_part('template-parts/search-bar', null, $args); ?>
+            get_template_part('template-parts/search-bar', null, $args);
+            ?>
         </div>
     </div>
     <h2 class="py-5 text-white text-center">
         <?php
         // Get the selected post type from the URL query parameters
-        $post_type = isset($_GET['post_type']) ? sanitize_text_field($_GET['post_type']) : '';
+        $post_type = $selectedPostType; // Use selected post type if available
         // Check if a post type filter is applied
         if (!empty($post_type)) {
             $post_type_info = get_post_type_object($post_type);
@@ -45,20 +49,34 @@
             'post_type' => $post_type ? $post_type : array('post', 'product'),
             's' => get_search_query(),
         );
+
         $post_type_query = new WP_Query($args);
         if ($post_type_query->have_posts()) {
-            echo '<div class="d-flex row-cols-xl-4 row-cols-costume row-cols-md-3 flex-wrap gap-2 flex-wrap justify-content-between overflow-x-lg-scroll">';
+            echo '<div class="row row-cols-xl-5 row-cols-costume row-cols-md-3 justify-content-center justify-content-lg-between overflow-x-lg-scroll">';
 
             while ($post_type_query->have_posts()) {
                 $post_type_query->the_post();
                 $current_post_type = get_post_type();
-                if ($current_post_type == 'product') {
-                    get_template_part('template-parts/products/product-card');
-                } elseif ($current_post_type == 'post') {
-                    get_template_part('template-parts/blog/noimage-card');
-                } elseif ($current_post_type == 'portfolio') {
-                    get_template_part('template-parts/portfolio/portfolio-card');
-                }
+                if ($current_post_type == 'product') { ?>
+                    <article class="p-2">
+                        <?php get_template_part('template-parts/products/product-card'); ?>
+                    </article>
+                <?php } elseif ($current_post_type == 'post') { ?>
+                    <article class="p-2">
+                        <?php
+                        $styleBg = '#F9FBFA';
+                        $bgColor = ' ';
+                        $args = array(
+                            'style-bg' => $styleBg,
+                            'bgColor' => $bgColor,
+                        );
+                        get_template_part('template-parts/blog/noimage-card', null, $args); ?>
+                    </article>
+                <?php } elseif ($current_post_type == 'portfolio') { ?>
+                    <article class="p-2">
+                        <?php get_template_part('template-parts/portfolio/portfolio-card'); ?>
+                    </article>
+                <?php }
             }
             echo '</div>';
         } else {

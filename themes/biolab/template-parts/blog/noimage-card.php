@@ -33,7 +33,7 @@
         .
         <span><?= reading_time(); ?> دقیقه برای خواندن</span>
     </div>
-    <p class="fs-4"> <?= get_the_title(); ?></p>
+    <p class="fs-4 card__title" data-bs-toggle="tooltip" data-bs-title="<?= get_the_title(); ?>"> <?= wp_trim_words( get_the_title() ,7) ?></p>
     <a class="fw-bold ps-0 text-primary btn btn-arrow" href="<?php the_permalink(); ?>">
         ادامه مطلب
     </a>

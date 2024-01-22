@@ -11,15 +11,17 @@ if (!$product || !is_a($product, 'WC_Product')) {
 
     <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($product->get_id()), 'single-post-thumbnail'); ?>
     <img src="<?php echo $image ? $image[0] : ''; ?>" alt="<?php echo $product->get_title(); ?>"
-         class="mx-auto rounded object-fit w-100" width="200" height="200">
+         class="mx-auto rounded object-fit-contain w-auto p-2 product-card__image" width="200" height="200">
     <div class="p-2 pb-1 h-100 d-flex flex-column justify-content-between align-items-start">
         <?php
         if ($product->is_on_sale()) : ?>
             <span class="px-2 py-1 btn-success rounded-pill small">فروش ویژه</span>
         <?php endif; ?>
-        <h6 class="card-title text-dark fs-5 mt-2 pt-1">
+        <h6 class="card-title mt-2 pt-1">
             <a href="<?php echo esc_url($product->get_permalink()); ?>"
-               class="stretched-link text-dark fs-6 fw-bold"><?php echo esc_html($product->get_title()); ?></a>
+               data-bs-toggle="tooltip" data-bs-title="<?= esc_html($product->get_title()); ?>" class="stretched-link text-dark small fw-bold">
+                <?php echo esc_html(wp_trim_words($product->get_title(), 3)); ?>
+            </a>
         </h6>
         <p class="card-text mb-0">
             <?php

@@ -44,8 +44,6 @@
                                 <?php get_template_part('template-parts/products/product-card', null, $args); ?>
                             <?php endwhile;
                             wp_reset_postdata();
-                        } else {
-                            echo __('محصولی یاقت نشد');
                         }
                     endforeach; ?>
                     <div class="swiper-slide card h-auto border-0 p-lg-3 bg-transparent overflow-hidden">
@@ -88,7 +86,7 @@
                             );
                             get_template_part('template-parts/products/product-card', null, $args); ?>
                         <?php endforeach; ?>
-                        <div class="swiper-slide card border-0 h-auto p-3 bg-transparent overflow-hidden">
+                        <div class="swiper-slide card h-auto border-0 p-lg-3 bg-transparent overflow-hidden">
                             <a class="btn btn-white rounded-3 py-1 p-2 px-lg-4 my-auto" href="<?= get_field('sale-products_link')['url'] ?? '/shop'; ?>">مشاهده همه
                                 <svg class="ps-lg-3 ps-1" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"
                                      fill="none">
@@ -103,8 +101,6 @@
                     </div>
                     <?php
                     wp_reset_postdata();
-                else :
-                    echo __('محصولی یافت نشد');
                 endif;
             }
             ?>

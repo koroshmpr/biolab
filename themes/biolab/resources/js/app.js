@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const swiper3 = new Swiper('.category-slider', {
         loop: true,
         speed: 500,
-        slidesPerView: 1.1,
+        slidesPerView: 2,
         spaceBetween: 10,
         grabCursor: true,
         direction: 'horizontal',

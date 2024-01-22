@@ -283,6 +283,9 @@ function toc_shortcode()
 }
 
 add_shortcode('TOC', 'toc_shortcode');
+wp_enqueue_script( 'wc-add-to-cart-variation' );
+wp_enqueue_script( 'wc-single-product' );
+
 //estimated reading time
 function reading_time()
 {
@@ -327,6 +330,7 @@ function save_rating() {
 
 add_action('wp_ajax_save_rating', 'save_rating');
 add_action('wp_ajax_nopriv_save_rating', 'save_rating');
+
 function modify_search_query($query) {
     if (!is_admin() && $query->is_search) {
         // Modify the query as needed
@@ -337,7 +341,7 @@ add_action('pre_get_posts', 'modify_search_query');
 function load_more_posts_scripts() {
     global $wp_query; // Ensure that $wp_query is global
 //    wp_enqueue_script('load-more-posts', get_template_directory_uri() . '/js/load-more-posts.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('load-more-posts', get_template_directory_uri() . '/wp-content/themes/biolab/js/load-more-posts.js', array('jquery'), '1.0.1702627133', true);
+//    wp_enqueue_script('load-more-posts', get_template_directory_uri() . '/wp-content/themes/biolab/js/load-more-posts.js', array('jquery'), '1.0.1702627133', true);
 
     wp_localize_script('load-more-posts', 'load_more_params', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
@@ -385,65 +389,12 @@ function custom_post_type_args( $args, $post_type ) {
 
 // Add this code to your theme's functions.php or in a custom plugin
 
-// Register custom REST API endpoint for catalog submissions
-function register_catalog_endpoint() {
-    register_rest_route('custom/v1', '/catalogues/', array(
-        'methods'  => 'POST',
-        'callback' => 'handle_catalog_submission',
-        'permission_callback' => function () {
-            return current_user_can('manage_options');
-        },
-    ));
-}
+include_once get_template_directory() . '/inc/search-route.php';
 
-// Hook to register the custom REST API endpoint
-add_action('rest_api_init', 'register_catalog_endpoint');
-
-function handle_catalog_submission_action() {
-    check_admin_referer('catalog_form_nonce', 'catalog_nonce');
-
-    // Process form data
-    if (isset($_POST['name'], $_POST['pages'])) {
-        // Get form data
-        $key_value = uniqid(); // Generate a unique key
-        $name = sanitize_text_field($_POST['name']);
-        $pages = intval($_POST['pages']);
-
-        // Process and save the cover and catalogue files as needed
-        $cover = ''; // Placeholder for cover image URL
-        $catalogue = ''; // Placeholder for catalogue file URL
-
-        if (isset($_FILES['cover']) && !empty($_FILES['cover']['tmp_name'])) {
-            $cover_file = $_FILES['cover'];
-            $cover = sanitize_text_field(wp_upload_bits($cover_file['name'], null, file_get_contents($cover_file['tmp_name']))['url']);
-        }
-
-        if (isset($_FILES['catalogue']) && !empty($_FILES['catalogue']['tmp_name'])) {
-            $catalogue_file = $_FILES['catalogue'];
-            $catalogue = sanitize_text_field(wp_upload_bits($catalogue_file['name'], null, file_get_contents($catalogue_file['tmp_name']))['url']);
-        }
-
-        // Insert data into the database or perform necessary actions
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'vendors_catalogues';
-
-        $wpdb->insert(
-            $table_name,
-            array(
-                'key_value' => $key_value,
-                'name' => $name,
-                'pages' => $pages,
-                'cover' => $cover,
-                'catalogue' => $catalogue,
-            ),
-            array('%s', '%s', '%d', '%s', '%s')
-        );
-        echo 'با موفقیت ثبت شد';
-    } else {
-        // Handle form validation errors or provide feedback
-        wp_die('Form data is missing or invalid.');
+add_action('admin_post_nopriv_handle_catalog_submission', 'handle_catalog_submission_action');
+function set_products_per_page( $query ) {
+    if ( is_shop() || is_product_category() || is_product() || is_product_taxonomy() || is_search() ) {
+        $query->set( 'posts_per_page', get_option( 'posts_per_page' ) );
     }
 }
-
-add_action('admin_post_handle_catalog_submission', 'handle_catalog_submission_action');
-add_action('admin_post_nopriv_handle_catalog_submission', 'handle_catalog_submission_action');
+add_action( 'pre_get_posts', 'set_products_per_page' );

@@ -9,8 +9,6 @@ function extra_fields($current_user, $profile_info)
     $technical_manager = $profile_info['technical_manager'] ?? '';
     $registration_number = $profile_info['registration_number'] ?? '';
     $company_type = $profile_info['company_type'] ?? '';
-//    $vendor_video = $profile_info['vendor_video'] ?? '';
-
     ?>
     <div class="gregcustom dokan-form-group">
         <label class="dokan-w3 dokan-control-label" for="manager_name">
@@ -21,7 +19,6 @@ function extra_fields($current_user, $profile_info)
                    value="<?php echo $manager_name; ?>"/>
         </div>
     </div>
-
     <div class="gregcustom dokan-form-group">
         <label class="dokan-w3 dokan-control-label" for="technical_manager">
             <?php _e('مسئول فنی', 'dokan'); ?>
@@ -31,7 +28,6 @@ function extra_fields($current_user, $profile_info)
                    value="<?php echo $technical_manager; ?>"/>
         </div>
     </div>
-
     <div class="gregcustom dokan-form-group">
         <label class="dokan-w3 dokan-control-label" for="registration_number">
             <?php _e('شماره ثبت شرکت', 'dokan'); ?>
@@ -50,21 +46,6 @@ function extra_fields($current_user, $profile_info)
                    value="<?php echo $company_type; ?>"/>
         </div>
     </div>
-<!--    <div class="gregcustom dokan-form-group">-->
-<!--        <label class="dokan-w3 dokan-control-label" for="vendor_video">-->
-<!--            --><?php //_e('ویدیو', 'dokan'); ?>
-<!--        </label>-->
-<!--        <div class="dokan-w5">-->
-<!--            <input type="file" name="vendor_video" id="vendor_video" accept="video/*"/>-->
-<!--            --><?php //if ($vendor_video) : ?>
-<!--                <p>--><?php //_e('Current Video:', 'dokan'); ?><!--</p>-->
-<!--                <video width="320" height="240" controls>-->
-<!--                    <source src="--><?php //echo esc_url($vendor_video); ?><!--" type="video/mp4">-->
-<!--                    Your browser does not support the video tag.-->
-<!--                </video>-->
-<!--            --><?php //endif; ?>
-<!--        </div>-->
-<!--    </div>-->
     <?php
 }
 
@@ -90,17 +71,6 @@ function save_extra_fields($store_id)
     if (isset($_POST['registration_number'])) {
         $dokan_settings['registration_number'] = sanitize_text_field($_POST['registration_number']);
     }
-//    if (isset($_FILES['vendor_video']) && !empty($_FILES['vendor_video']['name'])) {
-//        $video_url = dokan_media_handle_upload('vendor_video', 0);
-//
-//        if (!is_wp_error($video_url)) {
-//            // Video uploaded successfully, update the user meta
-//            $dokan_settings['vendor_video'] = esc_url($video_url);
-//        } else {
-//            // Display the upload error
-//            echo 'Video Upload Error: ' . $video_url->get_error_message();
-//        }
-//    }
 
     update_user_meta($store_id, 'dokan_profile_settings', $dokan_settings);
 }
@@ -135,15 +105,6 @@ function save_seller_info($store_user)
         echo esc_html($store_info['company_type']);
         echo '<br>';
     }
-    // Check if vendor_video is set and not empty
-//    if (isset($store_info['vendor_video']) && !empty($store_info['vendor_video'])) {
-//        echo '<p>Vendor Video:</p>';
-//        echo '<video width="320" height="240" controls>';
-//        echo '<source src="' . esc_url($store_info['vendor_video']) . '" type="video/mp4">';
-//        echo 'Your browser does not support the video tag.';
-//        echo '</video>';
-//        echo '<br>';
-//    }
 }
 
 function count_product_vendors_shortcode()
@@ -208,7 +169,6 @@ function custom_dokan_store_header_fields_shortcode($atts)
     $technical_manager = !empty($dokan_settings['technical_manager']) ? esc_html($dokan_settings['technical_manager']) : '';
     $registration_number = !empty($dokan_settings['registration_number']) ? esc_html($dokan_settings['registration_number']) : '';
     $company_type = !empty($dokan_settings['company_type']) ? esc_html($dokan_settings['company_type']) : '';
-
     ob_start();
 
     if ($manager_name or $technical_manager or $registration_number or $company_type) {
@@ -248,7 +208,6 @@ function custom_dokan_store_header_fields_shortcode($atts)
     } else {
         return false; // No fields found
     }
-
     return ob_get_clean();
 }
 
@@ -271,17 +230,3 @@ function save_acf_values($store_id, $dokan_settings) {
 
     // Add similar lines for other ACF fields if needed
 }
-//function get_dashboard_nav( $menus ) {
-//    $custom_menus = [
-//        'custom_menu' => [
-//            'title' => __( 'کاتالوگ ها', 'dokan-lite' ),
-//            'icon'  => '<i class="fas fa-briefcase"></i>',
-//            'url'   => dokan_get_navigation_url( 'custom_menu' ),
-//            'pos'   => 50,
-//        ],
-//    ];
-//
-//    return array_merge( $menus, $custom_menus );
-//}
-//
-//add_filter( 'dokan_get_dashboard_nav', 'get_dashboard_nav' );

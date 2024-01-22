@@ -1,5 +1,5 @@
 <nav class="container sticky__nav w-100 z-3 py-3 pt-lg-2">
-    <div class="container border-bottom border-white border-opacity-25 bg-primary text-white px-lg-3 pb-1 rounded-bottom">
+    <div class="container border-bottom border-white border-opacity-25 bg-primary text-white px-lg-3 pb-1">
         <div class="d-flex flex-nowrap align-items-center justify-content-between">
             <!--        brand and search bar -->
             <div class="col-lg-2 col-11 d-flex align-items-center gap-3 justify-content-between">

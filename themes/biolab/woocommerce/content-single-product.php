@@ -43,7 +43,7 @@ if (post_password_required()) {
     do_action('woocommerce_before_single_product_summary');
     ?>
 
-    <div class="entry-summary col-lg-7 d-flex flex-wrap justify-content-center">
+    <div class="entry-summary col-lg-7 d-flex flex-wrap justify-content-center align-items-start px-0">
         <div class="col-12 col-lg-7 d-flex flex-column py-5 py-lg-0 pe-lg-4">
             <?php woocommerce_breadcrumb(); ?>
             <?php
@@ -65,7 +65,7 @@ if (post_password_required()) {
                 <?php echo wc_get_product_tag_list($product->get_id(), ', ', '<span class="tagged_as text-dark text-opacity-50 mt-4">' . _n('Tag:', 'Tags:', count($product->get_tag_ids()), 'woocommerce') . ' ', '</span>'); ?>
             </div>
         </div>
-        <div class="row col-12 col-lg-5 bg-white rounded-4  p-4" data-aos="fade-right">
+        <div class="row col-12 col-lg-5 bg-white rounded-4 align-self-start p-4" data-aos="fade-right">
             <div class="d-flex justify-content-between py-2 px-0">
                 <span>فروشنده</span>
                 <span class="text-success fw-bold"><?= do_shortcode('[product_vendors_count]') ?></span>
@@ -173,12 +173,25 @@ if (post_password_required()) {
              * Output the price and Add to Cart button manually
              */
             echo wc_get_template('single-product/price.php'); // Price
-            echo wc_get_template('single-product/add-to-cart/simple.php'); // Add to Cart
+
+            // Check if the product has variations
+            if ($product->is_type('variable')) {
+                // Get variation attributes
+                $attributes = $product->get_variation_attributes();
+
+                // Output the variation add-to-cart button
+                echo wc_get_template('single-product/add-to-cart/variable.php', array('attributes' => $attributes));
+            }
+            else {
+                // Output the simple add-to-cart button
+                echo wc_get_template('single-product/add-to-cart/simple.php');
+            }
             ?>
+
         </div>
     </div>
     <?php get_template_part('template-parts/products/single-property'); ?>
-    <!--    --><?php //get_template_part('template-parts/products/vendors-list_single'); ?>
+<!--        --><?php //get_template_part('template-parts/products/vendors-list_single'); ?>
     <?php
     /**
      * Hook: woocommerce_after_single_product_summary.

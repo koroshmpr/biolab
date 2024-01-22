@@ -21,10 +21,10 @@
                             data-bs-toggle="collapse" data-bs-target="#<?= $parent_cat_id ?>" aria-expanded="false"
                             aria-controls="<?= $parent_cat_id ?>">
                         <h6 class="category-title fw-bold mb-0 fs-6"><?= $parent_cat->name; ?></h6>
-                        <p class="mb-0 text-primary small fw-bold pe-2 ms-auto">
-                            <?= $parent_cat->count; ?>
-                            <span class="ps-1">کالا</span>
-                        </p>
+<!--                        <p class="mb-0 text-primary small fw-bold pe-2 ms-auto">-->
+<!--                            --><?//= $parent_cat->count; ?>
+<!--                            <span class="ps-1">کالا</span>-->
+<!--                        </p>-->
                     </button>
                 </h5>
                 <div id="<?= $parent_cat_id ?>" class="accordion-collapse collapse" data-bs-parent="#category-dropdown">

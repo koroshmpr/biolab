@@ -79,7 +79,7 @@ get_header('shop');
         <div id="dokan-content" class="store-page-wrap woocommerce" role="main">
 
             <?php
-            do_action('dokan_store_profile_frame_after', $store_user->data, $store_info);
+//            do_action('dokan_store_profile_frame_after', $store_user->data, $store_info);
 
             $vendor_id = get_query_var('author');
             $excluded_category_id = 16;
@@ -122,8 +122,8 @@ get_header('shop');
                     endwhile;
                     //                    wp_reset_postdata(); // Reset the post data to the main query
                     ?>
-                    <?php dokan_content_nav('nav-below'); ?>
                 </div>
+                    <?php dokan_content_nav('nav-below'); ?>
                 <?php endif; ?>
 
 

@@ -1,5 +1,5 @@
-
 <?php
+if ( !is_search() ) {
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
  *
@@ -99,3 +99,9 @@ do_action('woocommerce_after_main_content');
 do_action('woocommerce_sidebar');
 
 get_footer('shop');
+//put your search results markup here (you can copy some code from archive-product.php file and also from content-product.php to create a standard markup
+} if ( is_search() ) {
+get_template_part('search');
+
+}
+?>
