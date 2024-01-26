@@ -1,5 +1,5 @@
 <form class="p-2 bg-white rounded-5 shadow-sm col-lg-10" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-    <div class="input-group d-flex gap-lg-3 align-items-center justify-content-center">
+    <div class="input-group d-flex align-items-center justify-content-between">
         <input <?= $args['inputValue'] ? 'value="' . $args['inputValue'] . '"' : ' '; ?> id="search-form" type="search" name="s" class="btn p-0 ps-2 col-5 col-md-5 text-primary text-start" placeholder="دنبال چه چیزی هستید؟" aria-label="Search">
 
         <!-- Hidden input for selected post type -->

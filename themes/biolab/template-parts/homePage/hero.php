@@ -1,4 +1,4 @@
-<section class="hero top-gap-shop min-vh-lg-80">
+<section class="hero-squere top-gap-shop min-vh-lg-80">
     <div class="container">
         <div class="row justify-content-lg-between justify-content-center align-content-start">
             <div class="col-12 col-lg-7 pt-2 pt-lg-0 pt-md-5">

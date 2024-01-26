@@ -1,4 +1,4 @@
-<div class="py-2 py-lg-4 p-4 border-info border-opacity-50 rounded-3 border row-gap-4 mt-5 col-12 gap-lg-3 row row-cols-lg-5 row-cols-2 justify-content-lg-between justify-content-center">
+<div class="bg-white py-2 py-lg-4 p-4 border-info border-opacity-50 rounded-3 border row-gap-4 mt-5 col-12 gap-lg-3 row row-cols-lg-5 row-cols-2 justify-content-lg-between justify-content-center">
     <?php
     $j=0;
     while (have_rows('property', 'option')): the_row(); ?>

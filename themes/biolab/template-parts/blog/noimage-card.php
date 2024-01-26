@@ -1,4 +1,4 @@
-<div class="rounded-3 <?= $args['bgColor'] ?? 'bg-info bg-opacity-25'; ?> p-4" style="background-color: <?= $args['style-bg'] ?? '';?>">
+<a href="<?php the_permalink(); ?>" class="d-flex flex-column rounded-3 <?= $args['bgColor'] ?? 'bg-info bg-opacity-25'; ?> p-4" style="background-color: <?= $args['style-bg'] ?? '';?>">
     <div class="d-flex gap-2">
         <?php
         $sizeSvgX = '90';
@@ -34,7 +34,7 @@
         <span><?= reading_time(); ?> دقیقه برای خواندن</span>
     </div>
     <p class="fs-4 card__title" data-bs-toggle="tooltip" data-bs-title="<?= get_the_title(); ?>"> <?= wp_trim_words( get_the_title() ,7) ?></p>
-    <a class="fw-bold ps-0 text-primary btn btn-arrow" href="<?php the_permalink(); ?>">
+    <div class="fw-bold ps-0 text-primary col-4 btn-arrow">
         ادامه مطلب
-    </a>
-</div>
+    </div>
+</a>

@@ -52,29 +52,34 @@
   }
 }
 // comment section
-.comment-body {
-  @extend .col-md-8;
-  margin: 15px 0;
-  justify-content: start;
-  align-items: center;
-  border: 1px solid rgb(182, 182, 182);
-  padding: 30px;
-  border-radius: 12px;
-
-  p {
-    margin: 10px 0;
+.commentlist {
+  ul.children {
+    margin-left:20px;
   }
+  .comment-body {
+    @extend .col-md-8;
+    margin: 15px 0;
+    justify-content: start;
+    align-items: center;
+    border: 1px solid #b6b6b663;
+    padding: 30px;
+    border-radius: 12px;
 
-  .comment-meta, .comment-author {
-    .avatar {
-      @extend .me-3, .mb-2, .rounded, .img-thumbnail;;
+    p {
+      margin: 10px 0;
     }
 
-    text-align: left;
-  }
+    .comment-meta, .comment-author {
+      .avatar {
+        @extend .me-3, .mb-2, .rounded, .img-thumbnail;;
+      }
 
-  .reply {
-    text-align: right;
+      text-align: left;
+    }
+
+    .reply {
+      text-align: right;
+    }
   }
 }
 .mobile-search::placeholder {
@@ -82,7 +87,7 @@
 }
 
 body:not(.dokan-dashboard) {
-  input:not(#search-form):not(#search-form-mobile):not(.qty):not(#coupon_code), textarea {
+  input:not(#search-form):not(#search-form-mobile):not(.qty):not(#coupon_code):not(.form-submit #submit):not(.dokan-toogle-checkbox), textarea {
     transition: all 0.3s ease-out !important;
     border: 1px solid #80808040 !important;
     border-radius: 15px !important;
@@ -91,4 +96,7 @@ body:not(.dokan-dashboard) {
   select {
     border-radius: 15px!important;
   }
+}
+#dokan-store-listing-filter-form-wrap .store-lists-other-filter-wrap .store-lists-category .category-input .dokan-icon {
+  right:5% !important
 }

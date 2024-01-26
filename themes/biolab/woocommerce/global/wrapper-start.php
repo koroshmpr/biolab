@@ -23,7 +23,8 @@ $template = wc_get_theme_slug_for_templates();
 
 switch ( $template ) {
     default:
-		echo '<div id="primary" class="content-area"><div id="main" role="main" class="site-main hero biolab top-gap-shop">';
+        echo '<div id="primary" class="content-area"><div id="main" role="main" class="site-main ' . (is_singular('product') ? 'hero-squere' : 'hero') . ' biolab top-gap-shop">';
+
         echo '<div class="container">';
         if (is_shop() or is_product_category()) {?>
             <div class="row">

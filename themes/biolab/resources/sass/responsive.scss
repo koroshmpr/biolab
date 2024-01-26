@@ -3,7 +3,7 @@
     height: 450px!important;
     max-height: 450px!important;
   }
-  .hero {
+  .hero , body.home .hero-squere {
     background-size: contain!important;
   }
   .top-gap-shop {
@@ -29,6 +29,16 @@
   }
 }
 @include media-breakpoint-down(lg) {
+  body.single-product .hero-squere {
+    background-size: auto 200vh;
+  }
+  .hero , .hero-squere {
+    padding-top: 130px;
+    background-size: cover;
+  }
+  body.single-post .hero-squere , body.archive .hero-squere {
+      background-size: auto 110vh;
+  }
   .product-image__single {
     height: 250px!important;
     max-height: 250px!important;
@@ -91,10 +101,6 @@
 }
 
 @include media-breakpoint-down(xl) {
-  .hero {
-    padding-top: 130px;
-    background-size: cover;
-  }
   .overflow-x-lg-scroll {
     overflow-x: scroll!important;
   }

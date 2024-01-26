@@ -1,6 +1,6 @@
 <div class="row gap-2">
     <!--                table of content-->
-    <div class="p-4 border border-info border-opacity-10 rounded-2 shadow-sm">
+    <div class="bg-white p-4 border border-info border-opacity-10 rounded-2 shadow-sm">
         <h3 class="fw-bold py-3">آنچه در این پست میخوانید</h3>
         <div class="d-flex align-items-center">
             <?php echo do_shortcode('[TOC]') ?>

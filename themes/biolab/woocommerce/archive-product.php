@@ -46,7 +46,7 @@ if (woocommerce_product_loop()) {
 
 //    woocommerce_product_loop_start();
     ?>
-    <div class="row row-cols-lg-5 row-cols-2 align-items-stretch">
+    <div class="row row-cols-xl-5 row-cols-md-3 row-cols-lg-4 row-cols-2 align-items-stretch">
         <?php
 
 

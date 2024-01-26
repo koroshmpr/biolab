@@ -43,7 +43,7 @@ if (post_password_required()) {
     do_action('woocommerce_before_single_product_summary');
     ?>
 
-    <div class="entry-summary col-lg-7 d-flex flex-wrap justify-content-center align-items-start px-0">
+    <div class="entry-summary col-lg-7 d-flex flex-wrap justify-content-center align-items-start px-lg-0">
         <div class="col-12 col-lg-7 d-flex flex-column py-5 py-lg-0 pe-lg-4">
             <?php woocommerce_breadcrumb(); ?>
             <?php
@@ -160,7 +160,7 @@ if (post_password_required()) {
                             </svg>
                         </div>
                         <div class="row">
-                            <span>دانلود مقاله محصول</span>
+                            <span>دانلود کاتالوگ محصول</span>
                             <p class="text-dark text-opacity-75 mb-0"><?= $galleryPages . ' صفحه' ?? ''; ?></p>
 
                         </div>

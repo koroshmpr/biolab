@@ -10,7 +10,7 @@ while (have_posts()) :
     $comment_count = get_comments_number(); // Get the number of comments for this post
 
     ?>
-    <section class="top-gap-shop hero">
+    <section class="top-gap-shop hero-squere">
         <div class="container">
             <div class="row align-items-start pb-4 justify-content-lg-between justify-content-center">
                 <!--            sidebar-->

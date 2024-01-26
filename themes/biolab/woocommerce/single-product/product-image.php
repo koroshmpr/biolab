@@ -51,6 +51,18 @@ $wrapper_classes = apply_filters(
         }
         ?>
         <?= do_shortcode('[yith_wcwl_add_to_wishlist]');?>
+        <?php
+        $videoFile = get_field('video_file');
+        $videoImage = get_field('video-image');
+        if ($videoFile) { ?>
+        <button class="btn py-0 px-1 mx-1 text-primary border-0" data-bs-toggle="modal" data-bs-target="#videoModal" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-camera-video" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>
+            </svg>
+        </button>
+        <?php
+        }
+        ?>
     </div>
     <figure data-aos="fade-left" data-aos-delay="100" data-aos-duration="500" class="woocommerce-product-gallery__wrapper h-100 col-11 ps-2">
         <?php
@@ -110,6 +122,13 @@ $wrapper_classes = apply_filters(
     </figure>
     <script>
         jQuery(document).ready(function () {
+            jQuery('#videoModal').on('hidden.bs.modal', function () {
+                // Pause the video
+                var video = jQuery(this).find('video')[0];
+                if (video) {
+                    video.pause();
+                }
+            });
             jQuery('.product__image').each(function () {
                 jQuery(this).on('click', function (e) {
                     e.preventDefault();

@@ -24,6 +24,15 @@ if (is_singular('product')) { ?>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModal" aria-hidden="true" style="backdrop-filter: blur(8px)">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content bg-white bg-opacity-10 p-3 border-white border-opacity-25 rounded-0">
+                <div class="modal-body text-center overflow-hidden">
+                    <video controls class="img-fluid position-relative product-image__modal" src="<?= get_field('video_file')['url']; ?>" alt="Full-size Image">
+                </div>
+            </div>
+        </div>
+    </div>
 <?php } ?>
 <?php wp_footer(); ?>
 </body>
