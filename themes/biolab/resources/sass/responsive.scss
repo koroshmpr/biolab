@@ -3,8 +3,11 @@
     height: 450px!important;
     max-height: 450px!important;
   }
-  .hero , body.home .hero-squere {
+  .hero {
     background-size: contain!important;
+  }
+ .hero-squere {
+    background-size: 100% 90vh;
   }
   .top-gap-shop {
     padding-top: 150px;
@@ -13,7 +16,7 @@
     height: 200px;
   }
   .min-vh-lg-80 {
-    min-height: 80vh !important;
+    min-height: 90vh !important;
   }
   .vh-lg-80 {
     height: 80vh;
@@ -37,7 +40,7 @@
     background-size: cover;
   }
   body.single-post .hero-squere , body.archive .hero-squere {
-      background-size: auto 110vh;
+    background-size: auto 160vh;
   }
   .product-image__single {
     height: 250px!important;

@@ -19,9 +19,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
+do_action( 'woocommerce_before_account_orders', $has_orders );
 
-<?php if ( $has_orders ) : ?>
+?>
+
+<?php //if ( $has_orders ) : ?>
 
 	<table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
 		<thead>
@@ -93,9 +95,9 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 				<a class="woocommerce-button woocommerce-button--next woocommerce-Button woocommerce-Button--next button<?php echo esc_attr( $wp_button_class ); ?>" href="<?php echo esc_url( wc_get_endpoint_url( 'orders', $current_page + 1 ) ); ?>"><?php esc_html_e( 'Next', 'woocommerce' ); ?></a>
 			<?php endif; ?>
 		</div>
-	<?php endif; ?>
+<!--	--><?php //endif; ?>
 
-<?php else : ?>
+<?php //else : ?>
 
 	<?php wc_print_notice( esc_html__( 'No order has been made yet.', 'woocommerce' ) . ' <a class="woocommerce-Button button' . esc_attr( $wp_button_class ) . '" href="' . esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ) . '">' . esc_html__( 'Browse products', 'woocommerce' ) . '</a>', 'notice' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment ?>
 

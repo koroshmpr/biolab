@@ -33,7 +33,7 @@ $customer_orders = get_posts(
 );
 
 if ($customer_orders) : ?>
-    <section class="hero top=gap-shop">
+    <section class="hero top-gap-shop">
         <div class="container">
             <h2><?php echo apply_filters('woocommerce_my_account_my_orders_title', esc_html__('Recent orders', 'woocommerce')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h2>
 

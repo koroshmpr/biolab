@@ -1,5 +1,29 @@
 </main>
 <?php
+$product_archive_id = wc_get_page_id('shop');
+$page_description = get_field('page_description', is_shop() ? $product_archive_id : '');
+
+if ($page_description) { ?>
+    <section class="container position-relative rounded-4 p-2 p-lg-4 mt-3 mt-lg-0 mb-5" style="background-color: #F9FBFA;">
+        <div class="accordion accordion-preview" id="categoryAccordion">
+            <div class="accordion-item bg-transparent border-0">
+                <h6 class="accordion-header position-absolute bottom-0 start-50 translate-middle-x z-1 mb-n3" id="categoryHeader">
+                    <button class="btn text-primary bg-white border collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#categoryCollapse" aria-expanded="false" aria-controls="categoryCollapse">
+                        مشاهده بیشتر
+                    </button>
+                </h6>
+                <div id="categoryCollapse" class="accordion-collapse collapse" aria-labelledby="categoryHeader"
+                     data-bs-parent="#categoryAccordion">
+                    <div class="accordion-body">
+                        <?php echo $page_description; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php } ?>
+<?php
 if ( ! is_page('dashboard') ) { // Check if it's not the Dokan dashboard page
     ?>
     <footer class="rounded-3">

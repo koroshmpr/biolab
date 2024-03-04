@@ -57,16 +57,16 @@ get_header();
                             <?php
                             echo paginate_links(
                                 array(
-                                    'base'      => $base ?? esc_url_raw(str_replace(999999999, '%#%', remove_query_arg('add-to-cart', get_pagenum_link(999999999, false)))),
-                                    'format'    => $format ?? '',
-                                    'add_args'  => false,
-                                    'current'   => max(1, get_query_var('paged')),
-                                    'total'     => $total_pages,
+                                    'base' => $base ?? esc_url_raw(str_replace(999999999, '%#%', remove_query_arg('add-to-cart', get_pagenum_link(999999999, false)))),
+                                    'format' => $format ?? '',
+                                    'add_args' => false,
+                                    'current' => max(1, get_query_var('paged')),
+                                    'total' => $total_pages,
                                     'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
                                     'next_text' => is_rtl() ? '&larr;' : '&rarr;',
-                                    'type'      => 'list',
-                                    'end_size'  => 3,
-                                    'mid_size'  => 3,
+                                    'type' => 'list',
+                                    'end_size' => 3,
+                                    'mid_size' => 3,
                                 )
                             );
                             ?>
@@ -86,5 +86,25 @@ get_header();
         </div>
     </div>
 </section>
+<?php if (category_description()) { ?>
+    <section class="container position-relative rounded-4 p-2 p-lg-4 mt-3 mt-lg-0 mb-5" style="background-color: #F9FBFA;">
+        <div class="accordion accordion-preview" id="categoryAccordion">
+            <div class="accordion-item bg-transparent border-0">
+                <h6 class="accordion-header position-absolute bottom-0 start-50 translate-middle-x z-1 mb-n3" id="categoryHeader">
+                    <button class="btn text-primary bg-white border collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#categoryCollapse" aria-expanded="false" aria-controls="categoryCollapse">
+                        مشاهده بیشتر
+                    </button>
+                </h6>
+                <div id="categoryCollapse" class="accordion-collapse collapse" aria-labelledby="categoryHeader"
+                     data-bs-parent="#categoryAccordion">
+                    <div class="accordion-body">
+                        <?php echo category_description(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php } ?>
 
 <?php get_footer(); ?>

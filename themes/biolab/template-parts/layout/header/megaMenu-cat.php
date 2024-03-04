@@ -38,7 +38,7 @@
                                href="#category_tab<?= $key; ?>"
                                class="<?= $key == 1 ? 'active ' : ' '; ?> w--lg-auto d-flex align-items-center justify-content-between col-2 col-lg gap-2 ps-3 text-lg-start text-center list-group-item-action text-primary fw-bold category-link">
                                 <?= $parent_cat->name; ?>
-                                <span class="border-start border-dark border-opacity-10 ms-3 ms-lg-0 p-3 pe-0" onclick="javascript:window.location='<?= get_term_link($parent_cat); ?>';">
+                                <span class="border-start border-info border-opacity-25 ms-3 ms-lg-0 p-3" onclick="javascript:window.location='<?= get_term_link($parent_cat); ?>';">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                          class="bi bi-chevron-left" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"

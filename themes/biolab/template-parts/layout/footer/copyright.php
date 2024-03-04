@@ -1,7 +1,7 @@
 <div class="bg-white copyright py-4 pb-5 pb-lg-4">
     <div class="container pb-4 pb-lg-0">
         <div class="d-flex align-items-center flex-wrap justify-content-center">
-            <div class="col-lg-10 col-12">
+            <div class="col-lg-10 col-12 pb-3">
                 <div>
                     <?php
                     $locations = get_nav_menu_locations();
@@ -41,7 +41,7 @@
                     ?>
                 </div>
                 <hr class="w-100 text-dark text-opacity-75 my-2">
-                <p class="text-dark mb-0 text-lg-start text-center">© 2020 طراحی سایت توسط  <a target="_blank" href="https://binsy.ir" class="fw-bold">آژانس دیجیتال مارکتینگ بینزی</a></p>
+<!--                <p class="text-dark mb-0 text-lg-start text-center">© 2020 طراحی سایت توسط  <a target="_blank" href="https://binsy.ir" class="fw-bold">آژانس دیجیتال مارکتینگ بینزی</a></p>-->
             </div>
             <div class="">
                 <!--                social media-->
