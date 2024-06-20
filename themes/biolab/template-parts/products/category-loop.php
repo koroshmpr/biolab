@@ -32,8 +32,7 @@
                    data-aos-duration="<?= $i; ?>00">
                     <div class="image-square bg-white rounded-5 border border-1 border-info border-opacity-75">
                         <?php if (wp_get_attachment_url($thumbnail_id)) { ?>
-                            <img class="image-square <?= $category_class ?> object-fit-cover rounded-5" width="150"
-                                 height="150" src="<?= wp_get_attachment_url($thumbnail_id) ?>"
+                            <img class="image-square <?= $category_class ?> object-fit-cover img-fluid rounded-5"  src="<?= wp_get_attachment_url($thumbnail_id) ?>"
                                  alt="<?= $subcat->name; ?>">
                         <?php } else { ?>
                             <div class="image-square bg-white <?= $category_class ?> rounded-5 d-flex justify-content-center align-items-center">
@@ -41,7 +40,7 @@
                             </div>
                         <?php } ?>
                     </div>
-                    <h6 class="<?= $args['textClass'] ?? 'text-dark'; ?> text-opacity-75 text-center mt-3 fs-6 lh-lg"
+                    <h6 class="<?= $args['textClass'] ?? 'text-dark'; ?> fw-bold text-center mt-3 fs-6 lh-lg"
                         style="min-height: 50px;"><?= $subcat->name; ?></h6>
                 </a>
                 <?php

@@ -10,6 +10,16 @@
                     'inputValue' => $inputValue,
                 );
                 get_template_part('template-parts/search-bar', null, $args); ?>
+                <?php
+                $serachWords = get_field('search-words');
+                if ($serachWords) :?>
+                <div class="d-flex mt-4 align-items-center gap-2 flex-wrap">
+                    <?php foreach ($serachWords as $searchWord) : ?>
+                        <a class="bg-success bg-opacity-25 text-success px-3 py-2 rounded-3"
+                           href="<?= home_url(); ?>/?s=<?= $searchWord['word']; ?>"><?= $searchWord['word']; ?></a>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
             </div>
             <div class="col-lg-5 pt-5 pt-lg-0">
                 <img class="w-100 h-auto py-3" src="<?= get_field('hero_image')['url']; ?>"

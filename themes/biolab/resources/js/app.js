@@ -120,17 +120,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const swiper3 = new Swiper('.category-slider', {
         loop: true,
         speed: 500,
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 10,
         grabCursor: true,
         direction: 'horizontal',
 
         breakpoints: {
             992: {
-                slidesPerView: 4,
+                slidesPerView: 5,
             },
             1400: {
-                slidesPerView: 6,
+                slidesPerView: 8,
             }
         },
         navigation: {

@@ -1,4 +1,7 @@
 @include media-breakpoint-up(lg) {
+  .overflow-x-lg-visible {
+    overflow-x: visible !important;
+  }
   .product-image__single {
     height: 450px!important;
     max-height: 450px!important;

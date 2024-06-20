@@ -19,7 +19,8 @@ if (!$product || !is_a($product, 'WC_Product')) {
         <?php endif; ?>
         <h6 class="card-title mt-2 pt-1">
             <a href="<?php echo esc_url($product->get_permalink()); ?>"
-               data-bs-toggle="tooltip" data-bs-title="<?= esc_html($product->get_title()); ?>" class="stretched-link text-dark small fw-bold">
+               data-bs-toggle="tooltip" data-bs-title="<?= esc_html($product->get_title()); ?>"
+               class="stretched-link text-dark small fw-bold">
                 <?php echo esc_html(wp_trim_words($product->get_title(), 3)); ?>
             </a>
         </h6>
@@ -35,14 +36,17 @@ if (!$product || !is_a($product, 'WC_Product')) {
                     <?php else : ?>
                         <span class="text-primary ms-1"><?php echo wc_price($product->get_regular_price()); ?></span>
                     <?php endif;
-                else :
+                else :?>
+                    <span class="text-primary ms-1">
+                    <?php
                     // Handle variable product pricing
                     $min_price = wc_price($product->get_variation_regular_price('min', false));
                     $max_price = wc_price($product->get_variation_regular_price('max', false));
                     echo $min_price . ' تا ' . $max_price;
-                    ?><span class="text-primary ms-1">تومان</span>
-                <?php endif;
-            endif; ?>
+                    ?>
+                <?php endif; ?>
+                </span>
+            <?php endif; ?>
         </p>
         <?php
         echo apply_filters('woocommerce_loop_add_to_cart_link',

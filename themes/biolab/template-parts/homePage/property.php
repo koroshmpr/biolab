@@ -1,6 +1,6 @@
 <section class="container pt-lg-5 pb-5">
     <div class="row justify-content-lg-between justify-content-center align-content-center">
-        <div class="col-lg-5 py-5">
+        <div class="col-lg-5 py-lg-5">
             <img class="w-100 h-auto py-3" src="<?= get_field('property_image')['url']; ?>"
                  alt="<?= get_field('property_image')['title']; ?>">
         </div>

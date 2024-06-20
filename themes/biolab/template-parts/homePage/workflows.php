@@ -1,4 +1,4 @@
-<section class="container py-lg-5">
+<section class="container pt-lg-5">
     <div class="text-center py-4 col-lg-6 mx-auto">
         <h2 class="fw-bold display-4"><?= get_field('workflow_title'); ?></h2>
         <p class="small text-dark text-opacity-75"><?= get_field('workflow_content'); ?></p>

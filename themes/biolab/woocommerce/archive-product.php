@@ -42,8 +42,8 @@ if (woocommerce_product_loop()) {
      * @hooked woocommerce_result_count - 20
      * @hooked woocommerce_catalog_ordering - 30
      */
-    do_action('woocommerce_before_shop_loop');
-
+//    do_action('woocommerce_before_shop_loop');
+        get_template_part('template-parts/products/orderby-list');
 //    woocommerce_product_loop_start();
     ?>
     <div class="row row-cols-xl-5 row-cols-md-3 row-cols-lg-4 row-cols-2 align-items-stretch">

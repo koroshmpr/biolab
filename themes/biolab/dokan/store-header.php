@@ -134,11 +134,11 @@ if ('layout3' === $profile_layout) {
                         </div>
                         <?php if ($social_fields) { ?>
                             <div class="store-social-wrapper">
-                                <ul class="store-social">
+                                <ul class="store-social d-flex gap-2 mt-2 list-unstyled">
                                     <?php foreach ($social_fields as $key => $field) { ?>
                                         <?php if (!empty($social_info[$key])) { ?>
                                             <li>
-                                                <a href="<?php echo esc_url($social_info[$key]); ?>" target="_blank"><i
+                                                <a class="fs-4" href="<?php echo esc_url($social_info[$key]); ?>" target="_blank"><i
                                                             class="fab fa-<?php echo esc_attr($field['icon']); ?>"></i></a>
                                             </li>
                                         <?php } ?>

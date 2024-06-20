@@ -38,83 +38,88 @@ get_header(); ?>
                 </ul>
             <?php }; ?>
             <div class="d-flex">
-                <a href="<?= get_field('section_property_button_link')['url'] ?? ''; ?>" class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('section_property_button_title'); ?></a>
-                <a href="<?= get_field('section_property_button_link_1')['url'] ?? ''; ?>" class="btn text-dark btn-arrow py-1"><?= get_field('section_property_button_title_1'); ?></a>
+                <a href="<?= get_field('section_property_button_link')['url'] ?? ''; ?>"
+                   class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('section_property_button_title'); ?></a>
+                <a href="<?= get_field('section_property_button_link_1')['url'] ?? ''; ?>"
+                   class="btn text-dark btn-arrow py-1"><?= get_field('section_property_button_title_1'); ?></a>
             </div>
         </div>
     </div>
 </section>
-<section>
-    <div class="container bg-secondary rounded-5 p-lg-5 p-4">
-        <div class="row justify-content-lg-between justify-content-center align-content-center py-5">
-            <div class="col-lg-5 my-auto">
-                <span class="text-success"><?= get_field('aboutus-badge'); ?></span>
-                <h5 class="display-6 text-white fw-bold pe-lg-5 pt-4"><?= get_field('aboutus-title'); ?></h5>
-                <p class="small text-opacity-75 text-white text-justify"><?= get_field('aboutus-description'); ?></p>
-                <div class="d-flex">
-                    <a href="<?= get_field('ourteam_button_link_1')['url'] ?? ''; ?>" class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('ourteam_button_title_1'); ?></a>
-                    <a href="<?= get_field('ourteam_button_link_2')['url'] ?? ''; ?>" class="btn text-white btn-arrow py-1"><?= get_field('ourteam_button_title_2'); ?></a>
+<?php
+$showAboutUs = get_field('aboutus_show');
+if ($showAboutUs) :
+    ?>
+    <section>
+        <div class="container bg-secondary rounded-5 p-lg-5 p-4">
+            <div class="row justify-content-lg-between justify-content-center align-content-center py-5">
+                <div class="col-lg-5 my-auto">
+                    <span class="text-success"><?= get_field('aboutus-badge'); ?></span>
+                    <h5 class="display-6 text-white fw-bold pe-lg-5 pt-4"><?= get_field('aboutus-title'); ?></h5>
+                    <p class="small text-opacity-75 text-white text-justify"><?= get_field('aboutus-description'); ?></p>
+                    <div class="d-flex">
+                        <a href="<?= get_field('ourteam_button_link_1')['url'] ?? ''; ?>"
+                           class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('ourteam_button_title_1'); ?></a>
+                        <a href="<?= get_field('ourteam_button_link_2')['url'] ?? ''; ?>"
+                           class="btn text-white btn-arrow py-1"><?= get_field('ourteam_button_title_2'); ?></a>
+                    </div>
+                </div>
+                <div class="col-lg-7 mt-5 mt-lg-0 p-lg-5">
+                    <img class="w-100 h-auto object-fit-cover"
+                         src="<?= get_field('aboutus_image')['url']; ?>"
+                         alt="<?= get_field('aboutus_image')['title']; ?>">
                 </div>
             </div>
-            <div class="col-lg-7 mt-5 mt-lg-0 p-lg-5">
-                <img class="w-100 h-auto object-fit-cover"
-                     src="<?= get_field('aboutus_image')['url']; ?>"
-                     alt="<?= get_field('aboutus_image')['title']; ?>">
-            </div>
-        </div>
-        <div class="row py-5 justify-content-center">
-            <div class="col-lg-4 p-3">
-                <span class="text-success"><?= get_field('ourteam-badge'); ?></span>
-                <h5 class="display-6 text-white fw-bold pe-lg-5 py-4"><?= get_field('ourteam-title'); ?></h5>
-                <p class="small text-opacity-75 text-white"><?= get_field('ourteam-description'); ?></p>
-                <div class="row row-cols-2">
-                    <?php while (have_rows('team_ability')): the_row(); ?>
-                        <div class="p-2">
-                            <span class="fs-1 fw-bold text-success pb-4"><?= get_sub_field('value') ?></span>
-                            <p class="text-white fs-5 text-opacity-50"><?= get_sub_field('description') ?></p>
+            <div class="row py-5 justify-content-center">
+                <div class="col-lg-4 p-3">
+                    <span class="text-success"><?= get_field('ourteam-badge'); ?></span>
+                    <h5 class="display-6 text-white fw-bold pe-lg-5 py-4"><?= get_field('ourteam-title'); ?></h5>
+                    <p class="small text-opacity-75 text-white"><?= get_field('ourteam-description'); ?></p>
+                    <div class="row row-cols-2">
+                        <?php while (have_rows('team_ability')): the_row(); ?>
+                            <div class="p-2">
+                                <span class="fs-1 fw-bold text-success pb-4"><?= get_sub_field('value') ?></span>
+                                <p class="text-white fs-5 text-opacity-50"><?= get_sub_field('description') ?></p>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                    <a href="<?= get_field('ourteam_button_link')['url'] ?? ''; ?>"
+                       class="btn btn-white w-100 rounded-3 mt-3"><?= get_field('ourteam_button_title'); ?></a>
+                </div>
+                <div class="col-lg-8 row row-cols-2 justify-content-center">
+                    <?php while (have_rows('team')) : the_row(); ?>
+                        <div class="text-white text-center py-4">
+                            <img class="img-thumbnail border-primary rounded-circle bg-transparent"
+                                 width="250" height="250"
+                                 src="<?= get_sub_field('image')['url']; ?>"
+                                 alt="<?= get_sub_field('name'); ?>">
+                            <p class="text-white fw-bold fs-6 pt-4 mb-1"><?= get_sub_field('name'); ?></p>
+                            <p class="text-white text-opacity-50 small pb-2"><?= get_sub_field('position'); ?></p>
+                            <div class="d-flex gap-2 align-content-center justify-content-center">
+                                <?php while (have_rows('network')): the_row(); ?>
+                                    <a class="text-white text-opacity-50" target="_blank"
+                                       area-label="<?= get_sub_field('icon'); ?>"
+                                       href="<?= get_sub_field('link'); ?>">
+                                        <?php
+                                        $svgColor = "currentColor";
+                                        $args = array(
+                                            'colorSvg' => $svgColor
+                                        );
+
+                                        get_template_part('template-parts/svg/social/' . get_sub_field('icon'), null, $args); ?>
+                                    </a>
+                                <?php endwhile; ?>
+                            </div>
                         </div>
                     <?php endwhile; ?>
+
                 </div>
-                <a href="<?= get_field('ourteam_button_link')['url'] ?? ''; ?>" class="btn btn-white w-100 rounded-3 mt-3"><?= get_field('ourteam_button_title'); ?></a>
-            </div>
-            <div class="col-lg-8 row row-cols-2 justify-content-center">
-                <?php while (have_rows('team')) : the_row(); ?>
-                    <div class="text-white text-center py-4">
-                        <img class="img-thumbnail border-primary rounded-circle bg-transparent"
-                             width="250" height="250"
-                             src="<?= get_sub_field('image')['url']; ?>"
-                             alt="<?= get_sub_field('name'); ?>">
-                        <p class="text-white fw-bold fs-6 pt-4 mb-1"><?= get_sub_field('name'); ?></p>
-                        <p class="text-white text-opacity-50 small pb-2"><?= get_sub_field('position'); ?></p>
-                        <div class="d-flex gap-2 align-content-center justify-content-center">
-                            <?php while (have_rows('network')): the_row(); ?>
-                                <a class="text-white text-opacity-50" target="_blank"
-                                   area-label="<?= get_sub_field('icon');?>"
-                                   href="<?= get_sub_field('link'); ?>">
-                                    <?php
-                                    $svgColor = "currentColor";
-                                    $args= array(
-                                            'colorSvg' => $svgColor
-                                    );
-
-                                    get_template_part('template-parts/svg/social/' . get_sub_field('icon') , null , $args); ?>
-                                </a>
-                            <?php endwhile; ?>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
-
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
+<?php endif; ?>
 <section class="container pt-lg-5 pb-5">
     <div class="row justify-content-lg-between justify-content-center align-content-center">
-        <div class="col-lg-5 py-5">
-            <img class="w-100 h-auto py-3" src="<?= get_field('section_image_2')['url']; ?>"
-                 alt="<?= get_field('section_image_2')['title']; ?>">
-        </div>
         <div class="col-lg-6 my-auto">
             <span class="text-success fw-bold"><?= get_field('section_badge_2'); ?></span>
             <h5 class="display-4 pt-3 text-secondary fw-bold pe-lg-5"><?= get_field('section_title_2'); ?></h5>
@@ -136,9 +141,15 @@ get_header(); ?>
                 </ul>
             <?php }; ?>
             <div class="d-flex">
-                <a href="<?= get_field('section_property_button_link_2')['url'] ?? ''; ?>" class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('section_property_button_title_2'); ?></a>
-                <a href="<?= get_field('section_property_button_link_3')['url'] ?? ''; ?>" class="btn text-primary btn-arrow py-1"><?= get_field('section_property_button_title_3'); ?></a>
+                <a href="<?= get_field('section_property_button_link_2')['url'] ?? ''; ?>"
+                   class="btn btn-primary px-5 rounded-3 py-1"><?= get_field('section_property_button_title_2'); ?></a>
+                <a href="<?= get_field('section_property_button_link_3')['url'] ?? ''; ?>"
+                   class="btn text-primary btn-arrow py-1"><?= get_field('section_property_button_title_3'); ?></a>
             </div>
+        </div>
+        <div class="col-lg-5 py-5">
+            <img class="w-100 h-auto py-3" src="<?= get_field('section_image_2')['url']; ?>"
+                 alt="<?= get_field('section_image_2')['title']; ?>">
         </div>
     </div>
 </section>
